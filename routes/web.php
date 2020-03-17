@@ -19,4 +19,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['permission:admin']], function () {
+    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+    Route::get('/orders', 'DashboardController@orders')->name('admin.index');
+    /*Route::resource('/have-video', 'HaveVideoController', ['as' => 'admin']);
+    Route::resource('/search-video', 'SearchVideoController', ['as' => 'admin']);*/
+
+    Route::group(['prefix' => 'user_managment', 'namespace' => 'UserManagment'], function () {
+        Route::resource('/user', 'UserController', ['as' => 'admin.user_managment']);
+        Route::resource('/roles', 'RoleController', ['as' => 'admin.user_managment']);
+    });
+});
+
+Route::get('home', function () {
+    return redirect('/admin');
+});
