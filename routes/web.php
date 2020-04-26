@@ -13,17 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','SiteController@welcome')->name('welcome');
+
+
+Route::get('catalog/{category}/{product}.html', 'SiteController@product')->name('product')->where('category', '[a-zA-Z0-9\-/_]+');
+Route::get('catalog/{path}', 'SiteController@category')->name('category')->where('path', '[a-zA-Z0-9\-/_]+');
+Route::get('catalog', 'SiteController@catalog')->name('catalog');
+
 
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['permission:admin']], function () {
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
-    Route::get('/orders', 'DashboardController@orders')->name('admin.index');
-    /*Route::resource('/have-video', 'HaveVideoController', ['as' => 'admin']);
-    Route::resource('/search-video', 'SearchVideoController', ['as' => 'admin']);*/
+    Route::get('/orders', 'DashboardController@orders')->name('admin');
+    Route::resource('/category', 'CategoryController', ['as'=>'admin']);
+    Route::get('/category/{id?}/children ', 'CategoryController@children')->name('admin');
+    Route::resource('/colors', 'ColorController', ['as'=>'admin']);
+    Route::resource('/providers', 'ProviderController', ['as'=>'admin']);
+    Route::resource('/countries', 'CountryController', ['as'=>'admin']);
+    Route::resource('/brands', 'BrandController', ['as'=>'admin']);
+    Route::resource('/sizes', 'SizeController', ['as'=>'admin']);
+    Route::resource('/products', 'ProductController', ['as'=>'admin']);
+    Route::resource('/blogs', 'BlogController', ['as'=>'admin']);
+
 
     Route::group(['prefix' => 'user_managment', 'namespace' => 'UserManagment'], function () {
         Route::resource('/user', 'UserController', ['as' => 'admin.user_managment']);
