@@ -7,8 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Купить женское нижнее белье в магазине SilkandLace в Москве — Каталог с выгодными ценами на женское белье от магазина "Шелк и Кружево"') }}</title>
-
+    <title>@yield('title', 'Купить женское нижнее белье в магазине SilkandLace в Москве — Каталог с выгодными ценами на женское белье от магазина "Шелк и Кружево"')</title>
     <!-- Scripts -->
 
 
@@ -310,20 +309,17 @@
 
 
             $(document).ready(function() {
-
                 $('.as').slick({
                     dots: true,
-                    infinite: false,
+                    infinite: true,
                     autoplay: true,
                     autoplaySpeed: 20000,
                     pauseOnFocus: false,
                     pauseOnHover: false,
                     pauseOnDotsHover: false,
                     slidesToShow: 3,
-                    slidesToScroll: 1,
-
+                    slidesToScroll: 3,
                     responsive: [
-
                         {
                             breakpoint: 991,
                             settings: {
@@ -345,18 +341,12 @@
                                 slidesToScroll: 1
                             }
                         }
-                        // You can unslick at a given breakpoint now by adding:
-                        // settings: "unslick"
-                        // instead of a settings object
                     ]
-
                 });
-
-
 
                 $('.asa').slick({
                     dots: true,
-                    infinite: false,
+                    infinite: true,
                     autoplay: true,
                     autoplaySpeed: 30000,
                     pauseOnFocus: false,
@@ -368,7 +358,46 @@
                     cssEase: 'linear'
                 });
 
+
+                $('.proda').slick({
+                    dots: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 20000,
+                    pauseOnFocus: false,
+                    pauseOnHover: false,
+                    pauseOnDotsHover: false,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    responsive: [
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 700,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+
+
+
             });
+
 
             /*Стрелка вверх*/
             // ===== Scroll to Top ====
@@ -385,6 +414,62 @@
                 }, 500);
             });
             /*Стрелка вверх*/
+
+            @if(preg_match('!html!', $_SERVER['REQUEST_URI']))
+                window.onload = function(){
+                var elem = document.querySelectorAll('[name="color"]'), i = elem.length;
+                var color;
+                while(i--){
+                    elem[i].onclick = function(i){
+                        return function(){
+                            //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
+                            color= this.value;
+                            // console.log(color+"-color");                 //цвет
+                            document.getElementById('attr-name').innerHTML = this.title;
+                            var x = document.getElementsByName("size");
+                            var a;
+                            for (a = 0; a < x.length; a++) {
+                                var tablesize= x[a].value;
+                               //  console.log(tablesize+"-size");         //розмер
+                                var tempLsize = document.getElementById('lSize'+tablesize);
+                                var tempsize = document.getElementById('size'+tablesize);
+                                tempLsize.classList.add("disabled_size");
+                                tempsize.disabled = true;
+                                tempsize.checked = false;
+                                var b;
+                                for (b = 0; b < attr_all.length; b++) {
+                                    if (attr_all[b].size_id == tablesize && attr_all[b].color_id == color) {
+                                        tempLsize.classList.remove("disabled_size");
+                                        tempsize.disabled = false;
+                                    }
+                                }
+                            }
+                        };
+
+                    }(i);
+                }
+                var elemSize = document.querySelectorAll('[name="size"]'), c = elemSize.length;
+                while(c--){
+                    elemSize[c].onclick = function(c){
+                        return function(){
+                            var sizes= this.value;
+                            var d;
+                            for (d = 0; d < attr_all.length; d++) {
+                                if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
+                                    document.getElementById('checked_attr').value=attr_all[d].id;
+                                    Vue.set(app.item, 'checked_attr', attr_all[d].id);
+                                   // console.log(attr_all[d].id);
+                                }
+                            }
+                        };
+                    }(c);
+                }
+            };
+            @endif
+
+
+
+
         </script>
     </div>
 </body>

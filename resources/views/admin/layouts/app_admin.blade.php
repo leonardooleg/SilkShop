@@ -23,7 +23,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand" href="/admin">Админка </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
     ><!-- Navbar Search-->
-    <a class="btn btn-primary" href="/" role="button">На сайт</a>
+    <a class="btn btn-primary" href="/" role="button" target="_blank">На сайт</a>
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
@@ -98,7 +98,7 @@
 
 
                     <div class="sb-sidenav-menu-heading">Дополнительно</div>
-                    <a class="nav-link" href="/"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>Перейти на сайт</a>
+                    <a class="nav-link" href="/" target="_blank"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>Перейти на сайт</a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">

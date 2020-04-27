@@ -111,15 +111,14 @@
         </div>
         <br>
         <div class="form-group ">
-        <label for="inputZip"><strong>Ссылка</strong></label>
-        <div class="input-group mb-3">
-            <input type="text" name="slug" class="form-control" placeholder="Автоматическая генерация или введите свою" value="{{$product->slug ?? ''}}">
-            <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2">.html</span>
+            <label for="inputZip"><strong>Ссылка</strong></label>
+            <div class="input-group mb-3">
+                <input type="text" name="slug" class="form-control" placeholder="Автоматическая генерация или введите свою" value="{{$product->slug ?? ''}}">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">.html</span>
+                </div>
             </div>
         </div>
-
-    </div>
     </div>
 </div>
 

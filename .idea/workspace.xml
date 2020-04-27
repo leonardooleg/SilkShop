@@ -1,105 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b04cdebb-6e99-41e7-9065-1ca8ca746ca0" name="Default Changelist" comment="початок">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ColorController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CountryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProviderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SizeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagment/RoleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagment/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Blog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CategoryProduct.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Color.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Country.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Provider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Size.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Url.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/breadcrumbs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Nginx_1.17_vhost.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/9771185888e167bdd3f64aa73e5700ad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/card.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/cash.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/clock.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/discounts-new.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/icons.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/list.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/logo@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/logo_footer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/shipping-and-delivery.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sprite.@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/telegram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/wallet.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery-3.4.1.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/assets/demo/chart-area-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/assets/demo/chart-bar-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/assets/demo/chart-pie-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/assets/demo/datatables-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/assets/img/error-404-monochrome.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/panel/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/blogs/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/blogs/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/blogs/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/brands/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/brands/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/brands/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/partials/categories.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/partials/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/colors/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/colors/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/colors/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/components/breadcrumb.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/countries/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/countries/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/countries/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app_admin.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/partials/categories.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/products/partials/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/providers/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/providers/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/providers/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/sizes/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/sizes/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/sizes/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/sizes/partials/categories.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/sizes/partials/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/roles/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/roles/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/roles/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/users/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/users/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/users/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/users/partials/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user_managment/users/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/category.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
+    <list default="true" id="b04cdebb-6e99-41e7-9065-1ca8ca746ca0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/blog.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/blogs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Blog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/blogs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/blogs/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/blogs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/blogs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app_admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/partials/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/category.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -231,7 +148,11 @@
       <workItem from="1587553177549" duration="18561000" />
       <workItem from="1587645668969" duration="467000" />
       <workItem from="1587646152935" duration="14031000" />
-      <workItem from="1587902283200" duration="11143000" />
+      <workItem from="1587902283200" duration="19623000" />
+      <workItem from="1587937549294" duration="1183000" />
+      <workItem from="1587980394300" duration="4867000" />
+      <workItem from="1587988882974" duration="9970000" />
+      <workItem from="1588024348038" duration="3833000" />
     </task>
     <task id="LOCAL-00001" summary="початок">
       <created>1584458567500</created>
@@ -240,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584458567500</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="завершаю функціональний дизайн">
+      <created>1587927589134</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587927589134</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +177,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="початок" />
-    <option name="LAST_COMMIT_MESSAGE" value="початок" />
+    <MESSAGE value="завершаю функціональний дизайн" />
+    <option name="LAST_COMMIT_MESSAGE" value="завершаю функціональний дизайн" />
   </component>
   <component name="WindowStateProjectService">
     <state x="521" y="198" key="#Deployment" timestamp="1584458655374">
@@ -276,78 +205,78 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="659" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1584877973664" />
-    <state x="659" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587668834408">
+    <state x="659" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588025960782">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="659" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1587668834408" />
-    <state x="552" y="48" key="CommitChangelistDialog2" timestamp="1584458656762">
+    <state x="659" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1588025960782" />
+    <state x="552" y="44" key="CommitChangelistDialog2" timestamp="1587927586535">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="552" y="48" key="CommitChangelistDialog2/0.0.1858.1080@0.0.1858.1080" timestamp="1584458656762" />
+    <state x="552" y="44" key="CommitChangelistDialog2/0.0.1858.1080@0.0.1858.1080" timestamp="1587927586535" />
     <state x="709" y="294" key="FileChooserDialogImpl" timestamp="1585167334161">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="709" y="294" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1585167334161" />
-    <state width="1815" height="436" key="GridCell.Tab.0.bottom" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.0.bottom" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.0.bottom/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.0.center" timestamp="1587926492546">
+    <state width="1815" height="436" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.0.center" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.0.center/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492546" />
-    <state width="1815" height="436" key="GridCell.Tab.0.left" timestamp="1587926492546">
+    <state width="1815" height="436" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.0.left" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.0.left/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492546" />
-    <state width="1815" height="436" key="GridCell.Tab.0.right" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.0.right" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.0.right/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.1.bottom" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.1.bottom" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.1.bottom/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.1.center" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.1.center" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.1.center/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.1.left" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.1.left" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.1.left/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.1.right" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.1.right" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.1.right/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.2.bottom" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.2.bottom" timestamp="1588027408300">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.2.bottom/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793903" />
-    <state width="1815" height="436" key="GridCell.Tab.2.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.2.center" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.2.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408300" />
+    <state width="1815" height="436" key="GridCell.Tab.2.center" timestamp="1588027408300">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.2.center/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793903" />
-    <state width="1815" height="436" key="GridCell.Tab.2.center/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.2.left" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.2.center/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408300" />
+    <state width="1815" height="436" key="GridCell.Tab.2.left" timestamp="1588027408299">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.2.left/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793902" />
-    <state width="1815" height="436" key="GridCell.Tab.2.left/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
-    <state width="1815" height="436" key="GridCell.Tab.2.right" timestamp="1587926492547">
+    <state width="1815" height="436" key="GridCell.Tab.2.left/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408299" />
+    <state width="1815" height="436" key="GridCell.Tab.2.right" timestamp="1588027408300">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="436" key="GridCell.Tab.2.right/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1587558793903" />
-    <state width="1815" height="436" key="GridCell.Tab.2.right/0.0.1858.1080@0.0.1858.1080" timestamp="1587926492547" />
+    <state width="1815" height="436" key="GridCell.Tab.2.right/0.0.1858.1080@0.0.1858.1080" timestamp="1588027408300" />
     <state x="759" y="327" key="PhpDebugProjectChooserDialog" timestamp="1584806288690">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -356,10 +285,10 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="430" y="182" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1586959755412" />
-    <state x="521" y="268" key="Vcs.Push.Dialog.v2" timestamp="1584458571189">
+    <state x="521" y="268" key="Vcs.Push.Dialog.v2" timestamp="1587927843037">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="521" y="268" key="Vcs.Push.Dialog.v2/0.0.1858.1080@0.0.1858.1080" timestamp="1584458571189" />
+    <state x="521" y="268" key="Vcs.Push.Dialog.v2/0.0.1858.1080@0.0.1858.1080" timestamp="1587927843036" />
     <state width="937" height="548" key="XDebugger.FullValuePopup" timestamp="1587580546804">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -368,14 +297,14 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="801" y="384" key="cloudConfig.SelfSettingsDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1586958660746" />
-    <state x="92" y="92" width="1674" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587668649615">
+    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587992226911">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="92" y="92" width="1674" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1587668649615" />
-    <state x="637" y="259" width="583" height="562" key="find.popup" timestamp="1587926351388">
+    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1587992226911" />
+    <state x="637" y="259" width="583" height="562" key="find.popup" timestamp="1587992199909">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="637" y="259" width="583" height="562" key="find.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1587926351388" />
+    <state x="637" y="259" width="583" height="562" key="find.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1587992199909" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -34,7 +34,15 @@
                             <label for="inputZip"><strong>Название</strong></label>
                             <input type="text" name="title" class="form-control" value="{{$blog->title}}">
                         </div>
-
+                        <div class="form-group ">
+                            <label for="inputZip"><strong>Ссылка</strong></label>
+                            <div class="input-group mb-3">
+                                <input type="text" name="url" class="form-control" placeholder="Автоматическая генерация или введите свою" value="{{$blog->url ?? ''}}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2">.html</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group mt-5">
                             <label for="inputZip"><strong>Текст</strong></label>
                             <textarea  rows="20" name="text" class="form-control" id="">value="{{$blog->text}}"</textarea>

@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+@section('title', $product->name)
+
 @section('content')
     <div class="container container-my">
         <nav aria-label="breadcrumb">
@@ -101,8 +104,8 @@
             <div class="col-md-7 product__description">
 
                 <h1 class="title title--size-s title--light" itemprop="name">{{$product->name}}</h1>
-                <meta itemprop="category" content="носки">
-                <meta itemprop="brand" content="Conte">
+                <meta itemprop="category" content="{{$product->name}}">
+                <meta itemprop="brand" content="{{$product->name_brand}}">
 
 
                 <div class="product__price text-bold" itemprop="price" content="{{$product->price}}">
@@ -115,14 +118,14 @@
                         <div class="product__field wrap_color_select">
                             <div class="color j-color-name-container">
                                 Цвет:
-                                <span class="color">белый</span>
+                                <span id="attr-name" class="color"></span>
                             </div>
                             <div class="product__field wrap_color_select">
 
                                 <div class="btn-group btn-group-toggle btn-color" data-toggle="buttons">
-                                    @foreach (explode(",",$product->img_colors) as $id => $img_color)
-                                        <label class="btn btn-secondary active" style="background-image: url({{$img_color}})" >
-                                            <input type="radio" name="options" title="{{explode(",",$product->name_colors)[$id]}}" id="option{{$id}}" autocomplete="off" > <span>{{explode(",",$product->name_colors)[$id]}}</span>
+                                    @foreach ($attr_colors as $img_color)
+                                        <label class="btn btn-secondary" style="background-image: url({{$img_color->img_color}})" >
+                                            <input type="radio" name="color" title="{{$img_color->name_color}}" value="{{$img_color->color_id}}" id="color{{$img_color->color_id}}" autocomplete="off" >
                                         </label>
                                     @endforeach
 
@@ -298,8 +301,8 @@
 
                                     <div class="size-table sizetable">
 
-                                        @foreach (explode(",",$product->brand_name_sizes) as $id => $brand_name_sizes)
-                                            <li class="form-check"><input type="radio" value="{{$id}}"   name="size" id="size{{$id}}" ><label class="form-check-label" id ="lSize{{$id}}" for="size{{$id}}">{{$brand_name_sizes}} ({{explode(",",$product->rus_name_sizes)[$id]}})</label></li>
+                                        @foreach ($attr_sizes as $sizes)
+                                            <li class="form-check"><input type="radio" value="{{$sizes->size_id}}"   name="size" id="size{{$sizes->size_id}}" ><label class="form-check-label" id ="lSize{{$sizes->size_id}}" for="size{{$sizes->size_id}}">{{$sizes->brand_name_size}} ({{$sizes->rus_name_size}})</label></li>
                                        @endforeach
 
 
@@ -312,10 +315,18 @@
                             </div>
                             <div class="product__size">
                                 <i class="icon icon--size"></i>
-                                <a class="link link--inherit" target="_blank" href="/sizes/conte.html">Как
-                                    определить размер?</a>
+                                <a class="link link--inherit" target="_blank" href="/sizes/conte.html">Как определить размер?</a>
                             </div>
                         </div>
+
+                        <input type="hidden" id="checked_attr" value=""   name="checked_attr" >
+
+                        <script type="application/javascript">
+                            var attr_all =@php
+                                echo json_encode($attr_all);
+                            @endphp;
+                        </script>
+
 
                         <div class="product__field">
                             <button type="button" class="btn btn-danger button--pink">Добавить в корзину</button>
@@ -399,112 +410,37 @@
         </div>
 
 
+
         <!-- Latest -->
-
+        @if(isset($similar_p[0]))
         <div class="section">
+            <div class="title title--size-m title--light title--underline content__title">Похожие товары:</div>
             <div class="page__layout">
-                <h1 class="title title&#45;&#45;up title&#45;&#45;center title&#45;&#45;lemon title&#45;&#45;size-xl section__title  text-center"><a style="text-decoration: none; color: #000;" href="/novelty/">Новинки</a></h1>
-                <div class="slider slider-1 ">
-
-                    <div class="container">
-                        <div class="row as">
-                            <div class="col-lg-9 col-sm-6">
+                <div class="slider slider-p ">
+                    <div class="">
+                        <div class="row proda">
+                            @foreach ($similar_p as $p)
+                            <div class="col-lg-9 col-sm-4">
                                 <div class="strat">
-                                    <div class="image">
-                                        <img class="img latest__img loading" src="https://silkandlace.ru/upload/iblock/13e/13e8555e7143e64bc1414ec1018d1a02.jpg" alt=""  data-was-processed="true">
-                                    </div>
-                                    <div class="text text-center">
-                                        <div class="latest__cost">1 800 руб</div>
-                                        <div class="latest__cost latest__cost2">
-                                            <div class="card__type" style="margin-top: 0">Бюстгальтеры</div>
-                                            <a href="/catalog/zhenskoe-bele/byustgaltery/dtbv86238.html" style="text-decoration: none; color: #000;" tabindex="0">
-                                                V.O.V.A.<!--                                <br>-->
-                                                <!--                                <span style="font-size: 1.5rem">--><!--</span>-->
-                                            </a>
+                                    <a href="/catalog/{{$p->path}}/{{$p->slug}}.html">
+                                        <div class="image">
+                                            <img class="img latest__img loading" src="@foreach(explode(';', $p->media) as $media){{$media}}@break @endforeach" alt=""  data-was-processed="true">
                                         </div>
-                                        <a href="/actions/free_order_for_blogers.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
+                                    </a>
+                                    <div class="text text-center">
+                                        <div class="card__description">
+                                            <div class="card__name">@if(iconv_strlen($p->name)>51){{mb_strimwidth($p->name, 0, 50, "...")}} @else {{$p->name}}@endif</div>
+                                            <div class="card__type">{{$p->title}}</div>
+                                            <div class="card__price"><b>{{$p->price}} руб.</b></div>
+                                            <div class="card__action">
+                                                <a href="/catalog/{{$p->path}}/{{$p->slug}}.html" class="btn btn-outline-dark" data-id="2291907" tabindex="0"> Подробнее </a>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-sm-6">
-                                <div class="strat">
-                                    <div class="image">
-                                        <img class="img latest__img loading" src="https://silkandlace.ru/upload/iblock/1de/1de8cd2f68697b496cc76f58e052c847.jpg" alt=""  data-was-processed="true">
-                                    </div>
-                                    <div class="text text-center">
-                                        <div class="latest__cost">1 800 руб</div>
-                                        <div class="latest__cost latest__cost2">
-                                            <div class="card__type" style="margin-top: 0">Бюстгальтеры</div>
-                                            <a href="/catalog/zhenskoe-bele/byustgaltery/dtbv86238.html" style="text-decoration: none; color: #000;" tabindex="0">
-                                                V.O.V.A.<!--                                <br>-->
-                                                <!--                                <span style="font-size: 1.5rem">--><!--</span>-->
-                                            </a>
-                                        </div>
-                                        <a href="/actions/free_order_for_blogers.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-sm-6">
-                                <div class="strat">
-                                    <div class="image">
-                                        <img class="img latest__img loading" src="https://silkandlace.ru/upload/iblock/c81/c81b7bcca429cc0271be3e6686f1b277.jpg" alt=""  data-was-processed="true">
-                                    </div>
-                                    <div class="text text-center">
-                                        <div class="latest__cost">1 800 руб</div>
-                                        <div class="latest__cost latest__cost2">
-                                            <div class="card__type" style="margin-top: 0">Бюстгальтеры</div>
-                                            <a href="/catalog/zhenskoe-bele/byustgaltery/dtbv86238.html" style="text-decoration: none; color: #000;" tabindex="0">
-                                                V.O.V.A.<!--                                <br>-->
-                                                <!--                                <span style="font-size: 1.5rem">--><!--</span>-->
-                                            </a>
-                                        </div>
-                                        <a href="/actions/free_order_for_blogers.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-sm-6">
-                                <div class="strat">
-                                    <div class="image">
-                                        <img class="img latest__img loading" src="https://silkandlace.ru/upload/iblock/9d4/9d4f1c2ff81b9b3c9002d4d155e902e5.jpg" alt=""  data-was-processed="true">
-                                    </div>
-                                    <div class="text text-center">
-                                        <div class="latest__cost">1 800 руб</div>
-                                        <div class="latest__cost latest__cost2">
-                                            <div class="card__type" style="margin-top: 0">Бюстгальтеры</div>
-                                            <a href="/catalog/zhenskoe-bele/byustgaltery/dtbv86238.html" style="text-decoration: none; color: #000;" tabindex="0">
-                                                V.O.V.A.<!--                                <br>-->
-                                                <!--                                <span style="font-size: 1.5rem">--><!--</span>-->
-                                            </a>
-                                        </div>
-                                        <a href="/actions/free_order_for_blogers.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-sm-6">
-                                <div class="strat">
-                                    <div class="image">
-                                        <img class="img latest__img loading" src="https://silkandlace.ru/upload/iblock/ec2/ec2b46ade094ad74359de339d8c37932.jpg" alt=""  data-was-processed="true">
-                                    </div>
-                                    <div class="text text-center">
-                                        <div class="latest__cost">1 800 руб</div>
-                                        <div class="latest__cost latest__cost2">
-                                            <div class="card__type" style="margin-top: 0">Бюстгальтеры</div>
-                                            <a href="/catalog/zhenskoe-bele/byustgaltery/dtbv86238.html" style="text-decoration: none; color: #000;" tabindex="0">
-                                                V.O.V.A.<!--                                <br>-->
-                                                <!--                                <span style="font-size: 1.5rem">--><!--</span>-->
-                                            </a>
-                                        </div>
-                                        <a href="/actions/free_order_for_blogers.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
+                            @endforeach
 
                         </div>
                         <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -516,11 +452,57 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-
                 </div>
-
             </div>
         </div>
+        @endif
+
+
+        @if(isset($last_p[0]))
+            <div class="section">
+                <div class="title title--size-m title--light title--underline content__title">Недавно просмотренные товары:</div>
+                <div class="page__layout">
+                    <div class="slider slider-p ">
+                        <div class="">
+                            <div class="row proda">
+                                @foreach ($last_p as $p)
+                                    <div class="col-lg-9 col-sm-4">
+                                        <div class="strat">
+                                            <a href="/catalog/{{$p->path}}/{{$p->slug}}.html">
+                                                <div class="image">
+                                                    <img class="img latest__img loading" src="@foreach(explode(';', $p->media) as $media){{$media}}@break @endforeach" alt=""  data-was-processed="true">
+                                                </div>
+                                            </a>
+                                            <div class="text text-center">
+                                                <div class="card__description">
+                                                    <div class="card__name">@if(iconv_strlen($p->name)>51){{mb_strimwidth($p->name, 0, 50, "...")}} @else {{$p->name}}@endif</div>
+                                                    <div class="card__type">{{$p->title}}</div>
+                                                    <div class="card__price"><b>{{$p->price}} руб.</b></div>
+                                                    <div class="card__action">
+                                                        <a href="/catalog/{{$p->path}}/{{$p->slug}}.html" class="btn btn-outline-dark" data-id="2291907" tabindex="0"> Подробнее </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                            <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </div>
 
 

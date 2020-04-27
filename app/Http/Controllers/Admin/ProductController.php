@@ -158,19 +158,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $input = $request->except('color_id', 'size_id');
         $input['media']=implode(';', array_diff( $input['media'], array('')));
-        $task->fill($input)->save();
+        $product->fill($input)->save();
         $sizes=array_diff( $request['size_id'], array(''));
         $colors=array_diff( $request['color_id'], array(''));
         $i=0;
         foreach ($sizes as $size){
-                $isert[]=['color_id' => $colors[$i], 'size_id' => $size, 'product_id' => $task->id];
+                $isert[]=['color_id' => $colors[$i], 'size_id' => $size, 'product_id' => $product->id];
                 $i++;
         };
-        DB::table('attributeables')->where('product_id', '=', $task->id)->delete();
+        DB::table('attributeables')->where('product_id', '=', $product->id)->delete();
         DB::table('attributeables')->insert( $isert);
+        // Categories
+        $product->categories()->detach();
+        if($request->input('categories')) :
+            $product->categories()->attach($request->input('categories'));
+        endif;
         return back()->with('success', 'Your Product has been added successfully. Please wait for the admin to approve.');
     }
 

@@ -100,11 +100,11 @@
                             @foreach ($products as $product)
                                 <div class="col-lg-9 col-sm-6">
                                     <div class="strat">
-                                        <div class="image">
-                                            <a href="/catalog/{{$product->path}}/{{$product->slug}}.html" style="text-decoration: none; color: #000;" tabindex="0">
+                                        <a href="/catalog/{{$product->path}}/{{$product->slug}}.html">
+                                            <div class="image">
                                                 <img class="img latest__img loading" src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" alt=""  data-was-processed="true">
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                         <div class="text text-center">
                                             <div class="latest__cost">{{$product->price}} руб</div>
                                             <div class="latest__cost latest__cost2">
