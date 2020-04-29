@@ -48,9 +48,8 @@ class SiteController extends Controller
             ->groupBy('products.id','categories.path','categories.title')
             ->paginate(15);
 
-
         $categories = null;
-        return view('category')->with(['categories'=>$categories,'products'=>$products]);
+        return view('category')->with(['categories'=>$categories,'products'=>$products, 'all'=> Product::count()]);
     }
 
     public function category($path)
@@ -78,7 +77,7 @@ class SiteController extends Controller
             ->paginate(5);
 
         $categories = Category::ancestorsAndSelf($category->id);
-        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products]);
+        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products, 'all'=> Product::count()]);
     }
 
     public function product($categoryPath, $productSlug)
@@ -167,5 +166,53 @@ class SiteController extends Controller
         $blog = Blog::where('url', '=', $url)->first();
         return view('blog')->with(['blog'=>$blog]);
     }
+
+    public function brands()
+    {
+        $brands = Brand::orderBy('created_at', 'desc')->get()->toarray();
+        foreach ($brands as $brand){
+            $abc= substr($brand['name_brand'], 0,1);
+            $brands_sort[$abc][]=$brand;
+        }
+        ksort($brands_sort, SORT_STRING);
+        $count = count($brands);
+        return view('brands')->with(['brands'=>$brands_sort, 'count'=>$count]);
+    }
+    public function brand($url)
+    {
+        $products = DB::table('products')
+            ->leftJoin('categoryables', 'categoryables.categoryable_id', '=', 'products.id')
+            ->leftJoin('categories', 'categoryables.category_id', '=', 'categories.id')
+            ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+            ->where('brands.url', $url)
+            ->orderBy('created_at', 'desc')
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'brands.description_brand', 'brands.logo_brand')
+            ->groupBy('products.id','categories.path','categories.title')
+            ->paginate(15);
+        $count = $products->count();
+        $brand = Brand::where('url', '=', $url)->firstOrFail();
+        return view('brand')->with(['brand'=>$brand, 'products'=>$products, 'count'=>$count]);
+    }
+
+    public function sizes()
+    {
+        $brands = Brand::orderBy('created_at', 'desc')->get()->toarray();
+        foreach ($brands as $brand){
+            $brands_sort[$brand['name_brand']]=$brand;
+        }
+        ksort($brands_sort, SORT_STRING);
+        return view('sizes')->with(['brands'=>$brands_sort]);
+    }
+    public function size($url)
+    {
+        $brands = Brand::orderBy('created_at', 'desc')->get()->toarray();
+        foreach ($brands as $brand){
+            $brands_sort[$brand['name_brand']]=$brand;
+        }
+        ksort($brands_sort, SORT_STRING);
+        $size = Brand::where('url','=', $url)->first();
+        return view('size')->with(['brands'=>$brands_sort, 'size'=>$size]);
+    }
+
 
 }

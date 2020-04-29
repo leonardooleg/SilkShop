@@ -19,8 +19,12 @@ Route::get('/','SiteController@welcome')->name('welcome');
 Route::get('catalog/{category}/{product}.html', 'SiteController@product')->name('product')->where('category', '[a-zA-Z0-9\-/_]+');
 Route::get('catalog/{path}', 'SiteController@category')->name('category')->where('path', '[a-zA-Z0-9\-/_]+');
 Route::get('catalog', 'SiteController@catalog')->name('catalog');
-Route::get('blogs', 'SiteController@blogs')->name('blogs');
+Route::get('blog', 'SiteController@blogs')->name('blogs');
 Route::get('blog/{url}.html', 'SiteController@blog')->name('blog');
+Route::get('brands', 'SiteController@brands')->name('brands');
+Route::get('brands/{url}.html', 'SiteController@brand')->name('brand');
+Route::get('sizes', 'SiteController@sizes')->name('sizes');
+Route::get('sizes/{url}.html', 'SiteController@size')->name('size');
 
 
 Auth::routes();

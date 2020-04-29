@@ -1362,7 +1362,7 @@ input[type=radio] {
 
 
 /* Extra Things */
-body{background: #eee ;font-family: 'Open Sans', sans-serif;}h3{font-size: 30px; font-weight: 400;text-align: center;margin-top: 50px;}h3 i{color: #444;}
+body{background: #eee ;font-family: 'Open Sans', sans-serif;}h3{font-size: 30px; font-weight: 400;margin-top: 50px;}h3 i{color: #444;}
 /*Стрелка вверх*/
 
 
@@ -1451,7 +1451,7 @@ img.fotorama__img.loading {
     height: 370px;
 }
 .card__description .card__name {
-    min-height: 50px;
+   /* min-height: 50px;*/
 }
 .card__type {
     font-size: 1.3rem;
@@ -1984,3 +1984,399 @@ img.fotorama__img.loading {
     margin: 0 auto;
 }
 /****Блог****/
+
+/****Бренды****/
+.alphabet__item {
+    padding: 0 .25rem;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.alphabet__item:first-child {
+    padding-right: 1.1rem;
+}
+.brands .content__title{
+    font-size: 2rem;
+    margin: 0 0 3rem 0;
+}
+.content__brands {
+    max-width: 52rem;
+}
+.page__sep {
+    margin-top: 2.2rem;
+    margin-bottom: 2.2rem;
+}
+blockquote.short {
+    position: relative;
+}
+blockquote:before {
+    content: " ";
+    position: absolute;
+    width: 33px;
+    height: 27px;
+    background: url(/img/blockquote.png) 0 0 no-repeat;
+    top: -9px;
+    left: -43px;
+}
+/****Бренды****/
+
+/****Размеры****/
+.proportions__nav {
+    margin-top: 2rem;
+}
+.proportions__nav .list__item {
+    font-size: 0.91rem;
+    margin-top: .3rem;
+}
+.proportions__question {
+    font-size: 0.8rem;
+    padding: 1rem 1.6rem;
+    background-color: #191919;
+    text-align: center;
+    color: #fff;
+}
+@media (min-width: 992px) {
+    .proportions__question {
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        margin: 0 0 1rem 0;
+    }
+}
+.proportions__top {
+    text-align: center;
+}
+@media (min-width: 992px) {
+    .proportions__top {
+        padding: 0 6rem 0 0;
+    }
+}
+.proportions table.razmer {
+    margin: 0;
+    border-color: #000;
+    border-style: solid;
+    box-shadow: 0 0 20px #d4d4d4;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+}
+.proportions table.razmer tr:first-child td {
+    background: #000;
+    color: #fff;
+}
+.proportions table.razmer tr td:first-child {
+    background: #000;
+    color: #fff;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    left: 0;
+}
+.proportions table tr td {
+    padding: 5px;
+    font-size: 13px;
+}
+.proportions__gap {
+    margin-top: 1.8rem;
+}
+@media (min-width: 544px) {
+    .proportions__gap {
+        margin-top: 2.7rem;
+    }
+}
+@media (min-width: 768px) {
+    .proportions__gap {
+        margin-top: 3.2rem;
+    }
+}
+@media (min-width: 992px) {
+    .proportions__gap {
+        margin-top: 4rem;
+    }
+}
+.proportions__schema {
+    position: relative;
+    text-align: center;
+}
+.proportions__model {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 2;
+}
+.proportions__pointer {
+    position: absolute;
+    z-index: 3;
+    border: dotted #191919;
+}
+.proportions__pointer[data-point="1"] {
+    position: absolute;
+    top: 35%;
+    left: 55%;
+    width: 8rem;
+    height: 8.8rem;
+    border-width: 0 2px 2px 0;
+}
+@media (min-width: 544px){
+    .proportions__pointer[data-point="1"] {
+        top: 40%;
+        width: 10rem;
+    }
+}
+@media (min-width: 768px){
+    .proportions__pointer[data-point="1"] {
+        width: 14rem;
+    }
+}
+@media (min-width: 1150px){
+    .proportions__pointer[data-point="1"] {
+        width: 34rem;
+    }
+}
+.proportions__pointer[data-point="1"]:after {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    -webkit-transform: translate(50%,50%);
+    -ms-transform: translate(50%,50%);
+    transform: translate(50%,50%);
+}
+.proportions__pointer:after {
+    display: block;
+    content: attr(data-point);
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #191919;
+    box-shadow: 3.7px 3.3px 2px rgba(0,0,0,.3);
+}
+@media (min-width: 544px){
+    .proportions__pointer:after {
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 2rem;
+    }
+}
+@media (min-width: 768px){
+    .proportions__pointer:after {
+        width: 6rem;
+        height: 6rem;
+        line-height: 6rem;
+        font-size: 3rem;
+    }
+}
+@media (min-width: 992px){
+    .proportions__pointer:after {
+        width: 7rem;
+        height: 7rem;
+        line-height: 7rem;
+        font-size: 3.4rem;
+    }
+}
+@media (min-width: 1150px){
+    .proportions__pointer:after {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+        font-size: 4.4rem;
+    }
+}
+
+
+/*пропустив*/
+
+@media (min-width: 1150px){
+    .proportions__pointer[data-point="2"] {
+        width: 33rem;
+    }
+}
+.proportions__pointer[data-point="2"]:after {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    -webkit-transform: translate(-50%,50%);
+    -ms-transform: translate(-50%,50%);
+    transform: translate(-50%,50%);
+}
+@media (min-width: 544px){
+    .proportions__pointer[data-point="2"] {
+        top: 44%;
+        width: 13rem;
+    }
+}
+    .proportions__pointer[data-point="2"] {
+        position: absolute;
+        top: 39%;
+        right: 100%;
+        width: 7rem;
+        height: 9.8rem;
+        border-width: 0 0 2px 2px;
+    }
+@media (min-width: 1150px){
+    .proportions__pointer:after {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+        font-size: 4.4rem;
+    }
+}
+.proportions__pointer[data-point="3"] {
+    position: absolute;
+    bottom: 32%;
+    left: 55%;
+    width: 5rem;
+    height: .2rem;
+    border-width: 0 0 2px 0;
+}
+@media (min-width: 1150px){
+    .proportions__pointer[data-point="3"] {
+        width: 13rem;
+    }
+}
+.proportions__pointer[data-point="3"]:after {
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+    -webkit-transform: translate(50%,50%);
+    -ms-transform: translate(50%,50%);
+    transform: translate(50%,50%);
+}
+@media (min-width: 1150px){
+    .proportions__pointer:after {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+        font-size: 4.4rem;
+    }
+}
+@media (min-width: 1150px){
+    .proportions__pointer[data-point="4"] {
+        width: 23rem;
+    }
+}
+.proportions__pointer[data-point="4"]:after {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    -webkit-transform: translate(-50%,50%);
+    -ms-transform: translate(-50%,50%);
+    transform: translate(-50%,50%);
+}
+.proportions__pointer[data-point="4"] {
+    position: absolute;
+    bottom: 19%;
+    right: 100%;
+    width: 5rem;
+    height: .2rem;
+    border-width: 0 0 2px 0;
+}
+.proportions__box {
+    position: relative;
+    background-color: #f9f9fb;
+    font-weight: 300;
+    text-align: left;
+    font-size: 1.3rem;
+    padding: 3rem 2rem 3rem 7rem;
+}
+@media (min-width: 440px) {
+    .proportions__box {
+        padding: 3rem 3rem 3rem 7rem;
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 992px){
+    .proportions__box {
+        position: absolute;
+        z-index: 1;
+    }
+}
+.proportions__box:before {
+    display: block;
+    content: attr(data-point);
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #191919;
+    box-shadow: 3.7px 3.3px 2px rgba(0,0,0,.3);
+    float: left;
+    margin: 0 0 0 -50px;
+}
+@media (min-width: 992px){
+    .proportions__box[data-point="1"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 50%;
+        margin: 5rem 0 0 11rem;
+    }
+}
+.paragraph, .content__news .shortstory .text p {
+    margin: 0;
+    font-size: 0.7em;
+    line-height: 0.9;
+}
+@media (min-width: 992px){
+    .proportions__box[data-point="2"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 50%;
+        margin: 5rem 16rem 0 0;
+    }
+}
+@media (min-width: 992px){
+    .proportions__box[data-point="3"] {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 50%;
+        margin: 0 0 0 11rem;
+    }
+}
+.proportions__box[data-point="3"]:after {
+    display: block;
+    content: "4";
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #191919;
+    box-shadow: 3.7px 3.3px 2px rgba(0,0,0,.3);
+    position: absolute;
+    top: 70px;
+    left: 2rem;
+}
+.proportions table.razmer {
+    margin: 0;
+    border-color: #000;
+    border-style: solid;
+    box-shadow: 0 0 20px #d4d4d4;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+}
+.razmer .lof-readmore a {
+    background: #000;
+    color: #fff;
+}
+/****Размеры****/
+
+

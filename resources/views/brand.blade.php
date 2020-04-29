@@ -1,21 +1,17 @@
 @extends('layouts.app')
 
-@section('title', $category->title ?? 'Каталог')
+@section('title', $brand->name_brand)
 
 @section('content')
     <div class="container container-my">
 
-        @isset($categories)
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"> <a href="/" class="link breadcrumbs__link">Главная</a> </li>
-                @foreach($categories as $i => $category)
-                    <li class="breadcrumb-item">{{ $category->ancestors->count() ? implode('  ', $category->ancestors->pluck('tile')->toArray()):''  }}
-                    <a href="/catalog/{{ $category->path }}" class="link breadcrumbs__link">{{ $category->title }}</a></li>
-                @endforeach
+                <li class="breadcrumb-item"><a href="/brands" class="link breadcrumbs__link">Бренды</a></li>
+                <li class="breadcrumb-item"><a class="link breadcrumbs__link">{{$brand->name_brand}}</a></li>
             </ol>
         </nav>
-        @endif
 
         <div class="row">
             <div class="col-md-2">
@@ -28,7 +24,7 @@
                     <ul class="catalog__items">
 
                         <li class="catalog__item ">
-                            <a class="link link--text" href="/catalog/zenskoe-bele">Женское белье</a>
+                            <a class="link link--text" href="/catalog/zhenskoe-bele/">Женское белье</a>
                             <span class="catalog__num">6027</span>
                         </li>
                         <li class="catalog__item ">
@@ -59,9 +55,9 @@
             </div>
             <div class="col-md-10">
 
-                <h1 class="title title--size-m title--light text-center">Купить женское нижнее белье в магазине SilkandLace в Москве — Каталог с выгодными ценами на женское белье от магазина "Шелк и Кружево"</h1>
+                <h1 class="title title--size-m title--light text-center">{{$brand->name_brand}}</h1>
 
-                <div class="title title--size-s title--dim title--light text-center title--underline content__sub-title">{{$all}} товаров</div>
+                <div class="title title--size-s title--dim title--light text-center title--underline content__sub-title">{{$count}} товаров</div>
 
                 <form name="_form" action="/catalog/" method="get" class="filter form smartfilter">
                     <div class="title filter__title">Фильтры:</div>
@@ -5020,27 +5016,18 @@
                                                 <img class="img lazy loaded" alt=""  src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" data-was-processed="true">
                                             </a>
                                             <div class="card__description">
-                                                <a class="link detail_c_desc" href="/catalog/{{$product->path}}/{{$product->slug}}.html">
-                                                    <div class="card__name">БРЕНД: {{$product->name_brand}}</div>
-                                                    <div class="card__name">
-                                                        ЦВЕТА:
-                                                        @foreach(array_unique(explode(',',$product->img_colors)) as $color)
-                                                            <img src="{{$color}}" height="10px">
-                                                        @endforeach
-                                                    </div>
-                                                    <div class="card__name">
-                                                        размеры в наличии:<br>
-                                                        @foreach(array_unique(explode(',',$product->brand_name_sizes)) as $size)
-                                                           <b style="padding-right: 5px">{{$size}}</b>
-                                                        @endforeach
-                                                    </div>
+                                                <a class="detail_c_desc" href="/catalog/{{$product->path}}/{{$product->slug}}.html">
+                                                    <div class="card__name">{{$product->name}}</div>
                                                 </a>
+
                                                 <div class="card__type">{{$product->title}}</div>
+
+
                                                 <div class="card__price">
                                                     <s>0 руб.</s><i>{{$product->price}} руб.</i>
                                                 </div>
                                                 <div class="card__action card__hover">
-                                                    <a href="/catalog/{{$product->path}}/{{$product->slug}}.html" class="button button--default button--bright card__button" data-id="2291907">
+                                                    <a href="/catalog/{{$product->path}}/{{$product->slug}}.html" class="button button--default button--bright card__button">
                                                         <span class="button__text">Перейти</span>
                                                     </a>
                                                 </div>
@@ -5066,7 +5053,25 @@
 
 
 
+                <blockquote class="short">
+                    {{--Страна: Франция.--}}
+                </blockquote>
+                <table class="table-img" width="100" cellpadding="5" align="left">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <img width="100"  src="/storage/{{$brand->logo_brand}}" height="100" title="Нижнее белье Coquette Revue" hspace="5" vspace="5" align="middle" class="loading" data-was-processed="true">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>
+                    {{$brand->description_brand}}
+                </p>
 
+                <blockquote class="short">
+                    <a href="/sizes/{{$brand->url}}" style="text-decoration: underline;">Посмотреть размерную сетку белья</a>.
+                </blockquote>
 
 
 

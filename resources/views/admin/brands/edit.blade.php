@@ -25,6 +25,15 @@
                             <input type="text" name="name_brand" class="form-control" value="{{$brand->name_brand}}">
                         </div>
                         <div class="form-group ">
+                            <label for="inputZip"><strong>Ссылка</strong></label>
+                            <div class="input-group mb-3">
+                                <input type="text" name="url" class="form-control" placeholder="Автоматическая генерация или введите свою" value="{{$brand->url ?? ''}}">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2">.html</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
                             <label for="inputZip"><strong>Описание</strong></label>
                             <textarea  rows="7" name="description_brand" class="form-control" >{{$brand->description_brand}}</textarea>
                         </div>
