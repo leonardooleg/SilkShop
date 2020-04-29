@@ -5,11 +5,13 @@
 
 @section('content')
     <div class="container container-my">
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"> <a href="/" class="link breadcrumbs__link">Главная</a> </li>
+               <a class="btn btn-primary" style="margin: 0 20px 0 0; padding: 5px 15px" href="{{ url()->previous() }}" role="button">Назад</a>
+                <li class="breadcrumb-item" style="margin: 10px 0"> <a href="/" class="link breadcrumbs__link">Главная</a> </li>
                 @foreach($categories as $i => $category)
-                    <li class="breadcrumb-item">{{ $category->ancestors->count() ? implode('  ', $category->ancestors->pluck('tile')->toArray()):''  }}
+                    <li class="breadcrumb-item" style="margin: 10px 0">{{ $category->ancestors->count() ? implode('  ', $category->ancestors->pluck('tile')->toArray()):''  }}
                     <a href="/catalog/{{ $category->path }}" class="link breadcrumbs__link">{{ $category->title }}</a></li>
                 @endforeach
 
@@ -443,14 +445,14 @@
                             @endforeach
 
                         </div>
-                        <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                       {{-- <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
-                        </a>
+                        </a>--}}
                     </div>
                 </div>
             </div>
@@ -489,14 +491,14 @@
                                 @endforeach
 
                             </div>
-                            <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                            {{--<a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
                             <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
-                            </a>
+                            </a>--}}
                         </div>
                     </div>
                 </div>

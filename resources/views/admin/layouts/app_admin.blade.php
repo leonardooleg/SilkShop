@@ -60,7 +60,7 @@
                     <a class="nav-link" href="/admin">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard</a>
-                    <a class="nav-link" href="/admin/orders"><div class="sb-nav-link-icon"><i class="fas fa-cart-plus"></i></div>
+                    <a class="nav-link" href="#"><div class="sb-nav-link-icon"><i class="fas fa-cart-plus"></i></div>
                         Заказы</a>
                     <a class="nav-link" href="/admin/category"><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Категории</a>

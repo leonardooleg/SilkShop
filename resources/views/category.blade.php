@@ -28,29 +28,29 @@
                     <ul class="catalog__items">
 
                         <li class="catalog__item ">
-                            <a class="link link--text" href="/catalog/zenskoe-bele">Женское белье</a>
+                            <a class="link link--text" href="/catalog/zenskoe-bele">Женское белье +</a>
                             <span class="catalog__num">6027</span>
                         </li>
                         <li class="catalog__item ">
-                            <a class="link link--text" href="/catalog/detskoe-bele/">Детское белье</a>
+                            <a class="link link--text" href="#">Детское белье</a>
                             <span class="catalog__num">3</span>
                         </li>
                         <li class="catalog__item ">
-                            <a class="link link--text" href="/catalog/muzhskoe-bele/">Мужское белье</a>
+                            <a class="link link--text" href="#">Мужское белье</a>
                             <span class="catalog__num">571</span>
                         </li>
                         <li class="catalog__item ">
-                            <a class="link link--text" href="/catalog/sale/">Распродажа</a>
+                            <a class="link link--text" href="#">Распродажа</a>
                             <span class="catalog__num">26</span>
                         </li>
                         <li class="catalog__item ">
-                            <a href="/novelty/" class="link link--text">
+                            <a href="#" class="link link--text">
                                 Новинки
                             </a>
                         </li>
                         <li class="catalog__item ">
                             <a href="/sizes/ " class="link link--text">
-                                Узнать свой размер
+                                Узнать свой размер +
                             </a>
                         </li>
                     </ul>

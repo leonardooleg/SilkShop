@@ -154,7 +154,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav mr-auto menu__items">
                             <li class="nav-item menu__item">
-                                <a class="nav-link" href="/catalog/zenskoe-bele">женское белье </a>
+                                <a class="nav-link" href="/catalog/zenskoe-bele">женское белье +</a>
                             </li>
                             <li class="nav-item menu__item">
                                 <a class="nav-link" href="#">детское белье</a>
@@ -166,7 +166,7 @@
                                 <a class="nav-link" href="#">распродажа</a>
                             </li>
                             <li class="nav-item menu__item">
-                                <a class="nav-link" href="/brands">Бренды</a>
+                                <a class="nav-link" href="/brands">Бренды +</a>
                             </li>
                             <li class="nav-item menu__item">
                                 <a class="nav-link" href="#">Новинки</a>

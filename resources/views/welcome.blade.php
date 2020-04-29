@@ -36,7 +36,7 @@
             <div class="customer-logos slider">
                 @if (isset($brands))
                     @foreach ($brands as $brand)
-                        <div class="slide"><a href="#"> <img src="/storage/{{$brand->logo_brand}}"></a></div>
+                        <div class="slide"><a href="/brands/{{$brand->url}}.html"> <img src="/storage/{{$brand->logo_brand}}"></a></div>
                     @endforeach
                 @endif
 
