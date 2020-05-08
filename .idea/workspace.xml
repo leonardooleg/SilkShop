@@ -2,83 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b04cdebb-6e99-41e7-9065-1ca8ca746ca0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MenuController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Cart2Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CacheStorage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/DBStorage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/DatabaseStorageModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/MenuItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/shopping_cart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/2019_01_05_293551_add-role-id-to-menu-items-table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2017_08_11_073824_create_menus_wp_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2017_08_11_074006_create_menu_items_wp_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/cart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/54ФЗ.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/c878268b2cce63d575875c95cd3c881e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/d98759726c459ecaebbe3097644cde41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/guar2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/paymasterlogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/psnal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/sslseal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/yandexkassalogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/advantages/rub.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/advantages/shield.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/advantages/world.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/content/partners (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/content/partners.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/bank_pay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_1.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_10.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_3.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_4.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_6.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_7.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_8.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/item_9.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/pay/nal_pay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/carousel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/harimayco-menu/images/spinner-2x.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/harimayco-menu/images/spinner.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/harimayco-menu/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/harimayco-menu/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/harimayco-menu/scripts2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vendor/harimayco-menu/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/orders/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/orders/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cart.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cart2.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cart3.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/cart.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/footerCart.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/wmenu/menu-html.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/wmenu/scripts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/panel/assets/demo/chart-area-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/panel/assets/demo/chart-area-demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/panel/assets/demo/chart-bar-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/panel/assets/demo/chart-bar-demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/panel/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/panel/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app_admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/blogs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/blogs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +181,7 @@
       <workItem from="1588786743458" duration="15606000" />
       <workItem from="1588847038433" duration="28203000" />
       <workItem from="1588891017568" duration="1183000" />
-      <workItem from="1588934226928" duration="20240000" />
+      <workItem from="1588934226928" duration="21316000" />
     </task>
     <task id="LOCAL-00001" summary="початок">
       <created>1584458567500</created>
@@ -286,11 +211,28 @@
       <option name="project" value="LOCAL" />
       <updated>1588166565853</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="зробив корзину&#10;поламав слайдри">
+      <created>1588961862747</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588961862747</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -298,7 +240,8 @@
     <MESSAGE value="завершаю функціональний дизайн" />
     <MESSAGE value="дизайн готовий&#10;додаю редактор текста" />
     <MESSAGE value="додаю меню" />
-    <option name="LAST_COMMIT_MESSAGE" value="додаю меню" />
+    <MESSAGE value="зробив корзину&#10;поламав слайдри" />
+    <option name="LAST_COMMIT_MESSAGE" value="зробив корзину&#10;поламав слайдри" />
   </component>
   <component name="WindowStateProjectService">
     <state x="521" y="198" key="#Deployment" timestamp="1584458655374">
@@ -333,10 +276,10 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="659" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1588952452178" />
-    <state x="552" y="23" key="CommitChangelistDialog2" timestamp="1588166563887">
+    <state x="552" y="23" key="CommitChangelistDialog2" timestamp="1588961858604">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="552" y="23" key="CommitChangelistDialog2/0.0.1858.1080@0.0.1858.1080" timestamp="1588166563887" />
+    <state x="552" y="23" key="CommitChangelistDialog2/0.0.1858.1080@0.0.1858.1080" timestamp="1588961858604" />
     <state x="709" y="294" key="FileChooserDialogImpl" timestamp="1588706040921">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -409,10 +352,10 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="430" y="182" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1588626938190" />
-    <state x="521" y="268" key="Vcs.Push.Dialog.v2" timestamp="1587927843037">
+    <state x="521" y="268" key="Vcs.Push.Dialog.v2" timestamp="1588961917110">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="521" y="268" key="Vcs.Push.Dialog.v2/0.0.1858.1080@0.0.1858.1080" timestamp="1587927843036" />
+    <state x="521" y="268" key="Vcs.Push.Dialog.v2/0.0.1858.1080@0.0.1858.1080" timestamp="1588961917110" />
     <state width="937" height="548" key="XDebugger.FullValuePopup" timestamp="1587580546804">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -421,14 +364,14 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="801" y="384" key="cloudConfig.SelfSettingsDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1586958660746" />
-    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588961683626">
+    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588962453036">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1588961683626" />
-    <state x="637" y="259" width="583" height="566" key="find.popup" timestamp="1588951288359">
+    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1588962453036" />
+    <state x="637" y="259" width="583" height="566" key="find.popup" timestamp="1588962009346">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="637" y="259" width="583" height="566" key="find.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1588951288359" />
+    <state x="637" y="259" width="583" height="566" key="find.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1588962009346" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

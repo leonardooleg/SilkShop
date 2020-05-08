@@ -21,7 +21,15 @@
 
     <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -31,7 +39,6 @@
             -ms-user-select: none;
             user-select: none;
         }
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -39,10 +46,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet" >
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="page">
@@ -256,21 +260,122 @@
             </div>
         </footer>
 
-    </div>
+
 
     <!-- Return to Top -->
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
 
+        <script src="/js/jquery-3.4.1.slim.min.js"  type="text/javascript" ></script>
+        <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js" type="text/javascript"></script>
 
-   <script src="https://unpkg.com/vue"></script>
-    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
-    <script src="/js/jquery-3.4.1.slim.min.js"  type="text/javascript" ></script>
-    <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
-
-
-
-    <script  type="application/javascript">
+        <script  type="text/javascript">
+                $(document).ready(function(){
+                    $('.customer-logos').slick({
+                        slidesToShow: 6,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 15000,
+                        arrows: false,
+                        dots: false,
+                        pauseOnHover: false,
+                        responsive: [{
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 4
+                            }
+                        }, {
+                            breakpoint: 520,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        }]
+                    });
+                });
+            $(document).ready(function() {
+                $('.as').slick({
+                    dots: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 20000,
+                    pauseOnFocus: false,
+                    pauseOnHover: false,
+                    pauseOnDotsHover: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    responsive: [
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 700,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+                $('.asa').slick({
+                    dots: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 30000,
+                    pauseOnFocus: false,
+                    pauseOnHover: false,
+                    pauseOnDotsHover: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    fade: true,
+                    cssEase: 'linear'
+                });
+                $('.proda').slick({
+                    dots: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 20000,
+                    pauseOnFocus: false,
+                    pauseOnHover: false,
+                    pauseOnDotsHover: false,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    responsive: [
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 700,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+            });
         /*Стрелка вверх*/
         // ===== Scroll to Top ====
         $(window).scroll(function() {
@@ -354,7 +459,7 @@
     </script>
 
     @include('layouts.footerCart')
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </div>
 </body>
 
 
