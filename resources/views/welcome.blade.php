@@ -32,7 +32,7 @@
     <!-- Brands -->
     <section class="section slider-brands">
         <div class="page__layout">
-            <h1 class="title title--up title--center title--lemon title--size-xl section__title text-center">Бренды</h1>
+            <h2 class=" title--up title--center title--lemon title--size-xl section__title text-center">Бренды</h2>
             <div class="customer-logos slider">
                 @if (isset($brands))
                     @foreach ($brands as $brand)
@@ -52,7 +52,7 @@
     <!-- Promotions -->
     <div class="section">
         <div class="page__layout">
-            <h1 class="title title--up title--center title--lemon title--size-xl section__title  text-center">Действующие акции</h1>
+            <h2 class=" title--up title--center title--lemon title--size-xl section__title  text-center">Действующие акции</h2>
 
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -61,13 +61,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://silkandlace.ru/upload/iblock/d98/d98759726c459ecaebbe3097644cde41.png" class="d-block w-100" alt="...">
+                        <img src="/image/d98759726c459ecaebbe3097644cde41.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <a class="btn btn-dark promotion__more" href="/actions/free_order_for_blogers.html" role="button"><span class="">Подробнее</span></a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://silkandlace.ru/upload/iblock/c87/c878268b2cce63d575875c95cd3c881e.png" class="d-block w-100" alt="...">
+                        <img src="/image/c878268b2cce63d575875c95cd3c881e.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <a class="btn btn-dark promotion__more" href="/actions/free_order_for_blogers.html" role="button"><span class="">Подробнее</span></a>
                         </div>
@@ -91,7 +91,7 @@
 
     <div class="section">
         <div class="page__layout">
-            <h1 class="title title&#45;&#45;up title&#45;&#45;center title&#45;&#45;lemon title&#45;&#45;size-xl section__title  text-center"><a style="text-decoration: none; color: #000;" href="/novelty/">Новинки</a></h1>
+            <h2 class=" title&#45;&#45;up title&#45;&#45;center title&#45;&#45;lemon title&#45;&#45;size-xl section__title  text-center"><a style="text-decoration: none; color: #000;" href="/novelty/">Новинки</a></h2>
             <div class="slider slider-1 ">
 
                 <div class="container">
@@ -122,14 +122,14 @@
                             @endforeach
                         @endif
                     </div>
-                    <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    {{--<a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
-                    </a>
+                    </a>--}}
                 </div>
 
             </div>
@@ -140,9 +140,9 @@
     <!-- Latest 2-->
     <div class="section">
         <div class="page__layout">
-            <h1 class="title title&#45;&#45;up title&#45;&#45;center title&#45;&#45;lemon title&#45;&#45;size-xl section__title  text-center">
+            <h2 class="title--up title--center title--lemon title--size-xl section__title  text-center">
                 <a style="text-decoration: none; color: #000;" href="/blog">Блог</a>
-            </h1>
+            </h2>
             <div class="slider slider-1 slider_4">
 
                 <div class="container">
@@ -171,14 +171,14 @@
                         @endif
 
                     </div>
-                    <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    {{--<a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
-                    </a>
+                    </a>--}}
                 </div>
 
             </div>

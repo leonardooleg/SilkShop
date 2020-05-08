@@ -3,7 +3,7 @@
 @section('title', 'Блоги')
 
 @section('content')
-    <div class="container container-my">
+    <div class="container container-my blogs-p">
 
 
         <nav aria-label="breadcrumb">
@@ -33,7 +33,7 @@
                         <div class="title">{{$blog->title}}</div>
                     </div>
                     <div class="text text--light">
-                        <p class="paragraph">
+                        <p class="">
                             {{htmlspecialchars(strip_tags($blog->text), ENT_QUOTES)}}
                         </p>
                     </div>

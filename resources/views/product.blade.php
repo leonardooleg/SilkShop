@@ -4,7 +4,7 @@
 @section('title', $product->name)
 
 @section('content')
-    <div class="container container-my">
+    <div class="container container-my product-p">
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -22,9 +22,9 @@
 
 
 
-        <div itemscope="" itemtype="http://schema.org/Product" class="row product content__product">
+        <div  itemscope="" itemtype="http://schema.org/Product" class="row product content__product">
             <div class="col-md-5 product__photo">
-                <img src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" class="fotorama__img loading" data-was-processed="true" style="">
+                <img id="poster" src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" class="fotorama__img loading" data-was-processed="true" style="">
 
                 <div class="wrap_product__details">
                     <div class="product__details">
@@ -103,7 +103,7 @@
 
             </div>
 
-            <div class="col-md-7 product__description">
+            <div  class="col-md-7 product__description">
 
                 <h1 class="title title--size-s title--light" itemprop="name">{{$product->name}}</h1>
                 <meta itemprop="category" content="{{$product->name}}">
@@ -127,7 +127,7 @@
                                 <div class="btn-group btn-group-toggle btn-color" data-toggle="buttons">
                                     @foreach ($attr_colors as $img_color)
                                         <label class="btn btn-secondary" style="background-image: url({{$img_color->img_color}})" >
-                                            <input type="radio" name="color" title="{{$img_color->name_color}}" value="{{$img_color->color_id}}" id="color{{$img_color->color_id}}" autocomplete="off" >
+                                            <input type="radio"   title="{{$img_color->name_color}}" value="{{$img_color->color_id}}" v-model="item.attributes.color" name="color" id="color{{$img_color->color_id}}" autocomplete="off" >
                                         </label>
                                     @endforeach
 
@@ -143,8 +143,6 @@
                         </div>
                         <div class="product__field wrap_size_select">
                             <div class="i-sizes-block-v1">
-
-
                                 <div class="j-table-of-sizes table-of-sizes">
                                     <p class="j-sizes-table-show sizes-table-show" data-toggle="modal" data-target="#sizeModal">Таблица размеров</p>
                                 </div>
@@ -287,7 +285,6 @@
                                                             </tr>
                                                             </tbody>
                                                         </table>
-
                                             </div>
                                             <div class="modal-footer" style="display: none">
                                                 <button type="button" class="btn btn-primary">Выбрать размер</button>
@@ -296,22 +293,16 @@
                                     </div>
                                 </div>
 
-
-
-
                                 <div class="j-size-list size-list j-smart-overflow-instance">
-
                                     <div class="size-table sizetable">
-
                                         @foreach ($attr_sizes as $sizes)
-                                            <li class="form-check"><input type="radio" value="{{$sizes->size_id}}"   name="size" id="size{{$sizes->size_id}}" ><label class="form-check-label" id ="lSize{{$sizes->size_id}}" for="size{{$sizes->size_id}}">{{$sizes->brand_name_size}} ({{$sizes->rus_name_size}})</label></li>
+                                            <li class="form-check"><input type="radio" value="{{$sizes->size_id}}"   v-model="item.attributes.size" name="size" id="size{{$sizes->size_id}}" ><label class="form-check-label" id ="lSize{{$sizes->size_id}}" for="size{{$sizes->size_id}}">{{$sizes->brand_name_size}} ({{$sizes->rus_name_size}})</label></li>
                                        @endforeach
 
 
 
                                     </div>
                                 </div>
-
 
 
                             </div>
@@ -321,24 +312,21 @@
                             </div>
                         </div>
 
-                        <input type="hidden" id="checked_attr" value=""   name="checked_attr" >
 
-                        <script type="application/javascript">
-                            var attr_all =@php
-                                echo json_encode($attr_all);
-                            @endphp;
-                        </script>
+
+                        <input type="hidden" id="checked_attr" value=""   v-model="item.checked_attr" name="checked_attr" >
+
+
 
 
                         <div class="product__field">
-                            <button type="button" class="btn btn-danger button--pink">Добавить в корзину</button>
+                            <button type="button" v-on:click="addItem()" class="btn btn-danger button--pink">Добавить в корзину</button>
                             <br>
                             <a href="/cart/" class="btngotobasket dn">
                                 Перейти в корзину
                             </a>
-                            <input type="hidden" name="good_id" id="good_id" value="{{$product->id}}">
-                            <input type="hidden" name="good_art" id="good_art" value="DTНсж16С1407249">
-                            <input type="hidden" name="good_name" id="good_name" value="Носки женские 14С1407 249 Брестские Classic Conte">
+
+
                             <br>
                             <a class="btn btn-primary" href="#" role="button">
                                 Быстрый заказ
@@ -379,6 +367,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
                 <!--обертка нового блока-->
                 <div class="product__gap">
                     <div class="list product__features">
@@ -507,6 +498,10 @@
 
     </div>
 
-
+    <script type="application/javascript">
+        var attr_all =@php
+            echo json_encode($attr_all);
+        @endphp;
+    </script>
 
 @endsection

@@ -21,15 +21,7 @@
 
     <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.4/assets/img/favicons/favicon.ico">
-    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#563d7c">
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -47,11 +39,14 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet" >
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="page">
-    <div id="app" >
+    <div  id="app">
         <div class="container-fluid info" onclick="window.location='/actions/besplatnaya-dostavka-po-vsey-rossii.html/';">
             <div class="container container-my">
                 <i class="icon icon--delivery info__icon"></i>
@@ -67,30 +62,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto h_menu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">как сделать заказ </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">как получить скидку</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">примерка</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">распродажа -70%</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">доставка и оплата</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">блог</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">о нас</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">контакты</a>
-                        </li>
+                        @foreach(Menu::getByName('Шапка') as $menu_h)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ $menu_h['link'] }}" title="">{{ $menu_h['label'] }}</a>
+                            </li>
+                        @endforeach
+
 
                     </ul>
                     <form class="form-inline my-2 my-lg-0 ">
@@ -132,12 +109,12 @@
                         </ul>
                     </div>
                     <noindex>
-                        <div class="header__cart float-right">
+                        <div  class="header__cart float-right">
                             <a class="link link--text" href="/cart/">
-                                <i class="icon icon--cart link__icon"></i><span>Корзина</span>
+                                <i class="icon icon--cart link__icon"></i><span>Корзина @{{itemCount}}</span>
                             </a>
                             <ul class="list header__cart-info dn">
-                                <li class="list__item"><b class="ajb_count">0</b><span> товар(ов)</span></li>
+                                <li class="list__item"><b class="ajb_count">0</b><span>@{{itemCount}} товар(ов)</span></li>
                                 <li class="list__item"><b class="ajb_sum">0</b><span> руб.</span></li>
                             </ul>
                         </div>
@@ -146,36 +123,40 @@
             </div>
         </div>
         <div class="container-fluid bg-dark">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <nav  class="navbar navbar-expand-lg navbar-dark bg-dark ">
                 <div class="container container-my">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1" aria-controls="menu1" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                    <div id="menu1" class="collapse navbar-collapse" >
                         <ul class="navbar-nav mr-auto menu__items">
-                            <li class="nav-item menu__item">
-                                <a class="nav-link" href="/catalog/zenskoe-bele">женское белье +</a>
-                            </li>
-                            <li class="nav-item menu__item">
-                                <a class="nav-link" href="#">детское белье</a>
-                            </li>
-                            <li class="nav-item menu__item">
-                                <a class="nav-link" href="#">мужское белье</a>
-                            </li>
-                            <li class="nav-item menu__item">
-                                <a class="nav-link" href="#">распродажа</a>
-                            </li>
-                            <li class="nav-item menu__item">
-                                <a class="nav-link" href="/brands">Бренды +</a>
-                            </li>
-                            <li class="nav-item menu__item">
-                                <a class="nav-link" href="#">Новинки</a>
-                            </li>
+                            @foreach(Menu::getByName('Главное') as $menu)
+                                <li class="nav-item menu__item @if( $menu['child'] ) dropdown @endif">
+                                    <a href="{{ $menu['link'] }}" class="nav-link @if( $menu['child'] )dropdown-toggle @endif"  @if( $menu['child'] )data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @endif>{{ $menu['label'] }}</a>
+                                    @if( $menu['child'] )
+                                        <ul class="dropdown-menu menu__content" aria-labelledby="navbarDropdownMenuLink">
+                                                    @foreach( $menu['child'] as $child )
+                                                        <li class="menu__sub-item">
+                                                            <a href="{{ $child['link'] }}" class="text-left dropdown-item menu__sub-link">{{ $child['label'] }}</a>
+                                                        </li>
+                                                    @endforeach
+
+                                        </ul><!-- /.sub-menu -->
+                                    @endif
+                                </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
+
+
+
+
+
+
 
         @yield('content')
 
@@ -274,204 +255,106 @@
                 </div>
             </div>
         </footer>
-        <!-- Return to Top -->
-        <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
 
-
-        <script src="/js/jquery-3.4.1.slim.min.js"  type="text/javascript" ></script>
-        <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js" type="text/javascript"></script>
-
-        <script  type="text/javascript">
-            $(document).ready(function(){
-                $('.customer-logos').slick({
-                    slidesToShow: 6,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 15000,
-                    arrows: false,
-                    dots: false,
-                    pauseOnHover: false,
-                    responsive: [{
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 4
-                        }
-                    }, {
-                        breakpoint: 520,
-                        settings: {
-                            slidesToShow: 3
-                        }
-                    }]
-                });
-            });
-
-
-            $(document).ready(function() {
-                $('.as').slick({
-                    dots: true,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 20000,
-                    pauseOnFocus: false,
-                    pauseOnHover: false,
-                    pauseOnDotsHover: false,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    responsive: [
-                        {
-                            breakpoint: 991,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 700,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-
-                $('.asa').slick({
-                    dots: true,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 30000,
-                    pauseOnFocus: false,
-                    pauseOnHover: false,
-                    pauseOnDotsHover: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    fade: true,
-                    cssEase: 'linear'
-                });
-
-
-                $('.proda').slick({
-                    dots: true,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 20000,
-                    pauseOnFocus: false,
-                    pauseOnHover: false,
-                    pauseOnDotsHover: false,
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
-                    responsive: [
-                        {
-                            breakpoint: 991,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 700,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-
-
-
-            });
-
-
-            /*Стрелка вверх*/
-            // ===== Scroll to Top ====
-            $(window).scroll(function() {
-                if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-                    $('#return-to-top').fadeIn(200);    // Fade in the arrow
-                } else {
-                    $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-                }
-            });
-            $('#return-to-top').click(function() {      // When arrow is clicked
-                $('body,html').animate({
-                    scrollTop : 0                       // Scroll to top of body
-                }, 500);
-            });
-            /*Стрелка вверх*/
-
-            @if(preg_match('!html!', $_SERVER['REQUEST_URI']))
-                window.onload = function(){
-                var elem = document.querySelectorAll('[name="color"]'), i = elem.length;
-                var color;
-                while(i--){
-                    elem[i].onclick = function(i){
-                        return function(){
-                            //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
-                            color= this.value;
-                            // console.log(color+"-color");                 //цвет
-                            document.getElementById('attr-name').innerHTML = this.title;
-                            var x = document.getElementsByName("size");
-                            var a;
-                            for (a = 0; a < x.length; a++) {
-                                var tablesize= x[a].value;
-                               //  console.log(tablesize+"-size");         //розмер
-                                var tempLsize = document.getElementById('lSize'+tablesize);
-                                var tempsize = document.getElementById('size'+tablesize);
-                                tempLsize.classList.add("disabled_size");
-                                tempsize.disabled = true;
-                                tempsize.checked = false;
-                                var b;
-                                for (b = 0; b < attr_all.length; b++) {
-                                    if (attr_all[b].size_id == tablesize && attr_all[b].color_id == color) {
-                                        tempLsize.classList.remove("disabled_size");
-                                        tempsize.disabled = false;
-                                    }
-                                }
-                            }
-                        };
-
-                    }(i);
-                }
-                var elemSize = document.querySelectorAll('[name="size"]'), c = elemSize.length;
-                while(c--){
-                    elemSize[c].onclick = function(c){
-                        return function(){
-                            var sizes= this.value;
-                            var d;
-                            for (d = 0; d < attr_all.length; d++) {
-                                if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
-                                    document.getElementById('checked_attr').value=attr_all[d].id;
-                                    Vue.set(app.item, 'checked_attr', attr_all[d].id);
-                                   // console.log(attr_all[d].id);
-                                }
-                            }
-                        };
-                    }(c);
-                }
-            };
-            @endif
-
-
-
-
-        </script>
     </div>
+
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+
+   <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+    <script src="/js/jquery-3.4.1.slim.min.js"  type="text/javascript" ></script>
+    <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+
+
+
+    <script  type="application/javascript">
+        /*Стрелка вверх*/
+        // ===== Scroll to Top ====
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                $('#return-to-top').fadeIn(200);    // Fade in the arrow
+            } else {
+                $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+            }
+        });
+        $('#return-to-top').click(function() {      // When arrow is clicked
+            $('body,html').animate({
+                scrollTop : 0                       // Scroll to top of body
+            }, 500);
+        });
+        /*Стрелка вверх*/
+
+        @if(preg_match('!html!', $_SERVER['REQUEST_URI']))
+            window.onload = function(){
+            var elem = document.querySelectorAll('[name="color"]'), i = elem.length;
+            var color;
+            while(i--){
+                elem[i].onclick = function(i){
+                    return function(){
+                        //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
+                        color= this.value;
+                        // console.log(color+"-color");                 //цвет
+                        document.getElementById('attr-name').innerHTML = this.title;
+                        var x = document.getElementsByName("size");
+                        var a;
+                        for (a = 0; a < x.length; a++) {
+                            var tablesize= x[a].value;
+                            //  console.log(tablesize+"-size");         //розмер
+                            var tempLsize = document.getElementById('lSize'+tablesize);
+                            var tempsize = document.getElementById('size'+tablesize);
+                            tempLsize.classList.add("disabled_size");
+                            tempsize.disabled = true;
+                            tempsize.checked = false;
+                            var b;
+                            for (b = 0; b < attr_all.length; b++) {
+                                if (attr_all[b].size_id == tablesize && attr_all[b].color_id == color) {
+                                    tempLsize.classList.remove("disabled_size");
+                                    tempsize.disabled = false;
+                                }
+                            }
+                        }
+                    };
+
+                }(i);
+            }
+            var elemSize = document.querySelectorAll('[name="size"]'), c = elemSize.length;
+            while(c--){
+                elemSize[c].onclick = function(c){
+                    return function(){
+                        var sizes= this.value;
+                        var d;
+                        for (d = 0; d < attr_all.length; d++) {
+                            if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
+                                console.log(attr_all[d].id);
+                                document.getElementById('checked_attr').value=attr_all[d].id;
+                                Vue.set(app.item, 'checked_attr', attr_all[d].id);
+                                console.log(attr_all[d].id);
+                            }
+                        }
+                    };
+                }(c);
+            }
+        };
+        @endif
+
+        $('.dropdown-toggle').click(function(e) {
+            if ($(document).width() > 768) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if (url !== '#') {
+                    window.location.href = url;
+                }
+            }
+        });
+
+
+    </script>
+
+    @include('layouts.footerCart')
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 
 

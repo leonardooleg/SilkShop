@@ -10239,3 +10239,20 @@ li.active {
     margin: 0 auto;
     display: block;
 }
+.fon-cart-2-top input[type=radio] {
+    display: none;
+}
+.fon-cart-2-top .type_pay + img {
+    opacity: 0.5;
+}
+.fon-cart-2-top .type_pay:checked + img {
+    opacity: 1;
+}
+
+/*Домашняя*/
+
+a.small.text-white.stretched-link{
+    margin: 0 auto;
+    font-size: 18px;
+}
+/*Домашняя*/

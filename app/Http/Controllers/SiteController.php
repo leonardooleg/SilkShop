@@ -214,5 +214,10 @@ class SiteController extends Controller
         return view('size')->with(['brands'=>$brands_sort, 'size'=>$size]);
     }
 
+    public function productID($id)
+    {
+        $product=Product::where('id',$id)->first();
 
+        return redirect($product->getUrl());
+    }
 }
