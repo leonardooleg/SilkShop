@@ -26,33 +26,32 @@
                         </a>
                     </div>
                     <ul class="catalog__items">
-
-                        <li class="catalog__item ">
-                            <a class="link link--text" href="/catalog/zenskoe-bele">Женское белье +</a>
-                            <span class="catalog__num">6027</span>
-                        </li>
-                        <li class="catalog__item ">
-                            <a class="link link--text" href="#">Детское белье</a>
-                            <span class="catalog__num">3</span>
-                        </li>
-                        <li class="catalog__item ">
-                            <a class="link link--text" href="#">Мужское белье</a>
-                            <span class="catalog__num">571</span>
-                        </li>
-                        <li class="catalog__item ">
-                            <a class="link link--text" href="#">Распродажа</a>
-                            <span class="catalog__num">26</span>
-                        </li>
-                        <li class="catalog__item ">
-                            <a href="#" class="link link--text">
-                                Новинки
-                            </a>
-                        </li>
-                        <li class="catalog__item ">
-                            <a href="/sizes/ " class="link link--text">
-                                Узнать свой размер +
-                            </a>
-                        </li>
+                        @foreach($b_menu as $menu_b)
+                            <li class="catalog__item ">
+                                <a class="link link--text @if(strpos($_SERVER['REQUEST_URI'], $menu_b['path']) !== false) catalog__sub-item--active @endif "   href="@if(!isset($menu_b['menu']))/catalog/@endif{{ $menu_b['path'] }}" title="">{{ $menu_b['title'] }}</a>
+                                <span class="catalog__num">6027</span>
+                                @if(isset($menu_b['children']))
+                                    <ul class="catalog__sub-items">
+                                        @foreach($menu_b['children'] as $menu_c)
+                                        <li class="catalog__sub-item ">
+                                            <a class="link link--text @if(strpos($_SERVER['REQUEST_URI'], $menu_c['path']) !== false) catalog__sub-item--active @endif "  href="@if(!isset($menu_b['menu']))/catalog/@endif{{ $menu_c['path'] }}" title="">{{ $menu_c['title'] }}</a>
+                                            <span class="catalog__num">787</span>
+                                            @if($menu_c['children'])
+                                                <ul class="catalog__sub-items">
+                                                    @foreach($menu_c['children'] as $menu_c_c)
+                                                    <li class="catalog__sub-item ">
+                                                        <a class="link link--text @if(strpos($_SERVER['REQUEST_URI'], $menu_c_c['path']) !== false) catalog__sub-item--active @endif " href="@if(!isset($menu_b['menu']))/catalog/@endif{{ $menu_c_c['path'] }}" title="">{{ $menu_c_c['title'] }}</a>
+                                                        <span class="catalog__num">1</span>
+                                                    </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
 

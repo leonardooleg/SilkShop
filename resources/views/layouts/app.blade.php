@@ -259,19 +259,33 @@
                 </div>
             </div>
         </footer>
-
+    </div>
 
 
     <!-- Return to Top -->
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
 
-        <script src="/js/jquery-3.4.1.slim.min.js"  type="text/javascript" ></script>
+
+
         <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js" type="text/javascript"></script>
 
+
         <script  type="text/javascript">
+
                 $(document).ready(function(){
+                    $('.dropdown-toggle').click(function(e) {
+                        if ($(document).width() > 768) {
+                            e.preventDefault();
+                            var url = $(this).attr('href');
+                            if (url !== '#') {
+                                window.location.href = url;
+                            }
+                        }
+                    });
                     $('.customer-logos').slick({
                         slidesToShow: 6,
                         slidesToScroll: 1,
@@ -445,21 +459,13 @@
         };
         @endif
 
-        $('.dropdown-toggle').click(function(e) {
-            if ($(document).width() > 768) {
-                e.preventDefault();
-                var url = $(this).attr('href');
-                if (url !== '#') {
-                    window.location.href = url;
-                }
-            }
-        });
+
 
 
     </script>
 
     @include('layouts.footerCart')
-    </div>
+
 </body>
 
 

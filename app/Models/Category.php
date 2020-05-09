@@ -65,6 +65,7 @@ class Category extends Model
     }
 
     public function setSlugAttribute($value) {
+        if(isset($this->attributes['slug'])==false){$this->attributes['slug']='';}
         if($value ==  $this->attributes['slug'] || $value===""){
             $this->attributes['slug'] = Str::slug( mb_substr($this->title, 0, 40) ,'-');
         }else{

@@ -10,6 +10,8 @@ use App\Models\Url;
 use Illuminate\Support\Facades\DB;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Support\Facades\Session;
+use Harimayco\Menu\Models\Menus;
+use Harimayco\Menu\Models\MenuItems;
 
 class SiteController extends Controller
 {
@@ -77,7 +79,30 @@ class SiteController extends Controller
             ->paginate(5);
 
         $categories = Category::ancestorsAndSelf($category->id);
-        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products, 'all'=> Product::count()]);
+
+
+        $g=Menus::where('id', 3)->with('items')->first();
+        $public_menu = $g->items;
+            foreach ($public_menu as $menu){
+                //$test=Category::descendantsAndSelf(43)->toTree()->toarray();
+                $test=Category::withDepth()->having('path', '=', str_replace('/catalog/', '', mb_substr($menu->link, 0, -1)) )->first();
+                if(isset($test)){
+                    $test->toarray();
+                    $root[] = Category::descendantsAndSelf($test['id'])->toTree()->first()->toarray();
+                    $test=false;
+                }else{
+                    $j['title'] =$menu->label;
+                    $j['path'] =$menu->link;
+                    $j['menu'] =1;
+                    $root[] =$j;
+                }
+
+                $test=false;
+            }
+
+
+
+        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products, 'all'=> Product::count(), 'b_menu'=>$root]);
     }
 
     public function product($categoryPath, $productSlug)
