@@ -34,6 +34,29 @@ class SiteController extends Controller
 
     public function catalog($path='catalog')
     {
+        if(isset($_GET['filter_brand'])) $Value1= $_GET['filter_brand'];
+        else $Value1= null;
+        if(isset($_GET['filter_country'])) $Value2= $_GET['filter_country'];
+        else $Value2= null;
+        if(isset($_GET['filter_size'])) $Value3= $_GET['filter_size'];
+        else $Value3= null;
+        if(isset($_GET['filter_color'])) $Value4= $_GET['filter_color'];
+        else $Value4= null;
+        if(isset($_GET['sort'])){
+             if($_GET['sort']=='price'){
+                 $Value5='price';
+             }elseif($_GET['sort']=='new'){
+                 $Value5='created_at';
+             }elseif($_GET['sort']=='discount'){
+                 $Value5='sale';
+             }elseif($_GET['sort']=='popular'){
+                 $Value5='updated_at';  ///виправити коли буде додано відвідуваність
+             }
+        }else {
+            $Value5= 'created_at';
+        }
+        if( $Value5== 'price')$Value6='asc';
+        else $Value6='desc';
         $products = DB::table('products')
             ->leftJoin('categoryables', 'categoryables.categoryable_id', '=', 'products.id')
             ->leftJoin('categories', 'categoryables.category_id', '=', 'categories.id')
@@ -41,8 +64,21 @@ class SiteController extends Controller
             ->leftjoin('attributeables','attributeables.product_id', '=', 'products.id')
             ->leftjoin('colors','attributeables.color_id', '=', 'colors.id')
             ->leftjoin('sizes','attributeables.size_id', '=', 'sizes.id')
-            ->orderBy('created_at', 'desc')
-            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand',
+            ->leftjoin('countries','products.country_id', '=', 'countries.id')
+            ->when($Value1, function($query) use ($Value1) {
+                $query->whereIn('brands.id', $Value1);
+            })
+            ->when($Value2, function($query) use ($Value2) {
+                $query->whereIn('countries.id', $Value2);
+            })
+            ->when($Value3, function($query) use ($Value3) {
+                $query->whereIn('sizes.brand_name_size', $Value3);
+            })
+            ->when($Value4, function($query) use ($Value4) {
+                $query->whereIn('colors.img_color', $Value4);
+            })
+            ->orderBy($Value5, $Value6)
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
                 DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
                 DB::raw("GROUP_CONCAT(colors.img_color) as img_colors"),
                 DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes")
@@ -50,8 +86,59 @@ class SiteController extends Controller
             ->groupBy('products.id','categories.path','categories.title')
             ->paginate(15);
 
+        $products_filter = DB::table('products')
+            ->leftJoin('categoryables', 'categoryables.categoryable_id', '=', 'products.id')
+            ->leftJoin('categories', 'categoryables.category_id', '=', 'categories.id')
+            ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+            ->leftjoin('attributeables','attributeables.product_id', '=', 'products.id')
+            ->leftjoin('colors','attributeables.color_id', '=', 'colors.id')
+            ->leftjoin('sizes','attributeables.size_id', '=', 'sizes.id')
+            ->leftjoin('countries','products.country_id', '=', 'countries.id')
+            ->orderBy('created_at', 'desc')
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
+                DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes"),
+                DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
+                DB::raw("GROUP_CONCAT(colors.img_color) as img_colors")
+            )
+            ->groupBy('products.id','categories.path','categories.title')
+            ->get();
+
+        foreach ($products_filter as $product_f){
+            $filters['brand'][$product_f->brand_id]=$product_f->name_brand;
+            $filters['country'][$product_f->country_id]=$product_f->name_country;
+            foreach (explode(',', $product_f->brand_name_sizes) as $size){
+                $filters['size'][$size]=$size;
+            }
+            $img_color=explode(',', $product_f->img_colors);
+            $i=0;
+            foreach (explode(',', $product_f->name_colors) as $color){
+                $filters['color'][$color]=$img_color[$i];
+                $i++;
+            }
+        }
+
         $categories = null;
-        return view('category')->with(['categories'=>$categories,'products'=>$products, 'all'=> Product::count()]);
+
+        $g=Menus::where('id', 3)->with('items')->first();
+        $public_menu = $g->items;
+        foreach ($public_menu as $menu){
+            //$test=Category::descendantsAndSelf(43)->toTree()->toarray();
+            $test=Category::withDepth()->having('path', '=', str_replace('/catalog/', '', mb_substr($menu->link, 0, -1)) )->first();
+            if(isset($test)){
+                $test->toarray();
+                $root[] = Category::descendantsAndSelf($test['id'])->toTree()->first()->toarray();
+            }else{
+                $j['title'] =$menu->label;
+                $j['path'] =$menu->link;
+                $j['menu'] =1;
+                $root[] =$j;
+            }
+            $test=false;
+        }
+
+
+
+        return view('category')->with(['categories'=>$categories,'products'=>$products, 'all'=> Product::count(), 'b_menu'=>$root, 'filters'=>$filters]);
     }
 
     public function category($path)
@@ -61,6 +148,30 @@ class SiteController extends Controller
         $categories = $category->descendants()->pluck('id');
         // Include the id of category itself
         $categories[] = $category->getKey();
+        if(isset($_GET['filter_brand'])) $Value1= $_GET['filter_brand'];
+        else $Value1= null;
+        if(isset($_GET['filter_country'])) $Value2= $_GET['filter_country'];
+        else $Value2= null;
+        if(isset($_GET['filter_size'])) $Value3= $_GET['filter_size'];
+        else $Value3= null;
+        if(isset($_GET['filter_color'])) $Value4= $_GET['filter_color'];
+        else $Value4= null;
+        if(isset($_GET['sort'])){
+            if($_GET['sort']=='price'){
+                $Value5='price';
+            }elseif($_GET['sort']=='new'){
+                $Value5='created_at';
+            }elseif($_GET['sort']=='discount'){
+                $Value5='sale';
+            }elseif($_GET['sort']=='popular'){
+                $Value5='updated_at';  ///виправити коли буде додано відвідуваність
+            }
+        }else {
+            $Value5= 'created_at';
+        }
+        if( $Value5== 'price')$Value6='asc';
+        else $Value6='desc';
+
         $products = DB::table('products')
             ->leftJoin('categoryables', 'categoryables.categoryable_id', '=', 'products.id')
             ->leftJoin('categories', 'categoryables.category_id', '=', 'categories.id')
@@ -68,18 +179,62 @@ class SiteController extends Controller
             ->leftjoin('attributeables','attributeables.product_id', '=', 'products.id')
             ->leftjoin('colors','attributeables.color_id', '=', 'colors.id')
             ->leftjoin('sizes','attributeables.size_id', '=', 'sizes.id')
+            ->leftjoin('countries','products.country_id', '=', 'countries.id')
             ->whereIn('categoryables.category_id', $categories)
-            ->orderBy('created_at', 'desc')
-            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand',
+            ->when($Value1, function($query) use ($Value1) {
+                $query->whereIn('brands.id', $Value1);
+            })
+            ->when($Value2, function($query) use ($Value2) {
+                $query->whereIn('countries.id', $Value2);
+            })
+            ->when($Value3, function($query) use ($Value3) {
+                $query->whereIn('sizes.brand_name_size', $Value3);
+            })
+            ->when($Value4, function($query) use ($Value4) {
+                $query->whereIn('colors.img_color', $Value4);
+            })
+            ->orderBy($Value5, $Value6)
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
                 DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
                 DB::raw("GROUP_CONCAT(colors.img_color) as img_colors"),
                 DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes")
                 )
             ->groupBy('products.id','categories.path','categories.title')
-            ->paginate(5);
+            ->paginate(15);
+
+        $products_filter= DB::table('products')
+            ->leftJoin('categoryables', 'categoryables.categoryable_id', '=', 'products.id')
+            ->leftJoin('categories', 'categoryables.category_id', '=', 'categories.id')
+            ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+            ->leftjoin('attributeables','attributeables.product_id', '=', 'products.id')
+            ->leftjoin('colors','attributeables.color_id', '=', 'colors.id')
+            ->leftjoin('sizes','attributeables.size_id', '=', 'sizes.id')
+            ->leftjoin('countries','products.country_id', '=', 'countries.id')
+            ->whereIn('categoryables.category_id', $categories)
+            ->orderBy('created_at', 'desc')
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
+                DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
+                DB::raw("GROUP_CONCAT(colors.img_color) as img_colors"),
+                DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes")
+            )
+            ->groupBy('products.id','categories.path','categories.title')
+            ->get();
+
+        foreach ($products_filter as $product_f){
+            $filters['brand'][$product_f->brand_id]=$product_f->name_brand;
+            $filters['country'][$product_f->country_id]=$product_f->name_country;
+            foreach (explode(',', $product_f->brand_name_sizes) as $size){
+                $filters['size'][$size]=$size;
+            }
+            $img_color=explode(',', $product_f->img_colors);
+            $i=0;
+            foreach (explode(',', $product_f->name_colors) as $color){
+                $filters['color'][$color]=$img_color[$i];
+                $i++;
+            }
+        }
 
         $categories = Category::ancestorsAndSelf($category->id);
-
 
         $g=Menus::where('id', 3)->with('items')->first();
         $public_menu = $g->items;
@@ -89,20 +244,18 @@ class SiteController extends Controller
                 if(isset($test)){
                     $test->toarray();
                     $root[] = Category::descendantsAndSelf($test['id'])->toTree()->first()->toarray();
-                    $test=false;
                 }else{
                     $j['title'] =$menu->label;
                     $j['path'] =$menu->link;
                     $j['menu'] =1;
                     $root[] =$j;
                 }
-
                 $test=false;
             }
 
 
 
-        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products, 'all'=> Product::count(), 'b_menu'=>$root]);
+        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products, 'all'=> Product::count(), 'b_menu'=>$root, 'filters'=>$filters]);
     }
 
     public function product($categoryPath, $productSlug)
@@ -176,7 +329,8 @@ class SiteController extends Controller
             ->groupBy('products.id','categories.path','categories.title')
             ->get();
         /*Ласт*/
-        return view('product')->with(['categories'=>$categories,'product'=>$product,'attr_all'=>$attr_all,'attr_sizes'=>$attr_sizes,'attr_colors'=>$attr_colors,'similar_p'=>$similar_p,'last_p'=>$last_p]);
+        $media =explode(';', $product->media);
+        return view('product')->with(['categories'=>$categories,'product'=>$product,'attr_all'=>$attr_all,'attr_sizes'=>$attr_sizes,'attr_colors'=>$attr_colors,'similar_p'=>$similar_p,'last_p'=>$last_p, 'media' => $media]);
     }
 
 

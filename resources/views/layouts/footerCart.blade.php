@@ -1,10 +1,38 @@
 
 <script  type="application/javascript">
     var _token = '<?php echo csrf_token() ?>';
-
     $(document).ready(function() {
             @if(!preg_match("/login/", $_SERVER['REQUEST_URI']))
-        var app = new Vue({
+
+            var cart = new Vue({
+                el: '#cart',
+                data: {
+                    itemCount: 0,
+                    items: [],
+
+                },
+                mounted:function(){
+                    this.loadItems();
+                },
+                methods: {
+                    loadItems: function() {
+                        var _this = this;
+                        this.$http.get('/cart',{
+                            params: {
+                                limit:10
+                            }
+                        }).then(function(success) {
+                            _this.items = success.body.data;
+                            _this.itemCount = success.body.data.length;
+                        }, function(error) {
+                            console.log(error);
+                        });
+                    },
+                },
+            });
+
+
+            var app = new Vue({
                 el: '#app',
                 data: {
                     details: {
@@ -54,10 +82,7 @@
                 },
                 methods: {
                     addItem: function() {
-
-
                         var _this = this;
-
                         this.$http.post('/cart',{
                             _token:_token,
                             id:_this.item.id,
@@ -68,14 +93,11 @@
                             size:_this.item.attributes.size,
                             color:_this.item.attributes.color,
                             vendor_code:_this.item.attributes.vendor_code,
-                            /*brand_name_size:_this.item.attributes.brand_name_size,
-                            rus_name_size:_this.item.attributes.rus_name_size,*/
-                            /*color_code:_this.item.attributes.color_code,
-                            color_name:_this.item.attributes.color_name,*/
                             img:_this.item.attributes.img
                         }).then(function(success) {
                             console.log('add');
                             _this.loadItems();
+                            cart.loadItems(); //щоб шапка оновилась
                         }, function(error) {
                             console.log(error);
 
@@ -98,7 +120,6 @@
                     addCartCondition: function() {
                         console.log(3);
                         var _this = this;
-
                         this.$http.post('/cart/conditions',{
                             _token:_token,
                             name:_this.cartCondition.name,
@@ -112,9 +133,7 @@
                         });
                     },
                     clearCartCondition: function() {
-
                         var _this = this;
-
                         this.$http.delete('/cart/conditions?_token=' + _token).then(function(success) {
                             _this.loadItems();
                         }, function(error) {
@@ -122,9 +141,7 @@
                         });
                     },
                     removeItem: function(id) {
-
                         var _this = this;
-
                         this.$http.delete('/cart/'+id,{
                             params: {
                                 _token:_token
@@ -135,10 +152,10 @@
                             console.log(error);
                         });
                     },
+
+
                     loadItems: function() {
-
                         var _this = this;
-
                         this.$http.get('/cart',{
                             params: {
                                 limit:10
@@ -147,11 +164,12 @@
                             _this.items = success.body.data;
                             _this.itemCount = success.body.data.length;
                             _this.loadCartDetails();
-                            _this.loadCartShipping();
+                            @if(preg_match('!cart!', $_SERVER['REQUEST_URI'])) _this.loadCartShipping(); @endif
                         }, function(error) {
                             console.log(error);
                         });
                     },
+
                     loadCartDetails: function() {
 
                         var _this = this;
@@ -330,6 +348,7 @@
             }
         };
         @endif
+
 
     });
 

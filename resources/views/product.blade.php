@@ -24,7 +24,25 @@
 
         <div  itemscope="" itemtype="http://schema.org/Product" class="row product content__product">
             <div class="col-md-5 product__photo">
-                <img id="poster" src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" class="fotorama__img loading" data-was-processed="true" style="">
+
+                <div class="b-slider b-slider--horizontal-tm-1 js-slider-horizontal-tm-1">
+                    <div class="b-slider__carousel b-slider__carousel--screen ">
+                        @foreach(explode(';', $product->media) as $media)
+                        <div class="b-slider__item  ex1"><img src="{{$media}}" alt=""/></div>
+                        @endforeach
+                    </div>
+                    <div class="b-slider__carousel b-slider__carousel--thumbs">
+                        @foreach(explode(';', $product->media) as $media)
+                        <div class="b-slider__item"><img src="{{$media}}" alt=""/></div>
+                        @endforeach
+                    </div>
+                </div>
+
+
+
+
+
+                <img hidden id="poster" src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" class="fotorama__img loading" data-was-processed="true" style="">
 
                 <div class="wrap_product__details">
                     <div class="product__details">
@@ -40,18 +58,18 @@
                         </div>
                         <hr class="sep product__sep">
                         <!-- Nav pills -->
-                        <ul class="nav nav-pills">
+                        <ul id="tabs" class="nav nav-tabs nav-pills">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#home">Доставка</a>
+                                <a class="nav-link " data-toggle="tab" href="#home">Доставка</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#menu1">Оплата</a>
+                                <a class="nav-link active" data-toggle="tab" href="#pay">Оплата</a>
                             </li>
                         </ul>
 
                         <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane container active" id="home">
+                        <div  class="tab-content">
+                            <div class="tab-pane fade " id="home">
                                 <ul>
                                     <li>Курьерская доставка по Москве, Санкт-Петербургу и еще 1500 населенных пунктов России;</li>
 
@@ -62,7 +80,7 @@
                                     <li>Доставка почтой по России.</li>
                                 </ul>
                             </div>
-                            <div class="tab-pane container fade" id="menu1">
+                            <div class="tab-pane  fade in active show" id="pay">
 
                                 <div class="row product__items text-center">
                                     <div class="col-md-4 product__item">
@@ -103,7 +121,7 @@
 
             </div>
 
-            <div  class="col-md-7 product__description">
+            <div  id="app" class="col-md-7 product__description">
 
                 <h1 class="title title--size-s title--light" itemprop="name">{{$product->name}}</h1>
                 <meta itemprop="category" content="{{$product->name}}">
@@ -176,113 +194,37 @@
                                                             <div>Обхват бедер, в см</div>
                                                         </td>
                                                         <td style="width:16%;">
-                                                            <div>Рост, см</div>
+                                                            <div>Размер стопы, см</div>
                                                         </td>
                                                     </tr>
                                                     </thead>
                                                 </table>
-                                                <table class="text-center" width="100%">
+                                                <table id="modal-size" class="text-center" width="100%">
                                                             <tbody>
-                                                            <tr class="data-size j-table-row">
+                                                            @foreach($attr_sizes as $attr_one)
+                                                            <tr class="data-size j-table-row" attr="{{$attr_one->size_id}}">
+
                                                                 <td style="width:16%;">
-                                                                    <div>42</div>
+                                                                    <div>{{$attr_one->rus_name_size ?? ''}}</div>
                                                                 </td>
+
                                                                 <td class="j-tech-size" style="width:16%;">
-                                                                    <div>XS</div>
+                                                                    <div>{{$attr_one->brand_name_size ?? ''}}</div>
                                                                 </td>
                                                                 <td style="width:16%;">
-                                                                    <div>84</div>
+                                                                    <div>{{$attr_one->grudi_size ?? ''}}</div>
                                                                 </td>
                                                                 <td style="width:16%;">
-                                                                    <div>62</div>
+                                                                    <div>{{$attr_one->talii_size ?? ''}}</div>
                                                                 </td>
                                                                 <td style="width:16%;">
-                                                                    <div>88</div>
+                                                                    <div>{{$attr_one->bedra_size ?? ''}}</div>
                                                                 </td>
                                                                 <td style="width:16%;">
-                                                                    <div>168</div>
+                                                                    <div>{{$attr_one->stopy_size ?? ''}}</div>
                                                                 </td>
                                                             </tr>
-                                                            <tr class="data-size j-table-row">
-                                                                <td style="width:16%;">
-                                                                    <div>44</div>
-                                                                </td>
-                                                                <td class="j-tech-size" style="width:16%;">
-                                                                    <div>S</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>88</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>66</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>92</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>170</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="data-size j-table-row selected">
-                                                                <td style="width:16%;">
-                                                                    <div>46</div>
-                                                                </td>
-                                                                <td class="j-tech-size" style="width:16%;">
-                                                                    <div>M</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>92</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>70</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>96</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>172</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="data-size j-table-row">
-                                                                <td style="width:16%;">
-                                                                    <div>48</div>
-                                                                </td>
-                                                                <td class="j-tech-size" style="width:16%;">
-                                                                    <div>L</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>96</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>74</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>100</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>174</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="data-size j-table-row">
-                                                                <td style="width:16%;">
-                                                                    <div>50</div>
-                                                                </td>
-                                                                <td class="j-tech-size" style="width:16%;">
-                                                                    <div>XL</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>100</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>78</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>104</div>
-                                                                </td>
-                                                                <td style="width:16%;">
-                                                                    <div>176</div>
-                                                                </td>
-                                                            </tr>
+                                                            @endforeach
                                                             </tbody>
                                                         </table>
                                             </div>
@@ -320,7 +262,7 @@
 
 
                         <div class="product__field">
-                            <button type="button" v-on:click="addItem()" class="btn btn-danger button--pink">Добавить в корзину</button>
+                            <button type="button" v-on:click="addItem()" id="cart_add"  class="btn btn-danger button--pink">Добавить в корзину</button>
                             <br>
                             <a href="/cart/" class="btngotobasket dn">
                                 Перейти в корзину
@@ -413,7 +355,7 @@
                     <div class="">
                         <div class="row proda">
                             @foreach ($similar_p as $p)
-                            <div class="col-lg-9 col-sm-4">
+                            <div class="">
                                 <div class="strat">
                                     <a href="/catalog/{{$p->path}}/{{$p->slug}}.html">
                                         <div class="image">
@@ -459,7 +401,7 @@
                         <div class="">
                             <div class="row proda">
                                 @foreach ($last_p as $p)
-                                    <div class="col-lg-9 col-sm-4">
+                                    <div class="">
                                         <div class="strat">
                                             <a href="/catalog/{{$p->path}}/{{$p->slug}}.html">
                                                 <div class="image">

@@ -17,8 +17,7 @@
 
     <!-- Styles -->
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <!-- Favicons -->
@@ -45,12 +44,17 @@
             }
         }
     </style>
+    <!-- Scripts -->
+
     <!-- Custom styles for this template -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" >
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" >
+
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="page">
-    <div  id="app">
+    <div >
         <div class="container-fluid info" onclick="window.location='/actions/besplatnaya-dostavka-po-vsey-rossii.html/';">
             <div class="container container-my">
                 <i class="icon icon--delivery info__icon"></i>
@@ -112,8 +116,8 @@
                             </li>
                         </ul>
                     </div>
-                    <noindex>
-                        <div  class="header__cart float-right">
+
+                        <div   id="cart" class="header__cart float-right">
                             <a class="link link--text" href="/cart/">
                                 <i class="icon icon--cart link__icon"></i><span>Корзина @{{itemCount}}</span>
                             </a>
@@ -122,7 +126,7 @@
                                 <li class="list__item"><b class="ajb_sum">0</b><span> руб.</span></li>
                             </ul>
                         </div>
-                    </noindex>
+
                 </div>
             </div>
         </div>
@@ -226,7 +230,7 @@
                                     <p><a class="link link--text" href="tel:+78001008766">+7 (800) 100-87-66</a></p><p><a class="link link--text" href="tel:+74951338608">+7 (495) 133-86-08</a></p>
                                     <p><a class="link link--text" href="mailto:info@silkandlace.ru">info@silkandlace.ru</a></p>
                                     <div class="social social--light">
-                                        <noindex>
+
                                             <a class="link social__link" href="https://vk.com/" target="_blank">
                                                 <svg class="icon social__icon" viewBox="0 0 16 16"><path d="M15.8 12c.2.3.2 1-.3 1H13c-.7 0-1.3-.7-1.3-.7l-1.3-1.5c-.2-.2-.6-.2-.8.2-.2.3-.2 1.3-.2 1.3 0 .7-.4.7-.8.7-1 0-2.5 0-3.4-.7-.7-.6-2-2.5-3.8-5.7C.4 5 0 4 0 3.6c0 0 0-.2.4-.2h2.4c.3 0 .5.2.7.6L5 7l.5.7c.2.2.5.3.6 0 0 0 .4-1.7.2-3.2 0-.5-.2-.8-.7-.8-.3 0 0-.7.5-.7h2.8c.3 0 .5.2.5.8V7c0 .2 0 .6.4.8.3.3.5.2.7 0l1.8-4c.2-.4.3-.4.6-.4h2.8c.4 0 .4.3.4.6s-.3 1-1 2l-1.3 2c-.4.6-.4.8 0 1.3l2 2.7z"></path>
                                                 </svg>
@@ -250,7 +254,7 @@
                                                             <path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78   c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78   C135.661,29.421,132.821,28.251,129.921,28.251z" data-original="#000000" class="active-path" style="fill:#FFFFFF" data-old_color="#FCFCFC"></path>
                                                         </g></g></svg>
                                             </a>
-                                        </noindex>
+
                                     </div>
                                 </div>
                             </div>
@@ -266,202 +270,84 @@
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
         <script src="https://unpkg.com/vue"></script>
         <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+   {{-- <script src="{{ asset('js/app.js') }}" defer></script>--}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/js/site.js" type="text/javascript"></script>
+    <script src="/js/jquery.zoom.min.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
+    <script src="/js/carousel.js" type="text/javascript"></script>
 
 
 
-        <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js" type="text/javascript"></script>
 
 
         <script  type="text/javascript">
 
-                $(document).ready(function(){
-                    $('.dropdown-toggle').click(function(e) {
-                        if ($(document).width() > 768) {
-                            e.preventDefault();
-                            var url = $(this).attr('href');
-                            if (url !== '#') {
-                                window.location.href = url;
-                            }
-                        }
-                    });
-                    $('.customer-logos').slick({
-                        slidesToShow: 6,
-                        slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 15000,
-                        arrows: false,
-                        dots: false,
-                        pauseOnHover: false,
-                        responsive: [{
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 4
-                            }
-                        }, {
-                            breakpoint: 520,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        }]
-                    });
+            @if(preg_match('!html!', $_SERVER['REQUEST_URI']))
+                $("body").on("click","#modal-size .data-size", function( event ) {
+                        var id = $(this).attr('attr');
+                        $("#modal-size .data-size").removeClass("selected");
+                         $(this).addClass("selected");
+                    $('#size'+id).checked = true;
+                    var tempsize = document.getElementById('size'+id);
+                    if(tempsize.disabled==false) {
+                        tempsize.checked = true;
+                    }
                 });
-            $(document).ready(function() {
-                $('.as').slick({
-                    dots: true,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 20000,
-                    pauseOnFocus: false,
-                    pauseOnHover: false,
-                    pauseOnDotsHover: false,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    responsive: [
-                        {
-                            breakpoint: 991,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 700,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-                $('.asa').slick({
-                    dots: true,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 30000,
-                    pauseOnFocus: false,
-                    pauseOnHover: false,
-                    pauseOnDotsHover: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    fade: true,
-                    cssEase: 'linear'
-                });
-                $('.proda').slick({
-                    dots: true,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 20000,
-                    pauseOnFocus: false,
-                    pauseOnHover: false,
-                    pauseOnDotsHover: false,
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
-                    responsive: [
-                        {
-                            breakpoint: 991,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 700,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
-            });
-        /*Стрелка вверх*/
-        // ===== Scroll to Top ====
-        $(window).scroll(function() {
-            if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-                $('#return-to-top').fadeIn(200);    // Fade in the arrow
-            } else {
-                $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-            }
-        });
-        $('#return-to-top').click(function() {      // When arrow is clicked
-            $('body,html').animate({
-                scrollTop : 0                       // Scroll to top of body
-            }, 500);
-        });
-        /*Стрелка вверх*/
 
-        @if(preg_match('!html!', $_SERVER['REQUEST_URI']))
-            window.onload = function(){
-            var elem = document.querySelectorAll('[name="color"]'), i = elem.length;
-            var color;
-            while(i--){
-                elem[i].onclick = function(i){
-                    return function(){
-                        //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
-                        color= this.value;
-                        // console.log(color+"-color");                 //цвет
-                        document.getElementById('attr-name').innerHTML = this.title;
-                        var x = document.getElementsByName("size");
-                        var a;
-                        for (a = 0; a < x.length; a++) {
-                            var tablesize= x[a].value;
-                            //  console.log(tablesize+"-size");         //розмер
-                            var tempLsize = document.getElementById('lSize'+tablesize);
-                            var tempsize = document.getElementById('size'+tablesize);
-                            tempLsize.classList.add("disabled_size");
-                            tempsize.disabled = true;
-                            tempsize.checked = false;
-                            var b;
-                            for (b = 0; b < attr_all.length; b++) {
-                                if (attr_all[b].size_id == tablesize && attr_all[b].color_id == color) {
-                                    tempLsize.classList.remove("disabled_size");
-                                    tempsize.disabled = false;
+                window.onload = function(){
+                var elem = document.querySelectorAll('[name="color"]'), i = elem.length;
+                var color;
+                while(i--){
+                    elem[i].onclick = function(i){
+                        return function(){
+                            //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
+                            color= this.value;
+                            // console.log(color+"-color");                 //цвет
+                            document.getElementById('attr-name').innerHTML = this.title;
+                            var x = document.getElementsByName("size");
+                            var a;
+                            for (a = 0; a < x.length; a++) {
+                                var tablesize= x[a].value;
+                                //  console.log(tablesize+"-size");         //размер
+                                var tempLsize = document.getElementById('lSize'+tablesize);
+                                var tempsize = document.getElementById('size'+tablesize);
+                                tempLsize.classList.add("disabled_size");
+                                tempsize.disabled = true;
+                                tempsize.checked = false;
+                                var b;
+                                for (b = 0; b < attr_all.length; b++) {
+                                    if (attr_all[b].size_id == tablesize && attr_all[b].color_id == color) {
+                                        tempLsize.classList.remove("disabled_size");
+                                        tempsize.disabled = false;
+                                    }
                                 }
                             }
-                        }
-                    };
-
-                }(i);
-            }
-            var elemSize = document.querySelectorAll('[name="size"]'), c = elemSize.length;
-            while(c--){
-                elemSize[c].onclick = function(c){
-                    return function(){
-                        var sizes= this.value;
-                        var d;
-                        for (d = 0; d < attr_all.length; d++) {
-                            if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
-                                console.log(attr_all[d].id);
-                                document.getElementById('checked_attr').value=attr_all[d].id;
-                                Vue.set(app.item, 'checked_attr', attr_all[d].id);
-                                console.log(attr_all[d].id);
+                        };
+                    }(i);
+                }
+                var elemSize = document.querySelectorAll('[name="size"]'), c = elemSize.length;
+                while(c--){
+                    elemSize[c].onclick = function(c){
+                        return function(){
+                            var sizes= this.value;
+                            var d;
+                            for (d = 0; d < attr_all.length; d++) {
+                                if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
+                                    console.log(attr_all[d].id);
+                                    document.getElementById('checked_attr').value=attr_all[d].id;
+                                    Vue.set(app.item, 'checked_attr', attr_all[d].id);
+                                    console.log(attr_all[d].id);
+                                }
                             }
-                        }
-                    };
-                }(c);
-            }
-        };
-        @endif
-
-
-
-
+                        };
+                    }(c);
+                }
+            };
+            @endif
     </script>
 
     @include('layouts.footerCart')

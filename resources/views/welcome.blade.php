@@ -36,7 +36,7 @@
             <div class="customer-logos slider">
                 @if (isset($brands))
                     @foreach ($brands as $brand)
-                        <div class="slide"><a href="/brands/{{$brand->url}}.html"> <img src="/storage/{{$brand->logo_brand}}"></a></div>
+                        <div class="slide brand"><a href="/brands/{{$brand->url}}.html"> <img src="/storage/{{$brand->logo_brand}}"></a></div>
                     @endforeach
                 @endif
 
@@ -98,7 +98,7 @@
                     <div class="row as">
                         @if (isset($products))
                             @foreach ($products as $product)
-                                <div class="col-lg-9 col-sm-6">
+                                <div class="">
                                     <div class="strat">
                                         <a href="/catalog/{{$product->path}}/{{$product->slug}}.html">
                                             <div class="image">
@@ -149,7 +149,7 @@
                     <div class="row as">
                         @if (isset($blogs))
                             @foreach ($blogs as $blog)
-                                <div class="col-lg-9 col-sm-6">
+                                <div class="">
                                     <div class="strat ">
                                         <div class="image ">
                                             <img class="img  latest__img loading" src="/storage/{{$blog->img}}" alt=""  data-was-processed="true">
