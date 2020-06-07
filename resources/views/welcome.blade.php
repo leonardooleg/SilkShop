@@ -152,17 +152,17 @@
                                 <div class="">
                                     <div class="strat ">
                                         <div class="image ">
-                                            <img class="img  latest__img loading" src="/storage/{{$blog->img}}" alt=""  data-was-processed="true">
+                                           <img class="img  latest__img loading" src="/storage/{{$blog->img}}" alt=""  data-was-processed="true">
                                         </div>
                                         <div class="text text-center">
                                             <div class="latest__cost latest__cost2">
 
-                                                <a href="/catalog/zhenskoe-bele/byustgaltery/dtbv86238.html" style="text-decoration: none; color: #000;" tabindex="0">
+                                                <a href="/blog/{{$blog->url}}.html" style="text-decoration: none; color: #000;" tabindex="0">
                                                     {{$blog->title}}
                                                 </a>
                                                 <div class="card__type" style="margin-top: 0">{{ Illuminate\Support\Str::limit(strip_tags($blog->text), 100) }}</div>
                                             </div>
-                                            <a href="/actions/free_order_for_blogers.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
+                                            <a href="/blog/{{$blog->url}}.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
 
                                         </div>
                                     </div>

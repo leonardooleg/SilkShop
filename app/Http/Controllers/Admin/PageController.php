@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Country;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use function App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Storage;
 
-class countryController extends Controller
+class PageController extends Controller
 {
 
     /**
@@ -17,16 +18,13 @@ class countryController extends Controller
      *
      * @return Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     public function index()
     {
-        $countries = Country::orderBy('created_at', 'desc')->paginate(15);
-        return view('admin.countries.index', [
-            'countries' => $countries
+        $pages = Page::orderBy('created_at', 'desc')->paginate(15);
+        return view('admin.pages.index', [
+            'pages' => $pages
         ]);
     }
 
@@ -37,8 +35,7 @@ class countryController extends Controller
      */
     public function create()
     {
-        return view('admin.countries.create', [
-            'countries' => Country::all()
+        return view('admin.pages.create', [
         ]);
     }
 
@@ -50,18 +47,18 @@ class countryController extends Controller
      */
     public function store(Request $request)
     {
-        $countries = new Country($request->all());
-        $countries->save();
-        return redirect()->route('admin.countries.index');
+        $blog = new Page($request->all());
+        $blog->save();
+        return redirect()->route('admin.pages.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Country $category
+     * @param \App\Models\Category $category
      * @return Response
      */
-    public function show(Country $countries)
+    public function show(Category $Blogs)
     {
         //
     }
@@ -69,15 +66,13 @@ class countryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param country $countries
+     * @param Blog $Blogs
      * @return Response
      */
     public function edit($id)
     {
-        $country = country::findOrFail($id);
-        return view('admin.countries.edit', [
-            'countries' => Country::all(),
-            'country' => $country
+        return view('admin.pages.edit', [
+            'page' => Page::findOrFail($id),
         ]);
     }
 
@@ -90,22 +85,24 @@ class countryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = Country::findOrFail($id);
+        $page = Page::findOrFail($id);
         $input = $request->all();
-        $task->fill($input)->save();
-        return back()->with('success', 'Your country has been added successfully. Please wait for the admin to approve.');
+        $page->fill($input)->save();
+
+        return back()->with('success', 'Your Blog has been added successfully. Please wait for the admin to approve.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Country $country
+     * @param \App\Models\Page $page
      * @return Response
      */
-    public function destroy(Country $country)
+    public function destroy(Page $page)
     {
-        $country->delete();
-        return redirect()->route('admin.countries.index');
+        $page->delete();
+        return redirect()->route('admin.pages.index');
+
     }
 
 }

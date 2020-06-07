@@ -35,11 +35,11 @@
                         </div>
                         <div class="form-group ">
                             <label for="inputZip"><strong>Описание</strong></label>
-                            <textarea  rows="7" name="description_brand" class="form-control" >{{$brand->description_brand}}</textarea>
+                            <textarea  rows="7" name="description_brand" class="summernote form-control" >{{$brand->description_brand}}</textarea>
                         </div>
                         <div class="form-group ">
                             <label for="inputZip"><strong>Размер бренда</strong></label>
-                            <textarea rows="7" name="sizes_brand" class="form-control" >{{$brand->sizes_brand}}</textarea>
+                            <textarea rows="7" name="sizes_brand" class="summernote form-control" >{{$brand->sizes_brand}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlFile1"><strong>Логотип</strong></label>

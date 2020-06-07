@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['per
     Route::resource('/sizes', 'SizeController', ['as'=>'admin']);
     Route::resource('/products', 'ProductController', ['as'=>'admin']);
     Route::resource('/blogs', 'BlogController', ['as'=>'admin']);
+    Route::resource('/pages', 'PageController', ['as'=>'admin']);
     Route::get('/menu','MenuController@index')->name('menu.get');
 
     Route::group(['prefix' => 'user_managment', 'namespace' => 'UserManagment'], function () {
@@ -49,8 +50,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['per
     });
 });
 
+Route::group(['prefix' => 'profile',  'middleware' => ['permission:buyer']], function () {
+    Route::get('/', 'ProfileController@index')->name('panels');
+    Route::get('/edit', 'ProfileController@profileEdit')->name('profile');
+    Route::post('/update', 'ProfileController@profileUpdate')->name('profile.update');
+    Route::post('/avatar', 'ProfileController@avatar')->name('avatar');
+});
+
 Route::get('home', function () {
-    return redirect('/admin');
+    return redirect('/');
 });
 
 
@@ -70,3 +78,10 @@ Route::post('/cart2','Cart2Controller@add')->name('cart2.add')->middleware('auth
 /*Route::get('/cart-finish','Cart2Controller@finish')->name('cart3.finish')->middleware('auth');*/
 
 Route::get('product-cart/{id?}', 'SiteController@productID')->name('productID');
+
+
+
+
+
+
+Route::get('/{path}','SiteController@page')->name('page');

@@ -316,7 +316,7 @@
                 <div class="product__gap">
                     <div class="list product__features">
                         <div class="list__item"><i>Бренд:</i>
-                            <a href="/brands/conte.html" class="link link--inherit">{{$product->name_brand}}</a>
+                            <a href="/brands/{{$product->brands_url}}.html" class="link link--inherit">{{$product->name_brand}}</a>
                         </div>
                         <div class="list__item"><i>Страна:</i>
                             <span class="link link--inherit">{{$product->name_country}}</span>
@@ -329,7 +329,7 @@
                 <div class="product__gap">
                     <div class="text text--light" itemprop="description">
                         <p class="paragraph"></p>
-                        {{$product->description}}
+                        {!! $product->description !!}
                         <br><br><p>Вам может быть полезно:</p>
                         <ul>
                             <li><a href="/catalog/zhenskoe-bele/chulochno-nosochnye-izdeliya/noski/conte/" style="text-decoration: none;">Женские носочки Conte</a>

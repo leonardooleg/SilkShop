@@ -32,11 +32,11 @@
             </div>
                     <div class="form-group ">
                         <label for="inputZip"><strong>Описание</strong></label>
-                        <textarea  rows="7" name="description_brand" class="form-control" id=""></textarea>
+                        <textarea  rows="7" name="description_brand" class="summernote form-control" id=""></textarea>
                     </div>
                     <div class="form-group ">
                         <label for="inputZip"><strong>Размер бренда</strong></label>
-                        <textarea rows="7" name="sizes_brand" class="form-control" id=""></textarea>
+                        <textarea rows="7" name="sizes_brand" id="description" class="summernote form-control" id=""></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1"><strong>Логотип</strong></label>

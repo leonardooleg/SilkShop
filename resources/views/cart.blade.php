@@ -586,48 +586,7 @@
                 </div>
 
 
-                <div class="modal" tabindex="-1" role="dialog" aria-hidden="true" id="fastOrder">
-                    <div class="modal__dialog" role="document">
-                        <div class="modal__content">
-                            <div class="modal__header">
-                                <div class="modal__close" data-dismiss="modal" aria-label="Close">Close</div>
-                                <h6 class="title title--size-l title--center title--underline title--light modal__title">Быстрый заказ</h6>
-                            </div>
-                            <div class="modal__body">
-                                <div class="error_list dn">
-                                    <span></span>
-                                </div>
-                                <div class="success_result dn">
-                                    Спасибо за заказ!<br>
-                                    В ближайшее время наш менеджер свяжется с вами.
-                                </div>
 
-                                <form name="system_auth_form" class="form modal__form fastOrder" method="post">
-                                    <div class="form__field">
-                                        <label class="form__label form__label--required">Телефон:</label>
-                                        <input class="input field" type="text" name="FO_PHONE" value="" placeholder="Введите телефон ..." required="" id="phone">
-                                    </div>
-                                    <div class="form__field">
-                                        <label class="form__label form__label">Ваше имя:</label>
-                                        <input class="input field" type="text" name="FO_NAME" value="" placeholder="Введите Имя ...">
-                                    </div>
-                                    <div class="form__field">
-                                        <label class="form__label form__label">E-mai:</label>
-                                        <input class="input field" type="text" name="FO_EMAIL" value="" placeholder="Введите E-mail ...">
-                                    </div>
-
-                                    <div class="form__field">
-                                        <div class="form__required">Поля, обязательные для заполнения</div>
-                                    </div>
-                                    <div class="form__field form__field--align-center">
-
-                                        <a href="javascript:void(0)" class="button button--default modal__button send_fast_order" style="line-height: 44px; font-size: 20px; width: 100%;">Отправить заказ</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div> <!-- container page__layout --></div>
             </div>

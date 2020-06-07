@@ -125,9 +125,8 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        return view('admin.brands.index', [
-            'test' => 'test',
-        ]);
+        $brand->delete();
+        return redirect()->route('admin.brands.index');
     }
 
 }

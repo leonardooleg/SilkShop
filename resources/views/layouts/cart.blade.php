@@ -36,6 +36,7 @@
     <!-- Custom styles for this template -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet" >
     <link href="{{ asset('css/cart.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/delivery.css') }}" rel="stylesheet">
 </head>
 <body class="page">
     <div  >

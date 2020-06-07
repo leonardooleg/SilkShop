@@ -1078,18 +1078,7 @@
                             <blockquote>
                                 Остались вопросы? Звоните +7 (495) 133-86-08
                             </blockquote>
-                            <table width="100%" cellpadding="0" cellspacing="0" align="left" class="razmer">
-                                <colgroup><col> <col></colgroup>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <p class="lof-readmore">
-                                            <a href="/brands/milavitsa.html">О производителе</a>
-                                        </p>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+
 
 
                         </div>

@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class Cart2Controller extends Controller
 {
@@ -22,6 +23,12 @@ class Cart2Controller extends Controller
     }
 
     public function add(Request $request){
+        $valid = Validator::make($request->all(),[
+            '_check' => 'reinclusion',
+        ]);
+        if($valid->fails()){
+            return redirect()->route('welcome');
+        }
         $userId = (new \App\Models\Order)->user_guest();
         $c_id= $userId.'_cart_items';
         $orders = new Order($request->all());
@@ -32,6 +39,7 @@ class Cart2Controller extends Controller
             $items[] = $item;
         });
         $orders->cart_data =json_encode($items);
+        $orders->user_id =$userId;
         $orders->save();
         if($orders){
             \Cart::session($userId)->clear();

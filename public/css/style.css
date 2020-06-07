@@ -7,8 +7,14 @@
     font-smoothing: antialiased;
     background-color: #fff;
 }
+.title--center {
+    text-align: center;
+}
+.section--bg {
+    background-color: #f9f9fb;
+}
 .container-my{
-    max-width: 1500px!important;
+    max-width: 1400px!important;
 }
 .section {
     padding-top: 3rem;
@@ -316,7 +322,7 @@ li.nav-item {
         font-size: 15px;
         line-height: 1.3em;
         text-decoration: none;
-        font-weight: bold;
+       /* font-weight: bold;*/
         text-transform: uppercase;
         height: 36px;
         box-sizing: border-box;
@@ -1619,6 +1625,7 @@ a.btn__slider3 {
     font-size: 0.8rem;
     color: #fff;
     padding: 5rem 0 4rem 0;
+    margin-top: 70px;
 }
 @media (min-width: 768px) {
     .footer {
@@ -2493,7 +2500,7 @@ blockquote:before {
 }
 .proportions__question {
     font-size: 0.8rem;
-    padding: 1rem 1.6rem;
+    padding: 0.6rem 0.9rem;
     background-color: #191919;
     text-align: center;
     color: #fff;
@@ -2514,6 +2521,26 @@ blockquote:before {
         padding: 0 6rem 0 0;
     }
 }
+.proportions__name {
+    font-size: 1.7rem;
+    margin: 0.8rem 0 .4rem 0;
+}
+@media (min-width: 544px){
+    .proportions__name {
+        font-size: 2.5rem;
+    }
+}
+@media (min-width: 768px){
+    .proportions__name {
+        font-size: 2.5rem;
+    }
+}
+@media (min-width: 992px){
+    .proportions__name {
+        font-size: 5em;
+    }
+}
+
 .proportions table.razmer {
     margin: 0;
     border-color: #000;
@@ -2540,6 +2567,13 @@ blockquote:before {
 .proportions table tr td {
     padding: 5px;
     font-size: 13px;
+}
+.lof-readmore {
+    padding: 10px;
+}
+.razmer .lof-readmore a {
+    background: #000;
+    color: #fff;
 }
 .proportions__gap {
     margin-top: 1.8rem;
@@ -2577,14 +2611,14 @@ blockquote:before {
 .proportions__pointer[data-point="1"] {
     position: absolute;
     top: 35%;
-    left: 55%;
+    left: 50%;
     width: 8rem;
     height: 8.8rem;
     border-width: 0 2px 2px 0;
 }
 @media (min-width: 544px){
     .proportions__pointer[data-point="1"] {
-        top: 40%;
+        top: 35%;
         width: 10rem;
     }
 }
@@ -2595,9 +2629,10 @@ blockquote:before {
 }
 @media (min-width: 1150px){
     .proportions__pointer[data-point="1"] {
-        width: 34rem;
+        width: 25rem;
     }
 }
+
 .proportions__pointer[data-point="1"]:after {
     position: absolute;
     bottom: 100%;
@@ -2609,10 +2644,10 @@ blockquote:before {
 .proportions__pointer:after {
     display: block;
     content: attr(data-point);
-    width: 3rem;
-    height: 3rem;
-    line-height: 3rem;
-    font-size: 1.6rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -2622,44 +2657,46 @@ blockquote:before {
 }
 @media (min-width: 544px){
     .proportions__pointer:after {
-        width: 4rem;
-        height: 4rem;
-        line-height: 4rem;
-        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 1rem;
     }
 }
 @media (min-width: 768px){
     .proportions__pointer:after {
-        width: 6rem;
-        height: 6rem;
-        line-height: 6rem;
-        font-size: 3rem;
+        width: 3rem;
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 1.5rem;
     }
 }
 @media (min-width: 992px){
     .proportions__pointer:after {
-        width: 7rem;
-        height: 7rem;
-        line-height: 7rem;
-        font-size: 3.4rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
+        font-size: 1.7rem;
     }
 }
 @media (min-width: 1150px){
     .proportions__pointer:after {
-        width: 8rem;
-        height: 8rem;
-        line-height: 8rem;
-        font-size: 4.4rem;
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 2.2rem;
     }
 }
 
 
 /*пропустив*/
-
-@media (min-width: 1150px){
-    .proportions__pointer[data-point="2"] {
-        width: 33rem;
-    }
+.proportions__pointer[data-point="2"] {
+    position: absolute;
+    top: 39%;
+    right: 75%;
+    width: 7rem;
+    height: 9.8rem;
+    border-width: 0 0 2px 2px;
 }
 .proportions__pointer[data-point="2"]:after {
     position: absolute;
@@ -2671,26 +2708,18 @@ blockquote:before {
 }
 @media (min-width: 544px){
     .proportions__pointer[data-point="2"] {
-        top: 44%;
+        top: 37%;
         width: 13rem;
     }
 }
-    .proportions__pointer[data-point="2"] {
-        position: absolute;
-        top: 39%;
-        right: 100%;
-        width: 7rem;
-        height: 9.8rem;
-        border-width: 0 0 2px 2px;
-    }
 @media (min-width: 1150px){
-    .proportions__pointer:after {
-        width: 8rem;
-        height: 8rem;
-        line-height: 8rem;
-        font-size: 4.4rem;
+    .proportions__pointer[data-point="2"] {
+        width: 20rem;
     }
 }
+
+
+
 .proportions__pointer[data-point="3"] {
     position: absolute;
     bottom: 32%;
@@ -2712,19 +2741,7 @@ blockquote:before {
     -ms-transform: translate(50%,50%);
     transform: translate(50%,50%);
 }
-@media (min-width: 1150px){
-    .proportions__pointer:after {
-        width: 8rem;
-        height: 8rem;
-        line-height: 8rem;
-        font-size: 4.4rem;
-    }
-}
-@media (min-width: 1150px){
-    .proportions__pointer[data-point="4"] {
-        width: 23rem;
-    }
-}
+
 .proportions__pointer[data-point="4"]:after {
     position: absolute;
     bottom: 50%;
@@ -2736,10 +2753,18 @@ blockquote:before {
 .proportions__pointer[data-point="4"] {
     position: absolute;
     bottom: 19%;
-    right: 100%;
+    right: 75%;
     width: 5rem;
     height: .2rem;
     border-width: 0 0 2px 0;
+}
+@media (min-width: 1150px){
+    .proportions__pointer[data-point="4"] {
+        width: 13rem;
+    }
+}
+.proportions__box b {
+    font-weight: 600;
 }
 .proportions__box {
     position: relative;
@@ -2749,25 +2774,13 @@ blockquote:before {
     font-size: 1.3rem;
     padding: 3rem 2rem 3rem 7rem;
 }
-@media (min-width: 440px) {
-    .proportions__box {
-        padding: 3rem 3rem 3rem 7rem;
-        font-size: 1.5rem;
-    }
-}
-@media (min-width: 992px){
-    .proportions__box {
-        position: absolute;
-        z-index: 1;
-    }
-}
 .proportions__box:before {
     display: block;
     content: attr(data-point);
-    width: 3rem;
-    height: 3rem;
-    line-height: 3rem;
-    font-size: 1.6rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -2777,19 +2790,31 @@ blockquote:before {
     float: left;
     margin: 0 0 0 -50px;
 }
+@media (min-width: 440px) {
+    .proportions__box {
+        padding: 1.5rem 1.5rem 1.5rem 4rem;
+        font-size: 1.4rem;
+    }
+}
+@media (min-width: 992px){
+    .proportions__box {
+        position: absolute;
+        z-index: 1;
+    }
+}
 @media (min-width: 992px){
     .proportions__box[data-point="1"] {
         position: absolute;
         top: 0;
         right: 0;
         left: 50%;
-        margin: 5rem 0 0 11rem;
+        margin: 2.5rem 0 0 6rem;
     }
 }
 .paragraph, .content__news .shortstory .text p {
     margin: 0;
     font-size: 0.7em;
-    line-height: 0.9;
+    line-height: 1.2;
 }
 @media (min-width: 992px){
     .proportions__box[data-point="2"] {
@@ -2797,7 +2822,7 @@ blockquote:before {
         top: 0;
         left: 0;
         right: 50%;
-        margin: 5rem 16rem 0 0;
+        margin: 2.5rem 9rem 0 0;
     }
 }
 @media (min-width: 992px){
@@ -2805,17 +2830,17 @@ blockquote:before {
         position: absolute;
         bottom: 0;
         right: 0;
-        left: 50%;
+        left: 45%;
         margin: 0 0 0 11rem;
     }
 }
 .proportions__box[data-point="3"]:after {
     display: block;
     content: "4";
-    width: 3rem;
-    height: 3rem;
-    line-height: 3rem;
-    font-size: 1.6rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -2824,7 +2849,7 @@ blockquote:before {
     box-shadow: 3.7px 3.3px 2px rgba(0,0,0,.3);
     position: absolute;
     top: 70px;
-    left: 2rem;
+    left: 1rem;
 }
 .proportions table.razmer {
     margin: 0;
@@ -2835,10 +2860,10 @@ blockquote:before {
     border-spacing: 0;
     text-align: center;
 }
-.razmer .lof-readmore a {
+/*.razmer .lof-readmore a {
     background: #000;
     color: #fff;
-}
+}*/
 /****Размеры****/
 
 /****Блоги****/
@@ -2848,5 +2873,17 @@ blockquote:before {
     line-height: 1;
 }
 /****Блоги****/
+
+
+/****Страницы****/
+
+.page-site #kak-order .section img.loading {
+    width: 100%!important;
+}
+.page-site .content__faq {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+/****Страницы****/
 
 

@@ -101,13 +101,13 @@
 
                                 <div class="form-group form__field col-xs-12 col-md-6">
                                     <label for="Input1" class="form__label form__label--required">Телефон:</label>
-                                    <input class="input field form-control" id="Input1"  required data-mask="mask"  type="text" maxlength="250" size="" value="" placeholder="Телефон" name="clientTel" required>
+                                    <input class="input field form-control" id="Input1"  required data-mask="mask"  type="tel" maxlength="250" size="" value="" placeholder="Телефон" name="clientTel" required>
                                 </div>
 
 
                                 <div class="form-group form__field g col-xs-12 col-md-6">
                                     <label for="Input2" class="form__label form__label--required">E-mail:</label>
-                                    <input class="input field form-control" id="Input2"  required type="text" maxlength="250" size="" value="" placeholder="E-mail" name="clientEmail">
+                                    <input class="input field form-control" id="Input2"  required type="email" maxlength="250" size="" value="" placeholder="E-mail" name="clientEmail">
                                 </div>
 
 
@@ -134,7 +134,7 @@
                                     <label for="Input6" class="form__label">Комментарий:</label>
                                     <textarea class="textarea field form-control" id="Input6"   name="clientComment" placeholder="Введите комментарий ..."></textarea>
                                 </div>
-
+                                <input name="_check" type="hidden" value="{{ time() }}">
                             </div>
                         </div>
 

@@ -107,14 +107,14 @@ class ColorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Color $category
+     * @param \App\Color $color
      * @return Response
      */
-    public function destroy(Color $category)
+    public function destroy(Color $color)
     {
-        return view('admin.colors.index', [
-            'test' => 'test',
-        ]);
+        $color->delete();
+        return redirect()->route('admin.colors.index');
+
     }
 
 }

@@ -153,9 +153,8 @@ class SizeController extends Controller
      */
     public function destroy(Size $size)
     {
-        return view('admin.sizes.index', [
-            'test' => 'test',
-        ]);
+        $size->delete();
+        return redirect()->route('admin.sizes.index');
     }
 
 }

@@ -85,8 +85,6 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::findOrFail($id);
-
         return view('admin.blogs.edit', [
             'blog' => Blog::findOrFail($id),
         ]);
@@ -126,9 +124,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        return view('admin.blogs.index', [
-            'test' => 'test',
-        ]);
+        $blog->delete();
+        return redirect()->route('admin.blogs.index');
+
     }
 
 }

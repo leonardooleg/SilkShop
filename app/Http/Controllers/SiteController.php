@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Blog;
+use App\Models\Page;
 use App\Models\Brand;
 use App\Models\Url;
 use Illuminate\Support\Facades\DB;
@@ -273,14 +274,14 @@ class SiteController extends Controller
             ->leftjoin('countries','products.country_id', '=', 'countries.id')
             ->where('products.slug', '=', $productSlug)
             ->orderBy('created_at', 'desc')
-            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country')
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'brands.url  as brands_url', 'countries.name_country')
             ->groupBy('products.id','categories.path','categories.title')
             ->first();
         $attr_all = DB::table('attributeables')
             ->where('product_id', '=', $product->id)
             ->leftjoin('colors','attributeables.color_id', '=', 'colors.id')
             ->leftjoin('sizes','attributeables.size_id', '=', 'sizes.id')
-            ->select('attributeables.*', 'colors.name_color', 'colors.img_color', 'sizes.rus_name_size','sizes.brand_name_size','sizes.grudi_size','sizes.talii_size','sizes.pod_grudyu_size','sizes.bedra_size','sizes.stopy_size' )
+            ->select('attributeables.*', 'colors.name_color',  'colors.img_color', 'sizes.rus_name_size','sizes.brand_name_size','sizes.grudi_size','sizes.talii_size','sizes.pod_grudyu_size','sizes.bedra_size','sizes.stopy_size' )
             ->get()->toArray();
         $attr_colors = array();
         foreach ($attr_all as $c) {
@@ -345,6 +346,11 @@ class SiteController extends Controller
         $blog = Blog::where('url', '=', $url)->first();
         return view('blog')->with(['blog'=>$blog]);
     }
+    public function page($url)
+    {
+        $page = Page::where('url', '=', $url)->first();
+        return view('page')->with(['page'=>$page]);
+    }
 
     public function brands()
     {
@@ -368,9 +374,61 @@ class SiteController extends Controller
             ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'brands.description_brand', 'brands.logo_brand')
             ->groupBy('products.id','categories.path','categories.title')
             ->paginate(15);
+
+
+        $products_filter = DB::table('products')
+            ->leftJoin('categoryables', 'categoryables.categoryable_id', '=', 'products.id')
+            ->leftJoin('categories', 'categoryables.category_id', '=', 'categories.id')
+            ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+            ->leftjoin('attributeables','attributeables.product_id', '=', 'products.id')
+            ->leftjoin('colors','attributeables.color_id', '=', 'colors.id')
+            ->leftjoin('sizes','attributeables.size_id', '=', 'sizes.id')
+            ->leftjoin('countries','products.country_id', '=', 'countries.id')
+            ->orderBy('created_at', 'desc')
+            ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
+                DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes"),
+                DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
+                DB::raw("GROUP_CONCAT(colors.img_color) as img_colors")
+            )
+            ->groupBy('products.id','categories.path','categories.title')
+            ->get();
+
+        foreach ($products_filter as $product_f){
+            $filters['brand'][$product_f->brand_id]=$product_f->name_brand;
+            $filters['country'][$product_f->country_id]=$product_f->name_country;
+            foreach (explode(',', $product_f->brand_name_sizes) as $size){
+                $filters['size'][$size]=$size;
+            }
+            $img_color=explode(',', $product_f->img_colors);
+            $i=0;
+            foreach (explode(',', $product_f->name_colors) as $color){
+                $filters['color'][$color]=$img_color[$i];
+                $i++;
+            }
+        }
+
+        $categories = null;
+
+        $g=Menus::where('id', 3)->with('items')->first();
+        $public_menu = $g->items;
+        foreach ($public_menu as $menu){
+            //$test=Category::descendantsAndSelf(43)->toTree()->toarray();
+            $test=Category::withDepth()->having('path', '=', str_replace('/catalog/', '', mb_substr($menu->link, 0, -1)) )->first();
+            if(isset($test)){
+                $test->toarray();
+                $root[] = Category::descendantsAndSelf($test['id'])->toTree()->first()->toarray();
+            }else{
+                $j['title'] =$menu->label;
+                $j['path'] =$menu->link;
+                $j['menu'] =1;
+                $root[] =$j;
+            }
+            $test=false;
+        }
         $count = $products->count();
         $brand = Brand::where('url', '=', $url)->firstOrFail();
-        return view('brand')->with(['brand'=>$brand, 'products'=>$products, 'count'=>$count]);
+
+        return view('brand')->with(['brand_one'=>$brand, 'products'=>$products, 'count'=>$count, 'b_menu'=>$root, 'filters'=>$filters]);
     }
 
     public function sizes()

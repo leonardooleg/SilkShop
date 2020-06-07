@@ -102,9 +102,8 @@ class ProviderController extends Controller
      */
     public function destroy(Provider $provider)
     {
-        return view('admin.providers.index', [
-            'test' => 'test',
-        ]);
+        $provider->delete();
+        return redirect()->route('admin.providers.index');
     }
 
 }

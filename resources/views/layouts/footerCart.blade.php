@@ -3,35 +3,35 @@
     var _token = '<?php echo csrf_token() ?>';
     $(document).ready(function() {
             @if(!preg_match("/login/", $_SERVER['REQUEST_URI']))
+            @if(!preg_match("/cart/", $_SERVER['REQUEST_URI']) || preg_match('!cart2!', $_SERVER['REQUEST_URI']))
+                var cart = new Vue({
+                    el: '#cart',
+                    data: {
+                        itemCount: 0,
+                        items: [],
 
-            var cart = new Vue({
-                el: '#cart',
-                data: {
-                    itemCount: 0,
-                    items: [],
-
-                },
-                mounted:function(){
-                    this.loadItems();
-                },
-                methods: {
-                    loadItems: function() {
-                        var _this = this;
-                        this.$http.get('/cart',{
-                            params: {
-                                limit:10
-                            }
-                        }).then(function(success) {
-                            _this.items = success.body.data;
-                            _this.itemCount = success.body.data.length;
-                        }, function(error) {
-                            console.log(error);
-                        });
                     },
-                },
-            });
-
-
+                    mounted:function(){
+                        this.loadItems();
+                    },
+                    methods: {
+                        loadItems: function() {
+                            var _this = this;
+                            this.$http.get('/cart',{
+                                params: {
+                                    limit:10
+                                }
+                            }).then(function(success) {
+                                _this.items = success.body.data;
+                                _this.itemCount = success.body.data.length;
+                            }, function(error) {
+                                console.log(error);
+                            });
+                        },
+                    },
+                });
+            @endif
+            @if(preg_match('!html!', $_SERVER['REQUEST_URI']) || preg_match('!cart!', $_SERVER['REQUEST_URI']))
             var app = new Vue({
                 el: '#app',
                 data: {
@@ -212,6 +212,7 @@
                  }*/
 
             });
+            @endif
 
         /*   var wishlist = new Vue({
                el: '#wishlist',

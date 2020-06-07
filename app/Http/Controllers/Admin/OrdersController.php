@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use Darryldecode\Cart\CartCollection;
 use Darryldecode\Cart\CartCondition;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\Order;
@@ -74,7 +75,6 @@ class OrdersController extends Controller
 
     public function edit($id)
     {
-        $userId = 1;
         $order= Order::where('id', $id)->first();
         $statuses= Status::all();
         $cartCollection = $order->cart_data;

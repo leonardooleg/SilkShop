@@ -12,6 +12,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -82,6 +84,12 @@
                             <a class="nav-link" href="{{route('admin.colors.index')}}">Цвета</a>
                         </nav>
                     </div>
+                    <a class="nav-link" href="/admin/blogs"><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Блоги
+                    </a>
+                    <a class="nav-link" href="/admin/pages"><div class="sb-nav-link-icon"><i class="fas fa-scroll"></i></div>
+                        Страницы
+                    </a>
 
 
 
@@ -100,9 +108,7 @@
                     <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('admin.user_managment.user.index')}}">Зарегистрированные</a><a class="nav-link" href="{{route('admin.user_managment.roles.index')}}">Роли</a></nav>
                     </div>
-                    <a class="nav-link" href="/admin/blogs"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Блоги</a>
+
 
 
                     <div class="sb-sidenav-menu-heading">Дополнительно</div>
@@ -253,7 +259,24 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="/panel/assets/demo/datatables-demo.js"></script>
 {!! Menu::scripts() !!}
+<!-- include summernote css/js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+<script>
+    /*редактор текста*/
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 200,
+            dialogsInBody: true,
+            callbacks:{
+                onInit:function(){
+                    $('body > .note-popover').hide();
+                }
+            },
+        });
+    });
+    /*редактор текста*/
 
+</script>
 </body>
 
 </html>

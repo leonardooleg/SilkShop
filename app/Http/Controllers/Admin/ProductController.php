@@ -185,11 +185,11 @@ class ProductController extends Controller
      * @param \App\Product $category
      * @return Response
      */
-    public function destroy(Product $category)
+    public function destroy(Product $product)
     {
-        return view('admin.products.index', [
-            'test' => 'test',
-        ]);
+        $product->categories()->detach();
+        $product->delete();
+        return redirect()->route('admin.products.index');
     }
 
 }

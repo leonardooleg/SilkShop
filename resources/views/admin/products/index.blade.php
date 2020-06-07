@@ -58,7 +58,11 @@
 
                                                     <td> {{$product->category_name}} </td>
                                                     <td> {{$product->count}} </td>
-                                                    <td> {{$product->published}} </td>
+                                                    <td>
+                                                        @if($product->published ==1) Опубликован
+                                                        @else Не опубликован
+                                                        @endif
+                                                    </td>
                                                     <td> {{$product->created_at}}  </td>
                                                     <td>
                                                         <a href="products/{{$product->id}}/edit"><i class="fa fa-edit"></i></a>
