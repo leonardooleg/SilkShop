@@ -33,16 +33,24 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['per
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
     Route::resource('/orders', 'OrdersController', ['as'=>'admin']);
     Route::resource('/category', 'CategoryController', ['as'=>'admin']);
+    Route::resource('/category-import', 'CategoryImportController', ['as'=>'admin']);
     Route::get('/category/{id?}/children ', 'CategoryController@children')->name('admin');
     Route::resource('/colors', 'ColorController', ['as'=>'admin']);
     Route::resource('/providers', 'ProviderController', ['as'=>'admin']);
     Route::resource('/countries', 'CountryController', ['as'=>'admin']);
     Route::resource('/brands', 'BrandController', ['as'=>'admin']);
     Route::resource('/sizes', 'SizeController', ['as'=>'admin']);
+    Route::get('/products/import', 'ProductController@import')->name('admin.products.import');
+    Route::post('/products/import', 'ProductController@import_store')->name('admin.products.import_store');
     Route::resource('/products', 'ProductController', ['as'=>'admin']);
     Route::resource('/blogs', 'BlogController', ['as'=>'admin']);
     Route::resource('/pages', 'PageController', ['as'=>'admin']);
     Route::get('/menu','MenuController@index')->name('menu.get');
+
+    Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
+        Route::get('/sizes/{brand?}/{category?}/{filter?}','APIController@sizes')->name('sizes.get');
+        Route::get('/colors/{brand?}','APIController@colors')->name('colors.get');
+    });
 
     Route::group(['prefix' => 'user_managment', 'namespace' => 'UserManagment'], function () {
         Route::resource('/user', 'UserController', ['as' => 'admin.user_managment']);
@@ -85,3 +93,7 @@ Route::get('product-cart/{id?}', 'SiteController@productID')->name('productID');
 
 
 Route::get('/{path}','SiteController@page')->name('page');
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});

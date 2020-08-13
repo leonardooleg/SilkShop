@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"> <a href="/" class="link breadcrumbs__link">Главная</a> </li>
                     <li class="breadcrumb-item">
-                    <a href="/blogs" class="link breadcrumbs__link">Блоги</a></li>
+                    <a href="/blog" class="link breadcrumbs__link">Блоги</a></li>
 
             </ol>
         </nav>

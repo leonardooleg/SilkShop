@@ -13,13 +13,13 @@
        value="@if(old('name')){{old('name')}}@else{{$user->name ?? ""}}@endif" required>
 
 <label for=""><strong>Email</strong></label>
-<input type="email" class="form-control" name="email" placeholder="Email"
+<input type="email" class="form-control" name="email"   placeholder="Email"
        value="@if(old('email')){{old('email')}}@else{{$user->email ?? ""}}@endif" required>
 
 <label for=""><strong>Пароль</strong></label>
-<input type="password" class="form-control" name="password">
+<input type="password" class="form-control" required name="password">
 <label for=""><strong>Пароль еще раз</strong></label>
-<input type="password" class="form-control" name="confirm-password">
+<input type="password" class="form-control" required name="password_confirmation">
 <label for=""><strong>Роль</strong></label>
 @if(isset($userRole))
     {{ Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) }}

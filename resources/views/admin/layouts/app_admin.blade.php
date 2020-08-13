@@ -8,7 +8,7 @@
     <title>{{ config('app.name', 'Админка') }}</title>
     <!-- Scripts -->
 
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -66,6 +66,8 @@
                         Заказы</a>
                     <a class="nav-link" href="/admin/category"><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Категории</a>
+                    <a class="nav-link" href="/admin/category-import"><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Категории импорта</a>
 
                     <div class="sb-sidenav-menu-heading">Контент</div>
                     <a class="nav-link" href="/admin/products"

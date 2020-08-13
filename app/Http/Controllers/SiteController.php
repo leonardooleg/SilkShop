@@ -234,6 +234,7 @@ class SiteController extends Controller
                 $i++;
             }
         }
+        if(isset($filters))$filters=false;
 
         $categories = Category::ancestorsAndSelf($category->id);
 

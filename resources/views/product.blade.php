@@ -270,10 +270,10 @@
 
 
                             <br>
-                            <a class="btn btn-primary" href="#" role="button">
+                            <button class="btn btn-primary"  type="button">
                                 Быстрый заказ
                                 <div style="font-size:  8px;">(Мы вам перезвоним)</div>
-                            </a>
+                            </button>
 
 
                             <br>

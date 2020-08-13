@@ -12,7 +12,7 @@
         <select class="form-control" name="brand_id">
             <option value="0">-- для всех брендов --</option>
             @foreach($brands as $brand)
-                <option value="{{$brand->id}}" @if($brand->id==$size->brand_id) selected @endif>{{$brand->name_brand}}</option>
+                <option value="{{$brand->id}}" @if(isset($size))@if($brand->id==$size->brand_id) selected @endif @endif>{{$brand->name_brand}}</option>
             @endforeach
         </select>
     </div>

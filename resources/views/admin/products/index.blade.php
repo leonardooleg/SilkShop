@@ -11,8 +11,8 @@
         @endcomponent
 
         <hr>
-        <a href="{{route('admin.products.create')}}" class="btn btn-primary float-right "><i
-                class="fa fa-plus-square-o"></i> Добавить товар</a>
+            <a href="{{route('admin.products.import')}}" class="btn btn-success float-right "><i class="fas fa-plus-circle"></i>Имортировать с файла</a>
+            <a href="{{route('admin.products.create')}}" class="btn btn-primary float-right mr-2"><i class="fa fa-plus-square-o"></i> Добавить товар вручную</a>
 
 
 
