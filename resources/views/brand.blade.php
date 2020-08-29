@@ -237,7 +237,7 @@
                 </div>
                 @if($count<5)
                 <h6 class="text-center mb-5">Товаров бренда "{{$brand_one->name_brand}}" не найдено</h6>
-                <h4 class="font-weight-light mt-5">Товары других брендов</h4>
+                <h4 class="font-weight-light mt-5">Товары других брендов </h4>
                 <div class="row content__cards content__gap">
 
                     @foreach ($related_products as $product)
