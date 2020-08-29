@@ -56,8 +56,11 @@
 
     @if(preg_match('!profile!', $_SERVER['REQUEST_URI']))  <link href="{{ asset('css/profile.css') }}" rel="stylesheet">    @endif
 </head>
-<body class="page">
+<body  class="page">
+<div id="app">
     <div class="mt-2">
+    {{--<div id="cart">--}}
+    <div >
         @if(isset($nenujno))
             <!--пока не нужно-->
        {{-- <div class="container-fluid info" onclick="window.location='/actions/besplatnaya-dostavka-po-vsey-rossii.html/';">
@@ -68,7 +71,7 @@
             </div>
         </div>--}}
         @endif
-        <div class="container container-my">
+        <div  class="container container-my">
             <nav class="navbar navbar-expand-lg navbar-light d-none d-md-block">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -146,7 +149,7 @@
                             <button class="btn btn-outline-success my-2 my-sm-0 bg-dark" type="submit">Поиск</button>
                         </form>
                     </div>
-                        <div id="cart" class="header__cart float-right d-none d-md-block">
+                        <div  class="header__cart float-right d-none d-md-block">
                             <a class="link link--text" href="/cart/">
                                 <i class="icon icon--cart link__icon"></i><span>Корзина @{{itemCount}}</span>
                             </a>
@@ -159,20 +162,38 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid bg-dark">
+        <div class="container-fluid   pt-2 ">
             <!--Меню для моб-->
-            <ul class="nav mob-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/new">Новинки</a>
+            <ul class="nav mob-nav fixed-bottom menu_mobile">
+                <li class="nav-item text-center">
+                    <a class="nav-link active" href="/new">
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-spreadsheet-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12 1H4a2 2 0 0 0-2 2v2h12V3a2 2 0 0 0-2-2zm2 5h-4v2h4V6zm0 3h-4v2h4V9zm0 3h-4v3h2a2 2 0 0 0 2-2v-1zm-5 3v-3H6v3h3zm-4 0v-3H2v1a2 2 0 0 0 2 2h1zm-3-4h3V9H2v2zm0-3h3V6H2v2zm4 0V6h3v2H6zm0 1h3v2H6V9z"/>
+                    </svg>
+                   Новинки</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/catalog">Каталог</a>
+                <li class="nav-item text-center">
+                    <a class="nav-link"  data-toggle="modal" data-target="#BackdropMenu"  >
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-files" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3z"/>
+                        <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z"/>
+                    </svg>
+                    Каталог</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart">Корзина</a>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="/cart"> <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-basket2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M1.111 7.186A.5.5 0 0 1 1.5 7h13a.5.5 0 0 1 .489.605l-1.5 7A.5.5 0 0 1 13 15H3a.5.5 0 0 1-.489-.395l-1.5-7a.5.5 0 0 1 .1-.42zM2.118 8l1.286 6h9.192l1.286-6H2.118z"/>
+                        <path fill-rule="evenodd" d="M11.314 1.036a.5.5 0 0 1 .65.278l2 5a.5.5 0 1 1-.928.372l-2-5a.5.5 0 0 1 .278-.65zm-6.628 0a.5.5 0 0 0-.65.278l-2 5a.5.5 0 1 0 .928.372l2-5a.5.5 0 0 0-.278-.65z"/>
+                        <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zM0 6.5A.5.5 0 0 1 .5 6h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1z"/>
+                    </svg>
+                    Корзина <span class="cart_count"> @{{itemCount}}</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contacts">Позвонить </a>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="/contacts">
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-telephone-inbound-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.471 17.471 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                   Позвонить </a>
                 </li>
 
             </ul>
@@ -205,6 +226,7 @@
                 </div>
             </nav>
         </div>
+    </div>
 
 
 
@@ -290,102 +312,129 @@
             </div>
         </footer>
     </div>
+</div>
+
+    {{--Мобильное модальное меню--}}
+    <div class="mod_menu">
+        <!-- Modal -->
+        <div class="modal fade" id="BackdropMenu" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="BackdropMenuLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="modal-title text-center mb-4 mt-2" >Категории</h3>
+
+                        @php
+                            if (isset($b_menu)){
+                                $n=0;
+                                $count=count($b_menu);
+                                $menu_1='<div class="form-group menu_Mob menu_1"> <select class="form-control form-control-lg" >';
+                                        foreach($b_menu as $menu_b){
+                                            $n++;
+                                            $menu_1.='<option class="menu_1_opt_'.$n.'"';
+                                            if(strpos($_SERVER['REQUEST_URI'], $menu_b['path']) !== false)  {
+                                                $menu_1.='selected ';}
+                                             $menu_1.='link="';
+                                            if(!isset($menu_b['menu'])){
+                                                $menu_1.='/catalog/';}
+                                             $menu_1.= $menu_b['path'] .'" >'. $menu_b['title'].'</option>';
+                                            if ($n==$count){
+                                                $menu_1.='</select> </div>';
+                                            }
+
+                                            if(isset($menu_b['children'])){
+                                                    $n2=0;
+                                                    foreach($menu_b['children'] as $menu_c){
+                                                        if($n2==0){
+                                                            $count2=count($menu_b['children']);
+                                                            $menu_2[$n]='<div class="form-group menu_Mob menu_2"> <select class="form-control form-control-lg  menu_1_opt_'.$n.'" > <option link="/catalog/'.$menu_b['path'].'">Все товары</option>';
+                                                        }
+                                                            $n2++;
+                                                            $menu_2[$n].='<option class="menu_2_sub_'.$n.'_opt_'.$n2.'"';
+                                                             if(strpos($_SERVER['REQUEST_URI'], $menu_c['path']) !== false) {
+                                                                $menu_2[$n].=' selected ';}
+                                                             $menu_2[$n].= 'link="';
+                                                            if(!isset($menu_b['menu'])){
+                                                                $menu_2[$n].='/catalog/';
+                                                                 $menu_2[$n].= $menu_c['path'] .'" >'. $menu_c['title'] .'</option>';
+                                                            }
+                                                            if ($n2==$count2){
+                                                             $menu_2[$n].='</select> </div>';
+                                                           }
+                                                            if($menu_c['children']){
+                                                                        $n3=0;
+                                                                        foreach($menu_c['children'] as $menu_c_c){
+                                                                            if($n3==0){
+                                                                                 $count3=count($menu_c['children']);
+                                                                                 $menu_3[$n2]='<div class="form-group  menu_Mob menu_3"> <select class="form-control form-control-lg  menu_2_sub_'.$n.'_opt_'.$n2.'" > <option link="/catalog/'.$menu_c['path'].'">Все товары</option>';
+                                                                            }
+                                                                            $n3++;
+                                                                            $menu_3[$n2].='<option class="menu_3_opt_'.$n3.'"';
+                                                                             if(strpos($_SERVER['REQUEST_URI'], $menu_c_c['path']) !== false){
+                                                                                 $menu_3[$n2].=' selected ';  }
+                                                                                 $menu_3[$n2].='  link="';
+
+                                                                                 if(!isset($menu_b['menu'])){
+                                                                                     $menu_3[$n2].='/catalog/';
+                                                                                      $menu_3[$n2].= $menu_c_c['path'] .'" >'. $menu_c_c['title'].'</option>';
+                                                                                 }
+                                                                            }
+                                                                            if ($n3==$count3){
+                                                                                $menu_3[$n2].='</select> </div>';
+                                                                            }
+                                                            }
+                                                    }
+                                            }
+                                        }
+                                echo $menu_1;
+
+                                foreach ($menu_2 as $item) {
+                                     echo $item;
+                                }
+                                foreach ($menu_3 as $item) {
+                                     echo $item;
+                                }
+
+                            }
+                        @endphp
+
+                        <button type="button" class="btn btn-primary  btn-lg btn-block   menu_go">Применить</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {{--Мобильное модальное меню--}}
 
 
     <!-- Return to Top -->
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+    <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://unpkg.com/vue"></script>
+
         <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
-   {{-- <script src="{{ asset('js/app.js') }}" defer></script>--}}
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <script src="/js/site.js" type="text/javascript"></script>
     <script src="/js/jquery.zoom.min.js" type="text/javascript"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
-    <script src="/js/carousel.js" type="text/javascript"></script>
+   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" type="text/javascript"></script>--}}
+    {{--<script src="/js/carousel.js" type="text/javascript"></script>--}}
 
 
 
 
-
-        <script  type="text/javascript">
-
-            @if(preg_match('!html!', $_SERVER['REQUEST_URI']))
-                $("body").on("click","#modal-size .data-size", function( event ) {
-                        var id = $(this).attr('attr');
-                        $("#modal-size .data-size").removeClass("selected");
-                         $(this).addClass("selected");
-                    $('#size'+id).checked = true;
-                    var tempsize = document.getElementById('size'+id);
-                    if(tempsize.disabled==false) {
-                        tempsize.checked = true;
-                    }
-                });
-
-                window.onload = function(){
-                var elem = document.querySelectorAll('[name="color"]'), i = elem.length;
-                var color;
-                while(i--){
-                    elem[i].onclick = function(i){
-                        return function(){
-                            //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
-                            color= this.value;
-                            // console.log(color+"-color");                 //цвет
-                            document.getElementById('attr-name').innerHTML = this.title;
-                            var x = document.getElementsByName("size");
-                            var a;
-                            for (a = 0; a < x.length; a++) {
-                                var tablesize= x[a].value;
-                                //  console.log(tablesize+"-size");         //размер
-                                var tempLsize = document.getElementById('lSize'+tablesize);
-                                var tempsize = document.getElementById('size'+tablesize);
-                                tempLsize.classList.add("disabled_size");
-                                tempsize.disabled = true;
-                                tempsize.checked = false;
-                                var b;
-                                for (b = 0; b < attr_all.length; b++) {
-                                    if (attr_all[b].size_id == tablesize && attr_all[b].color_id == color) {
-                                        tempLsize.classList.remove("disabled_size");
-                                        tempsize.disabled = false;
-                                    }
-                                }
-                            }
-                        };
-                    }(i);
-                }
-                var elemSize = document.querySelectorAll('[name="size"]'), c = elemSize.length;
-                while(c--){
-                    elemSize[c].onclick = function(c){
-                        return function(){
-                            var sizes= this.value;
-                            var d;
-                            for (d = 0; d < attr_all.length; d++) {
-                                if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
-                                    console.log(attr_all[d].id);
-                                    document.getElementById('checked_attr').value=attr_all[d].id;
-                                    Vue.set(app.item, 'checked_attr', attr_all[d].id);
-                                    console.log(attr_all[d].id);
-                                }
-                            }
-                        };
-                    }(c);
-                }
-            };
-            @endif
-            function search_line(line) {
-                var sea = $( line);
-                var li = $( '#search_mob');
-                sea.show();
-                li.hide();
-                $( ".search-line" ).show();
-            }
-    </script>
 
     @include('layouts.footerCart')
-
+    </div>
 </body>
 
 

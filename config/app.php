@@ -179,8 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*My*/
-        Darryldecode\Cart\CartServiceProvider::class
-
+        Darryldecode\Cart\CartServiceProvider::class,
     ],
 
     /*
@@ -235,7 +234,7 @@ return [
         /*MY*/
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
     ],
 
 ];

@@ -17,7 +17,8 @@ Route::get('/','SiteController@welcome')->name('welcome');
 
 
 Route::get('catalog/{category}/{product}.html', 'SiteController@product')->name('product')->where('category', '[a-zA-Z0-9\-/_]+');
-Route::get('catalog/{path}', 'SiteController@category')->name('category')->where('path', '[a-zA-Z0-9\-/_]+');
+Route::get('catalog/{path}', 'SiteController@catalog')->name('category')->where('path', '[a-zA-Z0-9\-/_]+');
+Route::get('products', 'SiteController@products')->name('catalog');
 Route::get('catalog', 'SiteController@catalog')->name('catalog');
 Route::get('blog', 'SiteController@blogs')->name('blogs');
 Route::get('blog/{url}.html', 'SiteController@blog')->name('blog');

@@ -39,7 +39,7 @@
                     </div>
 
 
-                    <form id="app" class="form cart row" action="{{route('cart2.go')}}" method="POST">
+                    <form id="cart2" class="form cart row" action="{{route('cart2.go')}}" method="POST">
                         <div class="col-md-9 cart__content basket_wrapp">
                             @csrf
                             @if ($errors->has('token_error'))

@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-md-2">
-                <div class="catalog ">
+                <div class="catalog d-none d-md-block">
                     <div class="title catalog__title">
                         <a href="/catalog/" class="cat_h">
                             Каталог
@@ -133,7 +133,7 @@
                                     <div class="form-check ">
                                         <input class="form-check-input" type="checkbox" name="filter_color[]" value="{{$color_one}}" id="CheckColor{{$id}}" @if(isset( $_GET['filter_color'])) @if(in_array($color_one, $_GET['filter_color'])) checked @endif @endif>
                                         <label class="form-check-label" for="CheckColor{{$id}}">
-                                            {{ $id}}
+                                            <img src="{{$color_one}}" width="15px" height="15px" class="mr-1">{{ $id}}
                                         </label>
                                     </div>
                                 @endforeach
@@ -235,10 +235,48 @@
                         </ul><!-- /.flat-pagination -->
                     </div><!-- /.blog-pagination -->
                 </div>
+                @if($count<5)
+                <h6 class="text-center mb-5">Товаров бренда "{{$brand_one->name_brand}}" не найдено</h6>
+                <h4 class="font-weight-light mt-5">Товары других брендов</h4>
+                <div class="row content__cards content__gap">
+
+                    @foreach ($related_products as $product)
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card card--hover" >
+                                <div class="card-body">
+                                    <div class="" >
+                                        <a href="javascript:void(0)" class="wish_item" data-id="2291907"></a>
+                                        @if($product->sale==1)<div class="discounts">SALE</div>@endif
+                                        <a class="link card__image" href="/catalog/{{$product->path}}/{{$product->slug}}.html">
+                                            <img class="img lazy loaded" alt=""  src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" data-was-processed="true">
+                                        </a>
+                                        <div class="card__description">
+                                            <a class="detail_c_desc" href="/catalog/{{$product->path}}/{{$product->slug}}.html">
+                                                <div class="card__name">{{$product->name}}</div>
+                                            </a>
+
+                                            <div class="card__type">{{$product->title}}</div>
+
+
+                                            <div class="card__price">
+                                                <s>0 руб.</s><i>{{$product->price}} руб.</i>
+                                            </div>
+                                            <div class="card__action card__hover">
+                                                <a href="/catalog/{{$product->path}}/{{$product->slug}}.html" class="button button--default button--bright card__button">
+                                                    <span class="button__text">Перейти</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
 
 
 
-
+                </div>
+                @endif
 
 
                 <blockquote class="short">

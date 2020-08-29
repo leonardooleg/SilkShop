@@ -13,6 +13,50 @@ $(document).ready(function(){
         console.log('clear');
     });
 
+/*Мобильное боковое меню*/
+    $( ".menu_Mob.menu_1 select" )
+        .change(function () {
+            var str;
+            str =$(this).find('option:selected').attr("class");
+            str = $.trim(str);
+            $( '.menu_2 select').css("display","none");
+            $( '.menu_3 select').css("display","none");
+            $( '.menu_2 .'+str ).css("display","block");
+        });
+    $( ".menu_Mob.menu_2 select" )
+        .change(function () {
+            var str;
+            str =$(this).find('option:selected').attr("class");
+            str = $.trim(str);
+            $( '.menu_3 select').css("display","none");
+            if(str){
+                $( '.menu_3 .'+str ).css("display","block");
+            }
+        })
+        .change();
+    $( ".menu_go" ).click(function() {
+        var link;
+        console.log('click');
+        link = $( '.menu_Mob select[style*="display: block"] option:selected').last().attr("link");
+        window.location = link;
+        console.log(link);
+    });
+    function menu_function(){
+        var str;
+        str =$('.menu_1').find('option:selected').attr("class");
+        str = $.trim(str);
+        var str2;
+        str2 =$('.'+str).find('option:selected').attr("class");
+        str2 = $.trim(str2);
+        $( '.menu_2 select').css("display","none");
+        $( '.menu_3 select').css("display","none");
+        $( '.menu_2 .'+str ).css("display","block");
+        if(str2){
+            $( '.menu_3 .'+str2 ).css("display","block");
+        }
+    }
+    menu_function();
+/*Мобильное боковое меню*/
 
 });
 /*Стрелка вверх*/

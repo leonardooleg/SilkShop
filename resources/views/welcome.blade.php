@@ -30,57 +30,93 @@
 
 
 
-ТОВАР
-
-
-    <!-- Latest 2-->
+{{--<div id="app">--}}
+<div>
     <div class="section">
         <div class="page__layout">
             <h2 class="title--up title--center title--lemon title--size-xl section__title  text-center">
-                <a style="text-decoration: none; color: #000;" href="/blog">Блог</a>
+                <a style="text-decoration: none; color: #000;" href="/catalog">Каталог</a>
             </h2>
-            <div class="slider slider-1 slider_4">
-
-                <div class="container">
-                    <div class="row as">
-                        @if (isset($blogs))
-                            @foreach ($blogs as $blog)
-                                <div class="">
-                                    <div class="strat ">
-                                        <div class="image ">
-                                           <img class="img  latest__img loading" src="/storage/{{$blog->img}}" alt=""  data-was-processed="true">
+            <div class="row content__cards content__gap">
+            @foreach ($products as $product)
+                <div class="col-sm-3">
+                    <div class="card card--hover" >
+                        <div class="card-body">
+                            <div class="" >
+                                <a href="javascript:void(0)" class="wish_item" data-id="2291907"></a>
+                                @if($product->sale==1)<div class="discounts">SALE</div>@endif
+                                <a class="link card__image" href="/catalog/{{$product->path}}/{{$product->slug}}.html">
+                                    <img class="img lazy loaded" alt=""  src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" data-was-processed="true">
+                                </a>
+                                <div class="card__description">
+                                    <a class="link detail_c_desc" href="/catalog/{{$product->path}}/{{$product->slug}}.html">
+                                        <div class="card__name">БРЕНД: {{$product->name_brand}}</div>
+                                        <div class="card__name">
+                                            ЦВЕТА:
+                                            @foreach(array_unique(explode(',',$product->img_colors)) as $color)
+                                                <img src="{{$color}}" height="10px">
+                                            @endforeach
                                         </div>
-                                        <div class="text text-center">
-                                            <div class="latest__cost latest__cost2">
-
-                                                <a href="/blog/{{$blog->url}}.html" style="text-decoration: none; color: #000;" tabindex="0">
-                                                    {{$blog->title}}
-                                                </a>
-                                                <div class="card__type" style="margin-top: 0">{{ Illuminate\Support\Str::limit(strip_tags($blog->text), 100) }}</div>
-                                            </div>
-                                            <a href="/blog/{{$blog->url}}.html" class="btn  btn__slider3"  role="button"><span class="btn__slider3_text">Подробнее</span></a>
-
+                                        <div class="card__name">
+                                            размеры в наличии:<br>
+                                            @foreach(array_unique(explode(',',$product->brand_name_sizes)) as $size)
+                                                <b style="padding-right: 5px">{{$size}}</b>
+                                            @endforeach
                                         </div>
+                                    </a>
+                                    <div class="card__type">{{$product->title}}</div>
+                                    <div class="card__price">
+                                        <s>0 руб.</s><i>{{$product->price}} руб.</i>
+                                    </div>
+                                    <div class="card__action card__hover">
+                                        <a href="/catalog/{{$product->path}}/{{$product->slug}}.html" class="button button--default button--bright card__button" data-id="2291907">
+                                            <span class="button__text">Перейти</span>
+                                        </a>
                                     </div>
                                 </div>
-                            @endforeach
-                        @endif
-
+                            </div>
+                        </div>
                     </div>
-                    {{--<a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>--}}
                 </div>
-
+            @endforeach
             </div>
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
+                    <a href="/catalog" role="button" class="btn  btn__slider3 text-center" tabindex="0"><span class="btn__slider3_text">Больше товаров</span></a>
 
+                </div>
         </div>
     </div>
+    <!-- Latest 2-->
+      <div class="section">
+          <div class="page__layout">
+              <h2 class="title--up title--center title--lemon title--size-xl section__title  text-center">
+                  <a style="text-decoration: none; color: #000;" href="/blog">Блог</a>
+              </h2>
+              <div class="slider slider-1 slider_4">
+
+                  <div class="container">
+
+                          @if (isset($blogs))
+                              <v-slick :blogs="{{ $blogs }}"></v-slick>
+                          @endif
+
+
+
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+
+
+</div>
+</div>
+
+
+
+
 
 
 

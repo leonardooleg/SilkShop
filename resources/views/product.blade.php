@@ -23,26 +23,25 @@
 
 
         <div  itemscope="" itemtype="http://schema.org/Product" class="row product content__product">
-            <div class="col-md-5 product__photo">
+           {{-- <div id="app" class="col-md-5 product__photo">--}}
+            <div  class="col-md-5 product__photo">
 
                 <div class="b-slider b-slider--horizontal-tm-1 js-slider-horizontal-tm-1">
-                    <div class="b-slider__carousel b-slider__carousel--screen ">
-                        @foreach(explode(';', $product->media) as $media)
-                        <div class="b-slider__item  ex1"><img src="{{$media}}" alt=""/></div>
-                        @endforeach
-                    </div>
-                    <div class="b-slider__carousel b-slider__carousel--thumbs">
-                        @foreach(explode(';', $product->media) as $media)
-                        <div class="b-slider__item"><img src="{{$media}}" alt=""/></div>
-                        @endforeach
-                    </div>
+
+                    <product-component product="{{$product->media}}"  ></product-component>
+
+
                 </div>
 
 
 
 
-
-                <img hidden id="poster" src="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" class="fotorama__img loading" data-was-processed="true" style="">
+                <input hidden type="text" id="item_img"  value="@foreach(explode(';', $product->media) as $media){{$media}}@break @endforeach" class="fotorama__img loading" data-was-processed="true" >
+                <input hidden type="text" id="item_id"  value="{{$product->id ?? ''}}"  >
+                <input hidden type="text" id="item_name"  value="{{$product->name ?? ''}}"  >
+                <input hidden type="text" id="item_price"  value="{{$product->price ?? ''}}"  >
+                <input hidden type="text" id="item_vendor_code"  value="{{$product->vendor_code ?? ''}}"  >
+                <input type="hidden" id="checked_attr" value=""  name="item_checked_attr"  >
 
                 <div class="wrap_product__details">
                     <div class="product__details">
@@ -121,7 +120,8 @@
 
             </div>
 
-            <div  id="app" class="col-md-7 product__description">
+           {{-- <div id="cart2" class="col-md-7 product__description">--}}
+            <div  class="col-md-7 product__description">
 
                 <h1 class="title title--size-s title--light" itemprop="name">{{$product->name}}</h1>
                 <meta itemprop="category" content="{{$product->name}}">
@@ -132,6 +132,7 @@
                     {{$product->price}} руб.        </div>
 
                 <link itemprop="availability" href="http://schema.org/InStock">
+
                 <!--обертка нового блока-->
                 <div class="row flex-wr-pr">
                     <div class="col-md-6 product__fields" idel="2324387">
@@ -256,7 +257,7 @@
 
 
 
-                        <input type="hidden" id="checked_attr" value=""   v-model="item.checked_attr" name="checked_attr" >
+
 
 
 
@@ -354,38 +355,9 @@
                 <div class="slider slider-p ">
                     <div class="">
                         <div class="row proda">
-                            @foreach ($similar_p as $p)
-                            <div class="">
-                                <div class="strat">
-                                    <a href="/catalog/{{$p->path}}/{{$p->slug}}.html">
-                                        <div class="image">
-                                            <img class="img latest__img loading" src="@foreach(explode(';', $p->media) as $media){{$media}}@break @endforeach" alt=""  data-was-processed="true">
-                                        </div>
-                                    </a>
-                                    <div class="text text-center">
-                                        <div class="card__description">
-                                            <div class="card__name">@if(iconv_strlen($p->name)>51){{mb_strimwidth($p->name, 0, 50, "...")}} @else {{$p->name}}@endif</div>
-                                            <div class="card__type">{{$p->title}}</div>
-                                            <div class="card__price"><b>{{$p->price}} руб.</b></div>
-                                            <div class="card__action">
-                                                <a href="/catalog/{{$p->path}}/{{$p->slug}}.html" class="btn btn-outline-dark" data-id="2291907" tabindex="0"> Подробнее </a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
+                            <recommended-component :product_rec="{{ $similar_p }}" ></recommended-component>
 
                         </div>
-                       {{-- <a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>--}}
                     </div>
                 </div>
             </div>
@@ -400,38 +372,8 @@
                     <div class="slider slider-p ">
                         <div class="">
                             <div class="row proda">
-                                @foreach ($last_p as $p)
-                                    <div class="">
-                                        <div class="strat">
-                                            <a href="/catalog/{{$p->path}}/{{$p->slug}}.html">
-                                                <div class="image">
-                                                    <img class="img latest__img loading" src="@foreach(explode(';', $p->media) as $media){{$media}}@break @endforeach" alt=""  data-was-processed="true">
-                                                </div>
-                                            </a>
-                                            <div class="text text-center">
-                                                <div class="card__description">
-                                                    <div class="card__name">@if(iconv_strlen($p->name)>51){{mb_strimwidth($p->name, 0, 50, "...")}} @else {{$p->name}}@endif</div>
-                                                    <div class="card__type">{{$p->title}}</div>
-                                                    <div class="card__price"><b>{{$p->price}} руб.</b></div>
-                                                    <div class="card__action">
-                                                        <a href="/catalog/{{$p->path}}/{{$p->slug}}.html" class="btn btn-outline-dark" data-id="2291907" tabindex="0"> Подробнее </a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
+                                <recommended-component :product_rec="{{ $last_p }}" ></recommended-component>
                             </div>
-                            {{--<a class="carousel-control-prev slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next slick__arrow  slick-arrow" href="#carouselExampleCaptions" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>--}}
                         </div>
                     </div>
                 </div>

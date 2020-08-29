@@ -1,24 +1,4 @@
 $(document).ready(function() {
-      $('.customer-logos').slick({
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 15000,
-        arrows: false,
-        dots: false,
-        pauseOnHover: false,
-        responsive: [{
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 4
-            }
-        }, {
-            breakpoint: 520,
-            settings: {
-                slidesToShow: 3
-            }
-        }]
-    });
 
     (function () {
         var $sl = $(".b-slider");
@@ -32,8 +12,8 @@ $(document).ready(function() {
                 if ($sl.is(".js-slider-horizontal-tm-1")) {
                     $slFor.slick({
                         asNavFor: $slNav.length ? $slNav : false,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+                        slidesToShow: 7,
+                        slidesToScroll: 5,
                         arrows: true,
                         adaptiveHeight: true,
                         prevArrow: '<i class="fas fa-arrow-alt-circle-left"></i>',
@@ -83,7 +63,7 @@ $(document).ready(function() {
 
     // ZOOM
     $('.ex1').zoom();
-
+/*
     $('.as').slick({
         dots: true,
         infinite: true,
@@ -164,5 +144,5 @@ $(document).ready(function() {
                 }
             }
         ]
-    });
+    });*/
 });

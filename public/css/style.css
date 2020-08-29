@@ -327,7 +327,7 @@ li.nav-item {
 
     #menu1 ul li a {
         display: block;
-        padding: 9px 45px 0px 45px;
+        /*padding: 9px 45px 0px 45px;*/
         font-size: 15px;
         line-height: 1.3em;
         text-decoration: none;
@@ -883,10 +883,10 @@ a.btn__slider3 {
     height: 370px;
 }
 .slick-prev {
-    left: -50px;
+    left: -40px;
 }
 .slick-next {
-    right: -30px;
+    right: -10px;
 }
  .latest__img {
     margin: 0 auto;
@@ -946,6 +946,7 @@ a.btn__slider3 {
 /*Страница товара*/
 
 /*Сладер товара*/
+
 .b-slider .b-slider__item {
     position: relative;
     vertical-align: middle;
@@ -1032,11 +1033,11 @@ a.btn__slider3 {
 .b-slider--horizontal-tm-1 .b-slider__carousel--screen .slick-arrow.slick-arrow:hover {
     opacity: 1;
 }
-.b-slider--horizontal-tm-1 .b-slider__carousel--thumbs {
+/*.b-slider--horizontal-tm-1 .b-slider__carousel--thumbs {
     overflow: hidden;
     margin-top: 10px;
     padding: 0 50px;
-}
+}*/
 .b-slider--horizontal-tm-1 .b-slider__carousel--thumbs .b-slider__item {
     position: relative;
 }
@@ -1910,6 +1911,11 @@ img.fotorama__img.loading {
     display: inline-block;
     margin-bottom: 4px;
 }
+
+.card_list {
+    display: inline-block;
+    margin-right: 10px;
+}
 /*Слайдер похожие*/
 /****Продукт*****/
 
@@ -2012,6 +2018,42 @@ img.fotorama__img.loading {
     font-size: 1.1rem;
 }
 
+
+/*Боковое меню (мобильное)*/
+.modal.show .modal-dialog {
+    height: 100%;
+}
+.modal-content {
+    height: 100%;
+}
+.menu_Mob .form-control{
+    display: none;
+}
+.menu_Mob.menu_1 .form-control{
+    display: block;
+}
+.menu_mobile{
+    background-color: rgb(253 148 180 / 92%);
+}
+.menu_mobile li{
+    font-size: 12px;
+}
+.menu_mobile svg{
+    display: list-item;
+    text-align: center;
+    margin: 0 auto;
+}
+span.cart_count {
+    position: absolute;
+    margin: -30px 0 0 0;
+    background-color: #ff00009e;
+    padding: 3px;
+    border-radius: 25px;
+}
+.menu_mobile .mob-nav a:hover {
+    color: #000000;
+}
+/*Боковое меню (мобильное)*/
 
 /*Фильтр*/
 .filter__title {
@@ -2409,6 +2451,22 @@ a.btn.btn-outline-dark.filter__button:hover {
 .button--bright:hover {
     background-color: #191919;
 }
+/*смотрите также*/
+.description_section {
+    width: 100%;
+    float: left;
+    margin: 30px 0;
+}
+.description_section_href {
+    column-width: 200px;
+}
+.description_section_href a, .description_section_href b {
+    width: 100%;
+    float: left;
+    text-decoration: none;
+}
+
+/*смотрите также*/
 
 /****Категория****/
 
