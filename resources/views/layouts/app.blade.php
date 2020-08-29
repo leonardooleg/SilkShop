@@ -52,6 +52,7 @@
 
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/zoomOnHover.css') }}" rel="stylesheet">
     @if(preg_match('!cart!', $_SERVER['REQUEST_URI']))  <link href="{{ asset('css/delivery.css') }}" rel="stylesheet">  @endif
 
     @if(preg_match('!profile!', $_SERVER['REQUEST_URI']))  <link href="{{ asset('css/profile.css') }}" rel="stylesheet">    @endif
@@ -424,7 +425,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <script src="/js/site.js" type="text/javascript"></script>
-    <script src="/js/jquery.zoom.min.js" type="text/javascript"></script>
+    <script src="/js/zoomOnHover.js" type="text/javascript"></script>
+
+
+
 
    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" type="text/javascript"></script>--}}
     {{--<script src="/js/carousel.js" type="text/javascript"></script>--}}

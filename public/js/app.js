@@ -1965,14 +1965,14 @@ __webpack_require__.r(__webpack_exports__);
         responsive: [{
           breakpoint: 991,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 3,
+            slidesToScroll: 3
           }
         }, {
           breakpoint: 700,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 2,
+            slidesToScroll: 2
           }
         }, {
           breakpoint: 480,
@@ -2111,11 +2111,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product'],
   components: {
-    Slick: vue_slick__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Slick: vue_slick__WEBPACK_IMPORTED_MODULE_0__["default"],
+    zoomOnHover: zoomOnHover
   },
   data: function data() {
     return {
@@ -38210,9 +38212,17 @@ var render = function() {
               staticClass: "b-slider__carousel b-slider__carousel--screen "
             },
             [
-              _c("div", { staticClass: "b-slider__item  ex1" }, [
-                _c("img", { attrs: { src: media, alt: "" } })
-              ])
+              _c(
+                "div",
+                { staticClass: "b-slider__item  ex1" },
+                [
+                  _c("zoom-on-hover", {
+                    attrs: { "img-normal": media, "img-zoom": media, scale: 2 },
+                    on: { loaded: _vm.onload, resized: _vm.onresize }
+                  })
+                ],
+                1
+              )
             ]
           )
         }),
@@ -38234,7 +38244,7 @@ var render = function() {
               staticClass: "b-slider__carousel b-slider__carousel--thumbs "
             },
             [
-              _c("div", { staticClass: "b-slider__item  ex1" }, [
+              _c("div", { staticClass: "b-slider__item  " }, [
                 _c("img", { attrs: { src: media, alt: "" } })
               ])
             ]
@@ -55721,18 +55731,16 @@ var app = new Vue({
         elem[i].onclick = function (i) {
           return function () {
             //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
-            color = this.value;
-            console.log('col' + color);
-            document.getElementById('color' + color).setAttribute('checked', 'checked');
-            console.log(color + "-color"); //цвет
+            color = this.value; //console.log('col'+color);
+
+            document.getElementById('color' + color).setAttribute('checked', 'checked'); //console.log(color+"-color");                 //цвет
 
             document.getElementById('attr-name').innerHTML = this.title;
             var x = document.getElementsByName("size");
             var a;
 
             for (a = 0; a < x.length; a++) {
-              var tablesize = x[a].value;
-              console.log(tablesize + "-size"); //розмер
+              var tablesize = x[a].value; //console.log(tablesize+"-size");         //розмер
 
               var tempLsize = document.getElementById('lSize' + tablesize);
               var tempsize = document.getElementById('size' + tablesize);
@@ -55765,8 +55773,7 @@ var app = new Vue({
               if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
                 document.getElementById('checked_attr').value = attr_all[d].id;
                 Vue.set(app.item, 'checked_attr', attr_all[d].id); /////////
-
-                console.log(attr_all[d].id);
+                //console.log(attr_all[d].id);
               }
             }
           };

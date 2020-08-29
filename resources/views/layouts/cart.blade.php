@@ -50,13 +50,12 @@
 
         <!-- Return to Top -->
         <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
-
+            <script src="{{ asset('js/app.js') }}" defer></script>
             <script src="https://unpkg.com/vue"></script>
             <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
-        <script src="/js/jquery-3.4.1.slim.min.js"  type="text/javascript" ></script>
-        <script src="/js/bootstrap.bundle.min.js"  type="text/javascript"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js" type="text/javascript"></script>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
             @include('layouts.footerCart')
 
     </div>

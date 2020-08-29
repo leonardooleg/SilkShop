@@ -43,7 +43,7 @@
                 <input hidden type="text" id="item_vendor_code"  value="{{$product->vendor_code ?? ''}}"  >
                 <input type="hidden" id="checked_attr" value=""  name="item_checked_attr"  >
 
-                <div class="wrap_product__details">
+                <div class="wrap_product__details pb-4">
                     <div class="product__details">
                         <div class="title">Поделиться:</div>
                         <div class="likely">
@@ -135,7 +135,7 @@
 
                 <!--обертка нового блока-->
                 <div class="row flex-wr-pr">
-                    <div class="col-md-6 product__fields" idel="2324387">
+                    <div class="col-md-8 product__fields" >
                         <div class="product__field wrap_color_select">
                             <div class="color j-color-name-container">
                                 Цвет:

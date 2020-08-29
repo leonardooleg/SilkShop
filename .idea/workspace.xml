@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b04cdebb-6e99-41e7-9065-1ca8ca746ca0" name="Default Changelist" comment="" />
+    <list default="true" id="b04cdebb-6e99-41e7-9065-1ca8ca746ca0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/zoomOnHover.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/zoomOnHover.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/jquery.zoom.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/RecommendedProductComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/RecommendedProductComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SlickProductComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SlickProductComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,23 +100,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Http\Controllers" />
-      <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Http\Controllers\panel" />
-      <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Models" />
-      <recent name="C:\OSPanel\domains\leonardooleg.tech\app" />
-      <recent name="C:\OSPanel\domains\leonardooleg.tech\resources\views\admin\partials" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\OSPanel\domains\leonardooleg.tech\resources\js\components" />
       <recent name="C:\OSPanel\domains\leonardooleg.tech\resources\js" />
       <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Http\Controllers\Admin\API" />
       <recent name="C:\OSPanel\domains\leonardooleg.tech\resources\views\admin" />
       <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Http\Controllers" />
+      <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Http\Controllers\panel" />
+      <recent name="C:\OSPanel\domains\leonardooleg.tech\app\Models" />
+      <recent name="C:\OSPanel\domains\leonardooleg.tech\app" />
+      <recent name="C:\OSPanel\domains\leonardooleg.tech\resources\views\admin\partials" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -289,7 +303,7 @@
       <workItem from="1598522794130" duration="11128000" />
       <workItem from="1598561768115" duration="3464000" />
       <workItem from="1598612921832" duration="30093000" />
-      <workItem from="1598719711369" duration="5845000" />
+      <workItem from="1598719711369" duration="13448000" />
     </task>
     <task id="LOCAL-00001" summary="початок">
       <created>1584458567500</created>
@@ -375,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598726281321</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="+мобільне меню&#10;+все на vue (слайдери , корзина на вує)&#10;+ рекомендовані бренди">
+      <created>1598726450584</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1598726450584</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +427,8 @@
     <MESSAGE value="адмінка/додавання атрибутів ajax" />
     <MESSAGE value="зробив шапку/починаю головну додавати товари" />
     <MESSAGE value="+мобільне меню&#10;+все на vue (слайдери , корзина на вує)" />
-    <option name="LAST_COMMIT_MESSAGE" value="+мобільне меню&#10;+все на vue (слайдери , корзина на вує)" />
+    <MESSAGE value="+мобільне меню&#10;+все на vue (слайдери , корзина на вує)&#10;+ рекомендовані бренди" />
+    <option name="LAST_COMMIT_MESSAGE" value="+мобільне меню&#10;+все на vue (слайдери , корзина на вує)&#10;+ рекомендовані бренди" />
   </component>
   <component name="WindowStateProjectService">
     <state x="518" y="180" key="#Plugins" timestamp="1597253365220">
@@ -425,10 +447,10 @@
     <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1852.1080@0.0.1852.1080" timestamp="1597168529630" />
     <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1853.1080@0.0.1853.1080" timestamp="1593208033729" />
     <state x="659" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591466645767" />
-    <state x="549" y="23" key="CommitChangelistDialog2" timestamp="1598726279180">
+    <state x="549" y="23" key="CommitChangelistDialog2" timestamp="1598726449298">
       <screen x="0" y="0" width="1850" height="1080" />
     </state>
-    <state x="549" y="23" key="CommitChangelistDialog2/0.0.1850.1080@0.0.1850.1080" timestamp="1598726279180" />
+    <state x="549" y="23" key="CommitChangelistDialog2/0.0.1850.1080@0.0.1850.1080" timestamp="1598726449298" />
     <state x="550" y="23" key="CommitChangelistDialog2/0.0.1852.1080@0.0.1852.1080" timestamp="1597526219727" />
     <state x="552" y="23" key="CommitChangelistDialog2/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1591560050600" />
     <state x="756" y="254" key="FileChooserDialogImpl" timestamp="1598184676999">
@@ -565,22 +587,23 @@
       <screen x="0" y="0" width="1850" height="1080" />
     </state>
     <state x="755" y="327" key="PhpDebugProjectChooserDialog/0.0.1850.1080@0.0.1850.1080" timestamp="1598553850226" />
-    <state x="429" y="182" key="SettingsEditor" timestamp="1597261582603">
-      <screen x="0" y="0" width="1852" height="1080" />
+    <state x="429" y="182" key="SettingsEditor" timestamp="1598726477579">
+      <screen x="0" y="0" width="1850" height="1080" />
     </state>
+    <state x="429" y="182" key="SettingsEditor/0.0.1850.1080@0.0.1850.1080" timestamp="1598726477579" />
     <state x="429" y="182" key="SettingsEditor/0.0.1852.1080@0.0.1852.1080" timestamp="1597261582603" />
     <state x="430" y="182" key="SettingsEditor/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1591469907264" />
     <state x="430" y="182" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1591366477709" />
-    <state x="518" y="268" key="Vcs.Push.Dialog.v2" timestamp="1598726287494">
+    <state x="518" y="268" key="Vcs.Push.Dialog.v2" timestamp="1598726452687">
       <screen x="0" y="0" width="1850" height="1080" />
     </state>
-    <state x="518" y="268" key="Vcs.Push.Dialog.v2/0.0.1850.1080@0.0.1850.1080" timestamp="1598726287494" />
+    <state x="518" y="268" key="Vcs.Push.Dialog.v2/0.0.1850.1080@0.0.1850.1080" timestamp="1598726452687" />
     <state x="519" y="268" key="Vcs.Push.Dialog.v2/0.0.1852.1080@0.0.1852.1080" timestamp="1597526222618" />
     <state x="521" y="268" key="Vcs.Push.Dialog.v2/0.0.1858.1080/-1858.0.1218.720@0.0.1858.1080" timestamp="1591560083867" />
-    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598725773843">
+    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598735643904">
       <screen x="0" y="0" width="1850" height="1080" />
     </state>
-    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1850.1080@0.0.1850.1080" timestamp="1598725773843" />
+    <state x="92" y="92" width="1674" height="896" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1850.1080@0.0.1850.1080" timestamp="1598735643904" />
     <state x="634" y="259" width="1049" height="648" key="find.popup" timestamp="1598654468763">
       <screen x="0" y="0" width="1850" height="1080" />
     </state>

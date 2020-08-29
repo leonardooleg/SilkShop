@@ -26,7 +26,7 @@
             <div class="container page__layout">
 
 
-                <form id="cart2" class="form cart row" action="{{route('cart2.add')}}" method="POST">
+                <form id="app" class="form cart row" action="{{route('cart2.add')}}" method="POST">
                     <div class="col-md-9  basket_wrapp">
                         @csrf
 

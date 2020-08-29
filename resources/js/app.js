@@ -224,15 +224,15 @@ const app = new Vue({
                     return function(){
                         //  let someTextiles = attr_all.filter(item => item.attr_all_color == this.value);
                         color= this.value;
-                        console.log('col'+color);
+                        //console.log('col'+color);
                         document.getElementById('color'+color).setAttribute('checked', 'checked');
-                        console.log(color+"-color");                 //цвет
+                        //console.log(color+"-color");                 //цвет
                         document.getElementById('attr-name').innerHTML = this.title;
                         var x = document.getElementsByName("size");
                         var a;
                         for (a = 0; a < x.length; a++) {
                             var tablesize= x[a].value;
-                            console.log(tablesize+"-size");         //розмер
+                            //console.log(tablesize+"-size");         //розмер
                             var tempLsize = document.getElementById('lSize'+tablesize);
                             var tempsize = document.getElementById('size'+tablesize);
                             tempLsize.classList.add("disabled_size");
@@ -260,7 +260,7 @@ const app = new Vue({
                             if (attr_all[d].size_id == sizes && attr_all[d].color_id == color) {
                                 document.getElementById('checked_attr').value=attr_all[d].id;
                                 Vue.set(app.item, 'checked_attr', attr_all[d].id); /////////
-                                console.log(attr_all[d].id);
+                                //console.log(attr_all[d].id);
                             }
                         }
                     };

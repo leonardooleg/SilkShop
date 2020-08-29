@@ -5,12 +5,11 @@
             :options="topSliderOptions"
             @beforeChange="syncSliders">
             <div v-for="(media, index) in product.split(';')" :key="index" class="b-slider__carousel b-slider__carousel--screen ">
+                <div class="b-slider__item  ex1">
+                    <zoom-on-hover :img-normal="media" :img-zoom="media" :scale="2"  @loaded="onload" @resized="onresize"></zoom-on-hover>
 
-                <div class="b-slider__item  ex1"><img :src="media" alt=""/></div>
-
+                </div>
             </div>
-
-
         </slick>
         <slick id="slick2"
             ref="featureList"
@@ -18,20 +17,22 @@
             @beforeChange="syncSliders" >
             <div v-for="(media, index) in product.split(';')" :key="index" class="b-slider__carousel b-slider__carousel--thumbs ">
 
-                <div class="b-slider__item  ex1"><img :src="media" alt=""/></div>
+                <div class="b-slider__item  "><img :src="media" alt=""/></div>
 
             </div>
 
 
             </slick>
+
     </div>
+
 </template>
 <script>
-
 import Slick from 'vue-slick';
+
 export default {
     props: ['product'],
-    components: { Slick },
+    components: { Slick, zoomOnHover: zoomOnHover },
     data() {
         return {
             topSliderOptions: {
@@ -57,7 +58,7 @@ export default {
                 adaptiveHeight: true,
                 arrows: false,
 
-            }
+            },
         }
     },
     methods: {
