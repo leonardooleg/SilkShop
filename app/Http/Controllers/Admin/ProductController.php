@@ -16,7 +16,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use SimpleXLSX;
 
@@ -209,20 +209,28 @@ class ProductController extends Controller
      * @param Request $request
      * @return Response
      */
+
     public function import_store(Request $request){
         $import_file = $request->file('import_file'); //при завантажені файлів
+        /*Для статуса*/
+        $status_api='uploads/import/go_status.txt';
 
+        Storage::disk('public')->put($status_api,  '0;0;начало');
 
+        /*Для статуса*/
         if ($import_file) {
-            $data = "storage/". $import_file->store('uploads/import', 'public');
+            $data = "storage/". $import_file->store('uploads/import', 'public'); ///потім видаляти файли потрібно
             if ( $xlsx = SimpleXLSX::parse($data) ) {
                 $arrs= $xlsx->rows() ; //отримали дані в масиві з exel
+                $all_rows = count($arrs);
                 $i=0;
                 foreach ($arrs as $arr){
+                   // continue;
                     if($i==0){
                         $i++;
                         continue;
                     }
+                    //sleep(5);
                     $i++;
                     if(isset($code) && $code==$arr[13]) {
                         $product->count= $product->count +1;
@@ -232,6 +240,8 @@ class ProductController extends Controller
                         $code=$arr[13];
                         if(isset($code) && $code==$arr[13] &&isset($product)) {
                             $product->save();
+                            Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
+                            continue;
                         }
                         $product = Product::where('vendor_code','=', $code)->first();
                         if($product){
@@ -292,7 +302,8 @@ class ProductController extends Controller
                                 $site_category = CategoryImport::where('import_name', '=', $arr[2])->first();
                                 if(isset($site_category))$site_category=$site_category->category_id;
                                 if(!$site_category){
-                                    $categories_parent = Category::where('title','=', $arr[1])->first();
+                                    //створюємо самі категорії
+                                  /*  $categories_parent = Category::where('title','=', $arr[1])->first();
                                     if(!$categories_parent){
                                         $site_category_parent = CategoryImport::where('import_name', '=', $arr[1])->first();
                                         if(isset($site_category_parent))$site_category_parent=$site_category_parent->category_id;
@@ -312,7 +323,9 @@ class ProductController extends Controller
                                         }else{
                                             $categories_id=$site_category_parent;
                                         }
-                                    }
+                                    }*/
+                                    //створюємо самі категорії
+                                    $categories_id=84; //додаємо в "без категорії"
                                 }else{
                                     $categories_id=$site_category;
                                 }
@@ -323,6 +336,7 @@ class ProductController extends Controller
 
                             $product->categories()->attach($categories_id);
                             $product->save();
+                            Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
                         }
                     }
 
@@ -330,15 +344,25 @@ class ProductController extends Controller
 
                 }
             } else {
-                echo SimpleXLSX::parseError();
+               // echo SimpleXLSX::parseError();
+                return response()->json([
+                    'message'   => SimpleXLSX::parseError(),
+                    'class_name'  => 'alert-danger'
+                ]);
             }
         }
+        sleep(2);
+        Storage::disk('public')->put($status_api,  $all_rows.';9999999999999999;end');
 
+        return response()->json([
+            'message'   => 'Готово',
+            'class_name'  => 'alert-success'
+        ]);
 
-
-
-        return redirect()->route('admin.products.index');
 
 
     }
+
+
+
 }

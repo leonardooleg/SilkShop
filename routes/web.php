@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['per
     Route::resource('/brands', 'BrandController', ['as'=>'admin']);
     Route::resource('/sizes', 'SizeController', ['as'=>'admin']);
     Route::get('/products/import', 'ProductController@import')->name('admin.products.import');
-    Route::post('/products/import', 'ProductController@import_store')->name('admin.products.import_store');
+    Route::post('/products/import_store', 'ProductController@import_store')->name('admin.products.import_store');
     Route::resource('/products', 'ProductController', ['as'=>'admin']);
     Route::resource('/blogs', 'BlogController', ['as'=>'admin']);
     Route::resource('/pages', 'PageController', ['as'=>'admin']);

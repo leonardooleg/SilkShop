@@ -18,6 +18,7 @@
             <form class="form-horizontal" action="{{route('admin.products.update', $product)}}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 {{ csrf_field() }}
+                <button type="button" class="btn btn-link float-right"><a href="/{{$product->getUrl()}}" target="_blank"> Посмотреть на сайте</a></button>
                 @include('admin.products.partials.form')
                 <button type="submit" class="btn btn-primary float-right">Сохранить</button>
             </form>

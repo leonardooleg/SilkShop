@@ -2365,6 +2365,10 @@ a.btn.btn-outline-dark.filter__button:hover {
 .card__description .card__name {
     /*min-height: 50px;*/
 }
+.card__name img {
+    border: 1px black;
+    border-style: dashed;
+}
 .card__type {
     font-size: 0.8rem;
     color: #848484;
