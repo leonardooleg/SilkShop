@@ -40,6 +40,7 @@ class Product extends Model
     }
 
     public function attributes($product, $arr){
+        $arr_spain = json_decode(file_get_contents('spain.json'), true);
         //найти ід кольору і розміру
         $brand = Brand::where('name_brand','=', $arr[3])->first();
         if(!$brand){
@@ -51,8 +52,13 @@ class Product extends Model
 
         $color=Color::where('img_color','=', $arr[5])->first();
         if(!$color){
+            if (array_key_exists($arr[4],$arr_spain)) {
+                $name=$arr_spain[$arr[4]];
+            }else{
+                $name=$arr[4];
+            }
             $color = new Color();
-            $color->name_color = $arr[4];
+            $color->name_color = $name;
             $color->img_color = $arr[5];
             $color->brand_id = $brand_id;
             $color->save();
@@ -62,6 +68,7 @@ class Product extends Model
         if(!$size){
             $size = new Size();
             $size->brand_name_size = $arr[6];
+            $size->rus_name_size = $arr[6];
             $size->category_id = $product->categories[0]->id;
             $size->brand_id = $brand_id;
             $size->save();

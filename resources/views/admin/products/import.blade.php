@@ -71,9 +71,12 @@
                 $(".progress-bar").css("width", c_proc + "%");
                 $(".progress-bar").attr("aria-valuenow", c_now);
                 $(".progress-bar").attr("aria-valuemax", c_all);
-               // console.log('showProcess ' + c_now);
+                console.log('showProcess ' + c_now);
                 sleep(1000);
                 if(c_name==='finish' ) {
+                    $(".alert-warning").text("Импортируем: закончили" );
+                    $(".progress-bar").css("width",  "100%");
+                    $(".progress-bar").attr("aria-valuenow", c_all);
                 }else{
                     scriptOffset();
                 }

@@ -93,6 +93,8 @@ class SiteController extends Controller
    }
 
     public function products(){
+        $arr_color_list =array("бежевый", "белый", "голубой", "желтый", "зеленый", "коричневый", "красный", "оранжевый", "розовый", "серый", "синий", "фиолетовый", "черный");
+
         if(isset($_GET['path'])) {
             $category = Category::where('path', '=', $_GET['path'])->firstOrFail();
             // Get ids of descendants
@@ -106,8 +108,11 @@ class SiteController extends Controller
         else $Value2= null;
         if(isset($_GET['filter_size'])) $Value3= $_GET['filter_size'];
         else $Value3= null;
-        if(isset($_GET['filter_color'])) $Value4= $_GET['filter_color'];
-        else $Value4= null;
+        if(isset($_GET['filter_color'])){
+                $Value4= $_GET['filter_color'];
+        }else {
+            $Value4 = null;
+        }
         if(isset($_GET['sort'])){
             if($_GET['sort']=='price'){
                 $Value5='price';
@@ -141,16 +146,27 @@ class SiteController extends Controller
                 $query->whereIn('countries.id', $Value2);
             })
             ->when($Value3, function($query) use ($Value3) {
-                $query->whereIn('sizes.brand_name_size', $Value3);
-            })
-            ->when($Value4, function($query) use ($Value4) {
-                $query->whereIn('colors.img_color', $Value4);
-            })
-            ->orderBy($Value5, $Value6)
+                $query->whereIn('sizes.rus_name_size', $Value3);
+            });
+        //шукаємо потрібний колір якщо стандарний
+            if($Value4) {
+                foreach ($Value4 as $one_color){
+                    if (in_array($one_color, $arr_color_list)) {
+                        $products = $products->orWhere('colors.name_color', $one_color);
+                    }else {
+                        $products = $products->when($arr_color_list, function ($query) use ($arr_color_list) {
+                            $query->whereNotIn('colors.name_color', $arr_color_list);
+                        });
+                    }
+                }
+
+            }
+        $products =$products->orderBy($Value5, $Value6)
+            ->where('products.published', 1)
             ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
                 DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
                 DB::raw("GROUP_CONCAT(colors.img_color) as img_colors"),
-                DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes")
+                DB::raw("GROUP_CONCAT(sizes.rus_name_size) as rus_name_size")
             )
             ->groupBy('products.id','categories.path','categories.title')
             ->paginate(4);
@@ -194,25 +210,32 @@ class SiteController extends Controller
             ->select('products.*', 'categories.path', 'categories.title', 'brands.name_brand', 'countries.name_country',
                 DB::raw("GROUP_CONCAT(colors.name_color) as name_colors"),
                 DB::raw("GROUP_CONCAT(colors.img_color) as img_colors"),
-                DB::raw("GROUP_CONCAT(sizes.brand_name_size) as brand_name_sizes")
+                DB::raw("GROUP_CONCAT(sizes.rus_name_size) as rus_name_size")
             )
             ->groupBy('products.id','categories.path','categories.title')
             ->get();
-
+             $arr_color_list =array("бежевый", "белый", "голубой", "желтый", "зеленый", "коричневый", "красный", "оранжевый", "розовый", "серый", "синий", "фиолетовый", "черный");
         foreach ($products_filter as $product_f){
             $filters['brand'][$product_f->brand_id]=$product_f->name_brand;
             $filters['country'][$product_f->country_id]=$product_f->name_country;
-            foreach (explode(',', $product_f->brand_name_sizes) as $size){
+            foreach (explode(',', $product_f->rus_name_size) as $size){
                 $filters['size'][$size]=$size;
             }
             $img_color=explode(',', $product_f->img_colors);
             $i=0;
             foreach (explode(',', $product_f->name_colors) as $color){
-                $filters['color'][$color]=$img_color[$i];
+                $arr_more_color=explode('-',$color);
+                foreach ($arr_more_color as $arr_one_color ){
+                    if (in_array($arr_one_color, $arr_color_list)) {
+                        $filters['color'][$arr_one_color]=$img_color[$i];
+                    }else{
+                        $filters['color']['другие цвета']='/img/transparent-color.png';
+                    }
+                }
                 $i++;
             }
         }
-
+        $filters['color']=array_reverse( $filters['color'], true);
         if(!isset($filters)) $filters=false;
 
         if(isset($filter_country[0])){

@@ -2,14 +2,14 @@
 
 @section('content')
 <!--Слайдер-->
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+{{--<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="/image/9771185888e167bdd3f64aa73e5700ad.png" class="d-block w-100" alt="...">
         </div>
 
     </div>
-</div>
+</div>--}}
 <!--*Слайдер-->
 
 <div class="container container-my">
@@ -66,7 +66,7 @@
                                     </a>
                                     <div class="card__type">{{$product->title}}</div>
                                     <div class="card__price">
-                                        <s>0 руб.</s><i>{{$product->price}} руб.</i>
+                                        {{--<s>0 руб.</s>--}}<i>{{$product->price}} руб.</i>
                                     </div>
                                     <div class="card__action card__hover">
                                         <a href="/catalog/{{$product->path}}/{{$product->slug}}.html" class="button button--default button--bright card__button" data-id="2291907">

@@ -108,22 +108,18 @@
                                 </h5>
                                 <div class="form__fields">
 
-                                    <div class="form__field">
 
-                                        <div id="fr_dev_sum">Закажите еще на 400 рублей и получите бесплатную доставку!</div>
 
-                                    </div>
-
-                                    <div class="form__field">
+                                   {{-- <div class="form__field">
                                         <div class="form-group row">
                                             <label for="promocode" class="col-sm-4 col-form-label">Промокод</label>
                                             <div class="col-sm-8">
                                                 <input type="text" id="promocode" name="code" placeholder="Введите код" class="form-control" >
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>--}}
                                     <div class="form__field">
-                                        <div style="font-size: 16px;margin-bottom: 1rem;"><a href="/kak-poluchit-promokod/" target="_blank">Как получить промокод?</a></div>
+                                     {{--   <div style="font-size: 16px;margin-bottom: 1rem;"><a href="/kak-poluchit-promokod/" target="_blank">Как получить промокод?</a></div>--}}
                                         <button type="submit" class="btn button--default  button--bright cart__button" target="_self">
                                             <span  style="line-height: 48px;color: #fff; text-decoration: none;">Оформить заказ</span>
                                         </button>

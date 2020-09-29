@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="card__name">
                                         размеры в наличии:<br>
-                                        <div  v-for="Size in new Set(item.brand_name_sizes.split(','))" class="card_list">
+                                        <div  v-for="Size in new Set(item.rus_name_size.split(','))" class="card_list">
                                             <b style="padding-right: 5px">{{Size}}</b>
                                         </div>
 
@@ -34,7 +34,7 @@
                                 </a>
                                 <div class="card__type">{{item.name}}</div>
                                 <div class="card__price">
-                                    <s>9999 руб.</s><i>{{item.price}} руб.</i>
+                                   <!-- <s>9999 руб.</s>--><i>{{item.price}} руб.</i>
                                 </div>
                                 <div class="card__action card__hover">
                                     <a v-bind:href="'/catalog/'+item.path+'/'+item.slug+'.html'" class="button button--default button--bright card__button" >

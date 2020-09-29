@@ -193,10 +193,10 @@
                                     <div class="list__label">Доставка:</div>
                                     <div class="list__value">@{{cartShipping.type}} руб.</div>
                                 </div>
-                                <div class="list__item">
+                                {{--<div class="list__item">
                                     <div class="list__label">Скидка</div>
                                     <div class="list__value">1,050 руб.</div>
-                                </div>
+                                </div>--}}
                             </div>
                             <div class="order__summ">Итого: <span> @{{ details.total.toFixed(2) + ' руб.' }}</span>
                                 <input type="hidden" name="total_price" :value="details.total.toFixed(2)"><br>

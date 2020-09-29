@@ -138,7 +138,7 @@
                                <div class="dropdown-menu filter__box" aria-labelledby="dropdownColor">
                                    @foreach ($filters['color'] as $id=>$color_one)
                                        <div class="form-check ">
-                                           <input class="form-check-input" type="checkbox" name="filter_color[]" value="{{$color_one}}" id="CheckColor{{$id}}" @if(isset( $_GET['filter_color'])) @if(in_array($color_one, $_GET['filter_color'])) checked @endif @endif>
+                                           <input class="form-check-input" type="checkbox" name="filter_color[]" value="{{$id}}" id="CheckColor{{$id}}" @if(isset( $_GET['filter_color'])) @if(in_array($id, $_GET['filter_color'])) checked @endif @endif>
                                            <label class="form-check-label" for="CheckColor{{$id}}">
                                               <img src="{{$color_one}}" width="15px" height="15px" class="mr-1">{{ $id}}
                                            </label>
