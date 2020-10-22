@@ -6,7 +6,7 @@
  * Time: 19:34
  */
 ?>
-@extends('layouts\cart')
+@extends('layouts.cart')
 @section('title', 'Оформление заказа')
 @section('meta_keyword', 'Оформление заказа')
 @section('meta_description', 'Оформление заказа')

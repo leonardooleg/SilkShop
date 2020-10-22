@@ -21,28 +21,99 @@ class CartController extends Controller
 {
     public function index()
     {
-        $userId = (new Order)->user_guest();
+        $client = new \RetailCrm\ApiClient(
+            'https://silkandlace2.retailcrm.ru/',
+            'ctdh3KV0salK3A32t2I7TFTiSjem712B',
+            \RetailCrm\ApiClient::V5
+        );
 
-        if(request()->ajax())
-        {
-            $items = [];
-            $cartCollection = \Cart::session($userId)->getContent();
-            $cart = $cartCollection->sort();
-            $cart->each(function($item) use (&$items)
-            {
-                $items[] = $item;
-            });
-            return response(array(
-                'success' => true,
-                'data' => $items,
-                'message' => 'cart get items success'
-            ),200,[]);
+        try {
+            $response = $client->request->ordersCreate(array(
+                'firstName' => 'Oleg',
+                'lastName' => 'Фамилия',
+                'phone' => '0666666623',
+                'email' => 'leonardooleg@gmail.com',
+                'call' => 1,
+                'weight' => 50,
+                'length' => 150,
+                'width' => 150,
+                'height' => 10,
+                //'managerId' => 15,
+                'customerComment' => 'не звоните мне больше!!!!',
+                'items' => array(
+                    array(
+                        'productName' => 'Наименование товара',
+                        'initialPrice' => 3445,
+                        'quantity' => 2,
+                    ),
+                    array(
+                        'productName' => 'Наименование товара2',
+                        'initialPrice' => 56735,
+                        'quantity' => 12,
+                    )),
+
+                'delivery' => array(
+                    'code' => '1',
+                    'address' => array(
+                        'index' => '108811',
+                        'city' => 'Москва',
+                        'region' => 'Московский',
+                        'street' => 'Московская',
+                        'building' => '14',
+                        'flat' => '15',
+                        'notes' => 'улица Московская, дом 14, квартира 15, город Московский, Москва индекс 108811',
+                    ),
+
+                ),
+                'payments' => array(
+                    array(
+                        'type' => 'bank-card'
+                    )
+                )
+            ));
+        } catch (\RetailCrm\Exception\CurlException $e) {
+            echo "Connection error: " . $e->getMessage();
         }
-        else
-        {
-            return view('cart');
+
+        if ($response->isSuccessful() && 201 === $response->getStatusCode()) {
+            echo 'Order successfully created. Order ID into retailCRM = ' . $response->id;
+            // or $response['id'];
+            // or $response->getId();
+        } else {
+            echo sprintf(
+                "Error: [HTTP-code %s] %s",
+                $response->getStatusCode(),
+                $response->getErrorMsg()
+            );
+
+            // error details
+            //if (isset($response['errors'])) {
+            //    print_r($response['errors']);
+            //}
         }
-    }public function shipping()
+
+            exit;
+            ///
+            $userId = (new Order)->user_guest();
+
+            if (request()->ajax()) {
+                $items = [];
+                $cartCollection = \Cart::session($userId)->getContent();
+                $cart = $cartCollection->sort();
+                $cart->each(function ($item) use (&$items) {
+                    $items[] = $item;
+                });
+                return response(array(
+                    'success' => true,
+                    'data' => $items,
+                    'message' => 'cart get items success'
+                ), 200, []);
+            } else {
+                return view('cart');
+            }
+    }
+
+    public function shipping()
     {
         $userId = (new Order)->user_guest();
 

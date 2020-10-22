@@ -26,10 +26,39 @@ class ProfileController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
         $items =array();
+        ////////
+        $client = new \RetailCrm\ApiClient(
+            'https://silkandlace2.retailcrm.ru/',
+            'ctdh3KV0salK3A32t2I7TFTiSjem712B',
+            \RetailCrm\ApiClient::V5
+        );
+
+        try {
+            $response = $client->request->ordersGet('M-2342');
+        } catch (\RetailCrm\Exception\CurlException $e) {
+            echo "Connection error: " . $e->getMessage();
+        }
+
+        if ($response->isSuccessful()) {
+            echo $response->order['totalSumm'];
+            // or $response['order']['totalSumm'];
+            // or
+            //    $order = $response->getOrder();
+            //    $order['totalSumm'];
+        } else {
+            echo sprintf(
+                "Error: [HTTP-code %s] %s",
+                $response->getStatusCode(),
+                $response->getErrorMsg()
+            );
+
+        }
+        ///
         foreach ($orders as $order){
             $cartCollection = $order->cart_data;
             $items[] = json_decode($cartCollection, true);
         }
+
         return view('profile.index', compact('user', 'orders', 'items'));
     }
 

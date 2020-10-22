@@ -6,7 +6,7 @@
  * Time: 19:34
  */
 ?>
-@extends('layouts\cart')
+@extends('layouts.cart')
 @section('title', 'Корзина')
 @section('meta_keyword', 'Корзина')
 @section('meta_description', 'Корзина')

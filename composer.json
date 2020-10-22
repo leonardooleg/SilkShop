@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
+        "retailcrm/api-client-php": "~5.0",
         "shuchkin/simplexlsx": "^0.8.15",
         "spatie/laravel-permission": "^3.11"
     },

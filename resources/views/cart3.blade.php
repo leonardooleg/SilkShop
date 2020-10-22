@@ -6,7 +6,7 @@
  * Time: 19:34
  */
 ?>
-@extends('layouts\app')
+@extends('layouts.app')
 @section('title', 'Оформление заказа')
 @section('meta_keyword', 'Оформление заказа')
 @section('meta_description', 'Оформление заказа')
