@@ -51,32 +51,32 @@ class ProfileController extends Controller
         if ($response->isSuccessful()) {
             //echo $response->orders[0]['status'];
            foreach ($response->orders as $order_one){
-               foreach ($orders as $s_order)
-               if($s_order->id_retailcrm == $order_one["id"]){
-                   if($order_one['status']!=$s_order->status_code){
-                       foreach ($all_statuses as $one_statuses){
-                           if($order_one['status']==$one_statuses["status_code"]){
-                               $affected = DB::table('orders')
-                                   ->where('id', $s_order->id)
-                                   ->update(['status' => $one_statuses["id"]]);
-                               $i=0;
-                               foreach ($orders as $order){
-                                   if($order->id==$s_order->id){
-                                       $orders[$i]->status=$one_statuses["id"];
-                                       $orders[$i]->status_name=$one_statuses["status_name"];
-                                       $orders[$i]->status_code=$one_statuses["status_code"];
+               foreach ($orders as $s_order) {
+                   if ($s_order->id_retailcrm == $order_one["id"]) {
+                       if ($order_one['status'] != $s_order->status_code) {
+                           foreach ($all_statuses as $one_statuses) {
+                               if ($order_one['status'] == $one_statuses["status_code"]) {
+                                   $affected = DB::table('orders')
+                                       ->where('id', $s_order->id)
+                                       ->update(['status' => $one_statuses["id"]]);
+                                   $i = 0;
+                                   foreach ($orders as $order) {
+                                       if ($order->id == $s_order->id) {
+                                           $orders[$i]->status = $one_statuses["id"];
+                                           $orders[$i]->status_name = $one_statuses["status_name"];
+                                           $orders[$i]->status_code = $one_statuses["status_code"];
+                                       }
+                                       $i++;
+
                                    }
-                                   $i++;
 
                                }
-
                            }
+
                        }
-
                    }
+
                }
-
-
            }
 
         } else {
