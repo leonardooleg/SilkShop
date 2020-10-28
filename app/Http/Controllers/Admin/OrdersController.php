@@ -207,6 +207,25 @@ class OrdersController extends Controller
     {
         $order = Order::findOrFail($id);
         $input = $request->all();
+        $client = new \RetailCrm\ApiClient(
+            'https://silkandlace2.retailcrm.ru/',
+            'ctdh3KV0salK3A32t2I7TFTiSjem712B',
+            \RetailCrm\ApiClient::V5
+        );
+
+        $id_retail[]=$order->id_retailcrm;
+
+
+
+        try {
+            $response = $client->request->ordersStatuses($id_retail,array());
+        } catch (\RetailCrm\Exception\CurlException $e) {
+            echo "Connection error: " . $e->getMessage();
+        }
+
+        if ($response->isSuccessful()) {
+
+        }
         if($input['status']==2 and $order->status!=2){
             $temps= json_decode($order->cart_data);
             foreach ($temps as $temp){

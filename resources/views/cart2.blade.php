@@ -34,7 +34,7 @@
                             <h3 class="cart__title">Доставка:</h3>
                             <div class="form-group move_ddlocation">
                                 <label for="exampleInputEmail1">Выберите город доставки:</label>
-                                <input type="text" name="clientCity" class="form-control search-suggest" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                <input type="text" name="clientCity" class="form-control search-suggest" value="Городской город" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
                             </div>
 
@@ -63,7 +63,7 @@
                                 </td>
                                 <td valign="top" width="100%">
                                     <label class="dd_click" for="ID_DELIVERY_ID_51">
-                                        <b>Быстрая доставка</b><br>
+                                        <b>EMS Почта России</b><br>
                                         от 2 часов <br>						    Стоимость                                                            1,000 руб.<br>
                                         Сегодня, минимум через 2 часа, до вашей квартиры или офиса.<br>
                                     </label>
@@ -78,7 +78,7 @@
                                 </td>
                                 <td valign="top" width="100%">
                                     <label class="dd_click" for="ID_DELIVERY_ID_96">
-                                        <b>Обсудить способ доставки с менеджером</b><br>
+                                        <b>Самовывоз</b><br>
                                         от 1 до 7 дней <br>						    Стоимость                                                            0 руб.<br>
                                         Мы поможем Вам выбрать наиболее подходящий тип доставки.<br>
                                     </label>
@@ -101,38 +101,38 @@
 
                                 <div class="form-group form__field col-xs-12 col-md-6">
                                     <label for="Input1" class="form__label form__label--required">Телефон:</label>
-                                    <input class="input field form-control" id="Input1"  required data-mask="mask"  type="tel" maxlength="250" size="" value="" placeholder="Телефон" name="clientTel" required>
+                                    <input class="input field form-control" id="Input1"  required data-mask="mask"  type="tel" maxlength="250" size="" value="+106546545646" placeholder="Телефон" name="clientTel" required>
                                 </div>
 
 
                                 <div class="form-group form__field g col-xs-12 col-md-6">
                                     <label for="Input2" class="form__label form__label--required">E-mail:</label>
-                                    <input class="input field form-control" id="Input2"  required type="email" maxlength="250" size="" value="" placeholder="E-mail" name="clientEmail">
+                                    <input class="input field form-control" id="Input2"  required type="email" maxlength="250" size="" value="demo@demo.com" placeholder="E-mail" name="clientEmail">
                                 </div>
 
 
                                 <div class="form-group form__field col-xs-12 col-md-6">
                                     <label for="Input3" class="form__label form__label--required">Имя:</label>
-                                    <input class="input field form-control" id="Input3"  required type="text" maxlength="250" size="" value="" placeholder="Имя" name="clientName">
+                                    <input class="input field form-control" id="Input3"  required type="text" maxlength="250" size="" value="Великий" placeholder="Имя" name="clientName">
                                 </div>
 
 
                                 <div class="form-group form__field col-xs-12 col-md-6">
                                     <label for="Input4" class="form__label ">Адрес:</label>
-                                    <input class="input field form-control" id="Input4"  required type="text" maxlength="250" size="" value="" placeholder="Адрес" name="clientAddress">
+                                    <input class="input field form-control" id="Input4"  required type="text" maxlength="250" size="" value="улица Уличная" placeholder="Адрес" name="clientAddress">
                                 </div>
 
 
 
                                 <div class="form-group form__field col-xs-12 col-md-6">
                                     <label for="Input5" class="form__label ">Индекс:</label>
-                                    <input class="input field form-control" id="Input5"   type="text" maxlength="250" size="" value="" placeholder="Индекс" name="clientIndex">
+                                    <input class="input field form-control" id="Input5"   type="text" maxlength="250" size="" value="1234567" placeholder="Индекс" name="clientIndex">
                                 </div>
 
 
                                 <div class="form-group form__field col-xs-12 col-md-6">
                                     <label for="Input6" class="form__label">Комментарий:</label>
-                                    <textarea class="textarea field form-control" id="Input6"   name="clientComment" placeholder="Введите комментарий ..."></textarea>
+                                    <textarea class="textarea field form-control" id="Input6"   name="clientComment" placeholder="Введите комментарий ...">Комментарий к заказу не учитыва</textarea>
                                 </div>
                                 <input name="_check" type="hidden" value="{{ time() }}">
                             </div>
@@ -146,8 +146,8 @@
                             </div>
                             <div class="form__fields">
                                 <div class="form__field order__pay">
-                                        <label><input type="radio" name="type_pay" value="nal" checked="checked" class="type_pay"> <img src="/img/pay/nal_pay.png"></label>
-                                        <label><input type="radio" name="type_pay" value="cart" class="type_pay"> <img src="/img/pay/bank_pay.png"></label>
+                                        <label><input type="radio" name="type_pay" value="cash" checked="checked" class="type_pay"> <img src="/img/pay/nal_pay.png"></label>
+                                        <label><input type="radio" name="type_pay" value="bank-card" class="type_pay"> <img src="/img/pay/bank_pay.png"></label>
 
                                 </div>
                             </div>

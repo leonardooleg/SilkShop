@@ -46,6 +46,87 @@ class Cart2Controller extends Controller
             \Cart::session($userId)->clearCartConditions();
             $request=null;
             unset($_REQUEST);
+
+            /////
+            $client = new \RetailCrm\ApiClient(
+                'https://silkandlace2.retailcrm.ru/',
+                'ctdh3KV0salK3A32t2I7TFTiSjem712B',
+                \RetailCrm\ApiClient::V5
+            );
+            if($orders["clientShipping"]=="500"){
+                $shipping='russian-post';
+            }elseif ($orders["clientShipping"]=="1000"){
+                $shipping='ems';
+            }else{
+                $shipping='self-delivery';
+            }
+
+            foreach (json_decode($orders->cart_data) as $one_item){
+                $items_ctr[]=array(
+                    'productName' => $one_item->name,
+                    'initialPrice' => $one_item->price,
+                    'quantity' => $one_item->quantity,
+                    'properties' => [
+                        [
+                            'name' => 'Цвет',
+                            'value' => $one_item->attributes->color_name
+                        ],
+                        [
+                            'name' => 'Размер',
+                            'value' => $one_item->attributes->rus_name_size
+                        ],
+                    ]
+                );
+            }
+            try {
+                $response = $client->request->ordersCreate(array(
+                    'firstName' => $orders["clientName"],
+                    //'lastName' => 'Фамилия',
+                    'phone' => $orders["clientTel"],
+                    'email' => $orders["clientEmail"],
+                    'call' => 1,
+//                    'weight' => 50,
+//                    'length' => 150,
+//                    'width' => 150,
+//                    'height' => 10,
+                    //'managerId' => 15,
+                    'customerComment' => $orders["clientComment"],
+                    'items' => $items_ctr,
+                    'delivery' => array(
+                        'code' => $shipping,
+                        'address' => array(
+                            'index' => $orders["clientIndex"],
+                            'city' => $orders["clientCity"],
+                           // 'region' => $orders["clientShipping"],
+                            'street' => $orders["clientAddress"],
+                            //'building' => $orders["clientShipping"],
+                            //'flat' => $orders["clientShipping"],
+                            'notes' => $orders["clientAddress"],
+                        ),
+
+                    ),
+                    'payments' => array(
+                        array(
+                            'type' => $orders["type_pay"]
+                        )
+                    )
+                ));
+            } catch (\RetailCrm\Exception\CurlException $e) {
+                echo "Connection error: " . $e->getMessage();
+            }
+
+            if ($response->isSuccessful() && 201 === $response->getStatusCode()) {
+                echo 'Order successfully created. Order ID into retailCRM = ' . $response->id;
+                $orders->id_retailcrm =$response->id;
+                $orders->save();
+            } else {
+                echo sprintf(
+                    "Error: [HTTP-code %s] %s",
+                    $response->getStatusCode(),
+                    $response->getErrorMsg()
+                );
+            }
+            /////
             return view('cart3',[
                 'success' => true,
                 'id' => $orders->id,
