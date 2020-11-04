@@ -44,8 +44,8 @@
                             </div>
                         </div>
                         <div class="form-group mt-5">
-                            <label for="inputZip"><strong>Текст</strong></label>
-                            <textarea  rows="20" name="text" id="description" class="summernote form-control">{{$blog->text}}</textarea>
+                            <label for="description"><strong>Текст</strong></label>
+                          <textarea rows="20" name="text" id="description" class="summernote form-control">{{$blog->text}}</textarea>
                         </div>
 
                         <label for="inputZip"><strong>Заглавная картинка</strong></label>

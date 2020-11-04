@@ -45,6 +45,11 @@
 
             </div>
 
+        <div class="pagination float-right">
+
+                {{ $blogs->links() }}
+        </div>
+
 
     </div>
 

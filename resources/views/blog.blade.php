@@ -25,6 +25,10 @@
 
         {!! $blog->text !!}
 
+
+            <a href="/blog/" style="margin: 20px 0px 0px; display: inline-block;">
+                <button class="button button--default btn-dark">К списку постов</button>
+            </a>
 </div>
 
 

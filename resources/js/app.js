@@ -22,7 +22,7 @@ Vue.use(require('vue-resource'));
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('products-component', require('./components/productsComponent.vue').default);
+Vue.component('products-component', require('./components/ProductsComponent.vue').default);
 Vue.component('product-component', require('./components/SlickProductComponent.vue').default);
 Vue.component('recommended-component', require('./components/RecommendedProductComponent.vue').default);
 Vue.component('InfiniteLoading', require('vue-infinite-loading'));

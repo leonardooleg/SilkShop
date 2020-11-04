@@ -107,7 +107,7 @@
 
                                 <div class="form-group form__field g col-xs-12 col-md-6">
                                     <label for="Input2" class="form__label form__label--required">E-mail:</label>
-                                    <input class="input field form-control" id="Input2"  required type="email" maxlength="250" size="" value="demo@demo.com" placeholder="E-mail" name="clientEmail">
+                                    <input class="input field form-control" id="Input2"  required type="email" maxlength="250" size="" value="leonardooleg2@gmail.com" placeholder="E-mail" name="clientEmail">
                                 </div>
 
 
