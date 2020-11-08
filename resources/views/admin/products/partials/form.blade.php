@@ -130,19 +130,19 @@
     <div class="col-md-3">
         <label for="">Фильр размера</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="filter"  id="filterCatBrand" value="1" checked>
+            <input class="form-check-input" type="radio" name="filter"  id="filterCatBrand" value="1" >
             <label class="form-check-label" for="filterCatBrand">
                 отфильтровать по категории и бренду
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="filter"  id="filterCat" value="2">
+            <input class="form-check-input" type="radio" name="filter"  id="filterCat" value="2" >
             <label class="form-check-label" for="filterCat">
                 отфильтровать по категории
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="filter"  id="filterBrand" value="3" >
+            <input class="form-check-input" type="radio" name="filter"  id="filterBrand" value="3" checked>
             <label class="form-check-label" for="filterBrand">
                 отфильтровать по  бренду
             </label>
@@ -228,14 +228,14 @@
                         <div  class="row">
                             <div class="input-group col-md-6">
                                 <select  class="form-control select_size" onclick="loadSizes(this)" name="size_id[]" >
-                                        <option value="{{$attr->id}}">
+                                        <option value="{{$attr->size_id}}">
                                             {{$attr->brand_name_size}} --- {{$attr->rus_name_size}}(рус)
                                         </option>
                                 </select>
                             </div>
                             <div class="input-group col-md-4">
                                 <select  class="form-control select_color" onclick="loadColors(this)" name="color_id[]"  >
-                                        <option value="{{$attr->id}}"  selected >
+                                        <option value="{{$attr->color_id}}"  selected >
                                             {{$attr->name_color}}
                                         </option>
                                 </select>
@@ -311,9 +311,13 @@
                             <div class="col-md-7">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Ссылка</span>
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Загрузить картинку</span>
                                     </div>
-                                    <input type="text" class="form-control" name="media[]" value="{{$media ?? ''}}" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <div class="custom-file">
+                                        <input  type="file" class="custom-file-input" name="media[]" value="{{$media ?? ''}}" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                        <input  hidden type="text" class="custom-file-input" name="upload_media[]" value="{{$media ?? ''}}" >
+                                        <label class="custom-file-label" for="inputGroupFile01">Выбрать изображение</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -328,11 +332,14 @@
         @else
             <div class="input-group mb-3  row">
                 <div class="col-md-9">
-                    <div class="input-group ml-3 mt-3">
+                    <div class="input-group mt-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Ссылка</span>
+                            <span class="input-group-text" id="inputGroupFileAddon02">Загрузить картинку</span>
                         </div>
-                        <input type="text" class="form-control" name="media[]"  placeholder="url" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="media[]"  id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
+                            <label class="custom-file-label" for="inputGroupFile02">Выбрать изображение</label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -356,11 +363,14 @@
 <div class="clone2" hidden="">
     <div class="input-group mb-3  row">
         <div class="col-md-9">
-            <div class="input-group ml-3 mt-3">
+            <div class="input-group mt-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Ссылка</span>
+                    <span class="input-group-text" id="inputGroupFileAddon03">Загрузить картинку</span>
                 </div>
-                <input type="text" class="form-control" name="media[]"  placeholder="url" aria-label="Username" aria-describedby="basic-addon1">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="media[]"  id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                    <label class="custom-file-label" for="inputGroupFile03">Выбрать изображение</label>
+                </div>
             </div>
         </div>
         <div class="col-md-3">

@@ -12,7 +12,7 @@
 
         <hr/>
 
-        <form class="form-horizontal" action="{{route('admin.colors.store')}}" method="post">
+        <form class="form-horizontal" action="{{route('admin.colors.store')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             {{-- Form include --}}
@@ -22,15 +22,17 @@
                         <label for="inputZip">Название</label>
                         <input type="text" name="name_color" class="form-control" id="">
                     </div>
-                    <div class=" form-row">
-                        <label class=" col-md-12" for="basic-url">Цвет</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon3">ссылка</span>
-                            </div>
-                            <input type="text" name="img_color" value="{{$color->img_color ?? ''}}"class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Загрузить файл цвета</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" name="img_color"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Файл</label>
                         </div>
                     </div>
+
+
                     <div class=" form-row">
                         <label for="">Для бренда</label>
                         <select class="form-control" name="brand_id">

@@ -8,6 +8,7 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use function App\Http\Controllers\Admin;
 use DB;
 class ColorController extends Controller
@@ -58,6 +59,8 @@ class ColorController extends Controller
     public function store(Request $request)
     {
         $Colors = new Color($request->all());
+        $media= $request->file('img_color');
+        $Colors->img_color = '/storage/'.$media->store('/uploads/colors', 'public');
         $Colors->save();
         return redirect()->route('admin.colors.index');
     }
@@ -100,6 +103,13 @@ class ColorController extends Controller
     {
         $task = Color::findOrFail($id);
         $input = $request->all();
+        $media= $request->file('img_color');
+        if($media){
+            $upload=$task->img_color;
+            Storage::disk('public')->delete(str_replace('/storage', '', $upload));
+            $input['img_color'] = '/storage/' . $media->store('/uploads/colors', 'public');
+        }
+
         $task->fill($input)->save();
         return back()->with('success', 'Your Color has been added successfully. Please wait for the admin to approve.');
     }
@@ -112,6 +122,7 @@ class ColorController extends Controller
      */
     public function destroy(Color $color)
     {
+        Storage::disk('public')->delete(str_replace('/storage', '', $color->img_color));
         $color->delete();
         return redirect()->route('admin.colors.index');
 

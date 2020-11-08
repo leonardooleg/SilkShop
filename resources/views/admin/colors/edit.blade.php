@@ -27,13 +27,16 @@
                         </div>
                         <div class=" form-row">
                             <label class=" col-md-12" for="basic-url">Цвет</label>
-                            <div class="input-group">
+                            <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">ссылка</span>
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Загрузить файл цвета</span>
                                 </div>
-                                <input type="text" name="img_color" value="{{$color->img_color ?? ''}}"class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                <div class="custom-file">
+                                    <input type="file" name="img_color"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Файл</label>
+                                </div>
                                 <div class="input-group-prepend">
-                                    <img src="{{$color->img_color ?? ''}}" style="height: 40px;width: auto">
+                                    <img src="{{$color->img_color ?? ''}}" style="height: 40px;width: auto; border: 2px solid black;  margin-left: 5px;">
                                 </div>
                             </div>
                         </div>

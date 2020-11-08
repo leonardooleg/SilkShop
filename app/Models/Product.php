@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
@@ -40,7 +41,7 @@ class Product extends Model
     }
 
     public function attributes($product, $arr){
-        $arr_spain = json_decode(file_get_contents('spain.json'), true);
+        $arr_spain = json_decode(file_get_contents('Spain.json'), true);
         //найти ід кольору і розміру
         $brand = Brand::where('name_brand','=', $arr[3])->first();
         if(!$brand){
@@ -50,7 +51,8 @@ class Product extends Model
         }
         $brand_id = $brand->id;
 
-        $color=Color::where('img_color','=', $arr[5])->first();
+        $color_name=basename($arr[5]);
+        $color=Color::where('img_color', 'LIKE', "%$color_name%")->first();
         if(!$color){
             if (array_key_exists($arr[4],$arr_spain)) {
                 $name=$arr_spain[$arr[4]];
@@ -59,7 +61,11 @@ class Product extends Model
             }
             $color = new Color();
             $color->name_color = $name;
-            $color->img_color = $arr[5];
+
+            $file_full_path = 'public/uploads/colors/';
+            Storage::disk('local')->put($file_full_path  . $color_name, file_get_contents($arr[5]), 'public');
+            $color->img_color = '/storage/uploads/colors/'.$color_name;
+
             $color->brand_id = $brand_id;
             $color->save();
         }

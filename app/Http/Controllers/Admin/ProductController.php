@@ -85,7 +85,15 @@ class ProductController extends Controller
     {
         $product = new Product($request->except('color_id', 'size_id'));
         $product->user_id=Auth::id();
-        if(isset($product->media)) $product->media=implode(';', array_diff( $product->media, array('')));
+
+        $medias= $request->file('media');
+        foreach($medias as $media){
+            $upload[] = '/storage/'.$media->store('/uploads/products', 'public');
+        }
+        if ($upload){
+            $product->media=implode(';', array_diff( $upload, array('')));
+        }
+
         $product->save();
 
         $sizes=array_diff( $request['size_id'], array(''));
@@ -144,7 +152,7 @@ class ProductController extends Controller
             ->where('product_id', '=', $id)
             ->join('sizes', 'sizes.id', '=', 'attributeables.size_id')
             ->join('colors', 'colors.id', '=', 'attributeables.color_id')
-            ->select('attributeables.id','attributeables.size_id', 'attributeables.color_id', 'sizes.rus_name_size', 'sizes.brand_name_size', 'colors.name_color')
+            ->select('attributeables.id','attributeables.size_id', 'attributeables.color_id', 'sizes.rus_name_size',  'sizes.brand_name_size', 'colors.name_color')
             ->get();
         return view('admin.products.edit', [
             'brands' => Brand::all(),
@@ -168,7 +176,22 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $input = $request->except('color_id', 'size_id');
-        $input['media']=implode(';', array_diff( $input['media'], array('')));
+        $upload=$request->upload_media;
+        foreach ( explode(';', $product->media) as $image){
+            if(!in_array($image, $upload)  ){
+                Storage::disk('public')->delete(str_replace('/storage', '', $image));
+            }
+        }
+        $medias= $request->file('media');
+        if($medias) {
+            foreach ($medias as $media) {
+                $upload[] = '/storage/' . $media->store('/uploads/products', 'public');
+            }
+        }
+        if ($upload) {
+            $input['media'] = implode(';', array_diff($upload, array('')));
+        }
+
         $product->fill($input)->save();
         $sizes=array_diff( $request['size_id'], array(''));
         $colors=array_diff( $request['color_id'], array(''));
@@ -196,7 +219,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->categories()->detach();
+        foreach (explode(';',$product->media) as $media){
+            Storage::disk('public')->delete(str_replace('/storage', '', $media));
+        }
+
         $product->delete();
+        DB::table('attributeables')->where('product_id', '=', $product->id)->delete();
         return redirect()->route('admin.products.index');
     }
 
@@ -232,114 +260,154 @@ class ProductController extends Controller
                     }
                     //sleep(5);
                     $i++;
-                    if(isset($code) && $code==$arr[13]) {
-                        $product->count= $product->count +1;
-                        //знов повтор вставки розміру і кольору
-                        $attributes = $product->attributes($product, $arr);
-                    }else {
-                        $code=$arr[13];
-                        if(isset($code) && $code==$arr[13] &&isset($product)) {
-                            $product->save();
-                            Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
-                            continue;
-                        }
-                        $product = Product::where('vendor_code','=', $code)->first();
-                        if($product){
-                            $product->media= $arr[15];
-                            $product->new= 0;
-                            if($arr[17]=="Да")
-                                $product->sale = 1;
-                            else
-                                $product->sale = 0;
-                            $product->price= $arr[7];
-                            $product->count= 1;
-                            DB::table('attributeables')->where('product_id', '=', $product->id)->delete();
+                    $upload=false;
+                    $code=$arr[13];
+                    if(isset($product)) {
+                        if ($product->vendor_code == $code) {
+                            $product->count = $product->count + 1;
+                            //знов повтор вставки розміру і кольору
                             $attributes = $product->attributes($product, $arr);
-                        }else{
-                            $product = new Product();
-                            $product->name= $arr[14];
-                            $product->code= $arr[0];
-                            $product->vendor_code= $arr[13];
-
-
-                            $provider = Provider::where('provider_name','=', $arr[12])->first();
-                            if(!$provider){
-                                $provider = new Provider();
-                                $provider->provider_name=$arr[12];
-                                $provider->save();
-                            }
-                            $product->provider_id = $provider->id;
-                            $product->material= $arr[11];
-
-                            $country = Country::where('name_country','=', $arr[9])->first();
-                            if(!$country){
-                                $country = new Country();
-                                $country->name_country=$arr[9];
-                                $country->save();
-                            }
-                            $product->country_id = $country->id;
-                            $product->media= $arr[15];
-
-                            $product->new = 1;
-                            if($arr[17]=="Да")
-                                $product->sale = 1;
-                            else
-                                $product->sale = 0;
-
-
-                            $product->description= $arr[10];
-                            $product->price= $arr[7];
-                            $product->count= 1;
-                            $product->user_id= 1;
-                            $product->published= 0;
-                            $product->slug = Str::slug( mb_substr($arr[14], 0, 40) ,'-');
+                        } else {
                             $product->save();
-                            $attributes = $product->attributes($product, $arr);
-                            $product->brand_id = $attributes['brand_id'];
-                            // Categories
-                            $categories = Category::where('title','=', $arr[2])->first();
-                            if(!$categories){
-                                $site_category = CategoryImport::where('import_name', '=', $arr[2])->first();
-                                if(isset($site_category))$site_category=$site_category->category_id;
-                                if(!$site_category){
-                                    //створюємо самі категорії
-                                  /*  $categories_parent = Category::where('title','=', $arr[1])->first();
-                                    if(!$categories_parent){
-                                        $site_category_parent = CategoryImport::where('import_name', '=', $arr[1])->first();
-                                        if(isset($site_category_parent))$site_category_parent=$site_category_parent->category_id;
-                                        if(!$site_category_parent){
-                                            $categories_parent = new Category();
-                                            $categories_parent->title = $arr[1];
-                                            $categories_parent->slug = '';
-                                            $categories_parent->save();
-
-                                            $categories_parent_id= $categories_parent->id;
-                                            $categories = new Category();
-                                            $categories->title = $arr[2];
-                                            $categories->slug = '';
-                                            $categories->save();
-                                            $categories->parent_id = $categories_parent_id;
-                                            $categories->save();
-                                        }else{
-                                            $categories_id=$site_category_parent;
-                                        }
-                                    }*/
-                                    //створюємо самі категорії
-                                    $categories_id=84; //додаємо в "без категорії"
-                                }else{
-                                    $categories_id=$site_category;
-                                }
-
-
-                            }
-                            if(!isset($categories_id)) $categories_id=$categories->id;
-
-                            $product->categories()->attach($categories_id);
-                            $product->save();
-                            Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
+                            Storage::disk('public')->put($status_api, $all_rows . ';' . $i . ';' . $arr[8]);
                         }
                     }
+                    $product = Product::where('vendor_code','=', $code)->first();
+                    if($product){
+                        //далі провыряэмо чи э такі лінки в базі, не має видаляємо з диску і з масиво
+                        //і завантажуємо тільки відсутні
+                        $medias=explode(';', $arr[15]);
+                        foreach ($medias as $name){
+                            $medias_name[]=basename($name);
+                        }
+                        $upload= explode(';', $product->media);
+                        foreach ($upload as $name){
+                            $uploads_name[]=basename($name);
+                        }
+                        foreach ( $upload as $image){
+                            if(!in_array(basename($image), $medias_name)  ){
+                                Storage::disk('public')->delete(str_replace('/storage', '', $image)); //перевірити ! чи без ід видаля
+                                $upload = array_diff($upload, [$image]); //удаляем из массива
+                                $uploads_name = array_diff($uploads_name, [basename($image)]); //удаляем из массива
+                            }
+                        }
+                        foreach ($medias as $media) {
+                            if(!in_array(basename($media), $uploads_name)  ){
+                                $file_full_path = 'public/uploads/products/'.$product->id.'/';
+                                $file_name = basename($media);
+                                Storage::disk('local')->put($file_full_path  . $file_name, file_get_contents($media), 'public');
+                                $upload[] = '/storage/uploads/products/'.$product->id.'/'.$file_name;
+                            }
+                        }
+                        if ($upload) {
+                            $product->media = implode(';', array_diff($upload, array('')));
+                        }
+/////
 
+
+                        $product->new= 0;
+                        if($arr[17]=="Да")
+                            $product->sale = 1;
+                        else
+                            $product->sale = 0;
+                        $product->price= $arr[7];
+                        $product->count= 1;
+                        DB::table('attributeables')->where('product_id', '=', $product->id)->delete();
+                        $attributes = $product->attributes($product, $arr);
+                    }else{
+                        $product = new Product();
+                        $product->name= $arr[14];
+                        $product->code= $arr[0];
+                        $product->vendor_code= $arr[13];
+
+
+                        $provider = Provider::where('provider_name','=', $arr[12])->first();
+                        if(!$provider){
+                            $provider = new Provider();
+                            $provider->provider_name=$arr[12];
+                            $provider->save();
+                        }
+                        $product->provider_id = $provider->id;
+                        $product->material= $arr[11];
+
+                        $country = Country::where('name_country','=', $arr[9])->first();
+                        if(!$country){
+                            $country = new Country();
+                            $country->name_country=$arr[9];
+                            $country->save();
+                        }
+                        $product->country_id = $country->id;
+
+                        $product->new = 1;
+                        if($arr[17]=="Да")
+                            $product->sale = 1;
+                        else
+                            $product->sale = 0;
+
+                        $product->description= $arr[10];
+                        $product->price= $arr[7];
+                        $product->count= 1;
+                        $product->user_id= 1;
+                        $product->published= 0;
+                        $product->slug = Str::slug( mb_substr($arr[14], 0, 40) ,'-');
+                        $product->save();
+
+                        //далі додаємо медіа
+                        $medias=explode(';', $arr[15]);
+                        foreach ($medias as $media) {
+                            $file_full_path = 'public/uploads/products/'.$product->id.'/';
+                            $file_name = basename($media);
+                            Storage::disk('local')->put($file_full_path  . $file_name, file_get_contents($media), 'public');
+                            $upload[] = '/storage/uploads/products/'.$product->id.'/'.$file_name;
+                        }
+                        if ($upload) {
+                            $product->media = implode(';', array_diff($upload, array('')));
+                        }
+                        /////
+                        $attributes = $product->attributes($product, $arr);
+                        $product->brand_id = $attributes['brand_id'];
+                        // Categories
+                        $categories = Category::where('title','=', $arr[2])->first();
+                        if(!$categories){
+                            $site_category = CategoryImport::where('import_name', '=', $arr[2])->first();
+                            if(isset($site_category))$site_category=$site_category->category_id;
+                            if(!$site_category){
+                                //створюємо самі категорії
+                              /*  $categories_parent = Category::where('title','=', $arr[1])->first();
+                                if(!$categories_parent){
+                                    $site_category_parent = CategoryImport::where('import_name', '=', $arr[1])->first();
+                                    if(isset($site_category_parent))$site_category_parent=$site_category_parent->category_id;
+                                    if(!$site_category_parent){
+                                        $categories_parent = new Category();
+                                        $categories_parent->title = $arr[1];
+                                        $categories_parent->slug = '';
+                                        $categories_parent->save();
+
+                                        $categories_parent_id= $categories_parent->id;
+                                        $categories = new Category();
+                                        $categories->title = $arr[2];
+                                        $categories->slug = '';
+                                        $categories->save();
+                                        $categories->parent_id = $categories_parent_id;
+                                        $categories->save();
+                                    }else{
+                                        $categories_id=$site_category_parent;
+                                    }
+                                }*/
+                                //створюємо самі категорії
+                                $categories_id=84; //додаємо в "без категорії"
+                            }else{
+                                $categories_id=$site_category;
+                            }
+
+
+                        }
+                        if(!isset($categories_id)) $categories_id=$categories->id;
+
+                        $product->categories()->attach($categories_id);
+                        $product->save();
+                        Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
+                    }
 
 
                 }
