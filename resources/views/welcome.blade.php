@@ -14,7 +14,8 @@
 
 <div class="container container-my">
     <div class="intro">
-        <div class="row intro__buttons  text-center">
+        <div class="row">
+            <div  class=" intro__buttons  text-center">
             <a class="col-md-4 btn  intro__button" href="/catalog/zhenskoe-bele/byustgaltery" role="button"> <i class="icon icon--bra button__icon"></i>
                 <span class="button__text">Бюстгальтеры</span>
             </a>
@@ -24,7 +25,7 @@
             <a class="col-md-4 btn  intro__button" href="/catalog/zhenskoe-bele/komplekty-belya" role="button"> <i class="icon icon--swimsuits button__icon"></i>
                 <span class="button__text">Комплекты</span>
             </a>
-
+            </div>
         </div>
     </div>
 

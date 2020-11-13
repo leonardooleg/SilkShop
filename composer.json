@@ -23,7 +23,8 @@
         "laravelcollective/html": "^6.1",
         "retailcrm/api-client-php": "~5.0",
         "shuchkin/simplexlsx": "^0.8.19",
-        "spatie/laravel-permission": "^3.11"
+        "spatie/laravel-permission": "^3.11",
+        "yandex-money/yandex-checkout-sdk-php": "^1.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

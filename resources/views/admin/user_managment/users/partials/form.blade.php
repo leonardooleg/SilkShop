@@ -19,7 +19,7 @@
 <label for=""><strong>Пароль</strong></label>
 <input type="password" class="form-control" required name="password">
 <label for=""><strong>Пароль еще раз</strong></label>
-<input type="password" class="form-control" required name="password_confirmation">
+<input type="password" class="form-control" required name="confirm-password">
 <label for=""><strong>Роль</strong></label>
 @if(isset($userRole))
     {{ Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) }}

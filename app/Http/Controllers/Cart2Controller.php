@@ -116,7 +116,7 @@ class Cart2Controller extends Controller
             }
 
             if ($response->isSuccessful() && 201 === $response->getStatusCode()) {
-                echo 'Order successfully created. Order ID into retailCRM = ' . $response->id;
+                //echo 'Order successfully created. Order ID into retailCRM = ' . $response->id;
                 $orders->id_retailcrm =$response->id;
                 $orders->save();
             } else {

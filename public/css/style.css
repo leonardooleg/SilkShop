@@ -493,10 +493,22 @@ li.nav-item {
     background-color: #fca571;
 }
 
-.row.intro__buttons.text-center {
+
+.intro__buttons.text-center {
     margin: 0 auto;
     justify-content: space-between;
     width: 80%;
+
+}
+@media (min-width: 768px) {
+    .intro__buttons.text-center {
+        display: flex;
+    }
+}
+@media (min-width: 992px) {
+    .intro__buttons.text-center {
+        width: 80%;
+    }
 }
 
 a.col-md-4.btn.intro__button:hover {
@@ -2969,6 +2981,24 @@ blockquote:before {
 .page-site .content__faq {
     max-width: 50rem;
     margin: 0 auto;
+}
+.desc-delivery .pay__item {
+    display: table-cell;
+    padding: 10px;
+}
+.desc-delivery .pay__icon {
+    display: table;
+    margin: 10px auto;
+    text-align: center;
+}
+.desc-delivery .advantages__item {
+    float: left;
+    width: 50%;
+}
+.desc-delivery .advantages__items:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 /****Страницы****/
 
