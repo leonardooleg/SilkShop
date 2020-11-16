@@ -39,13 +39,13 @@
                         </div>
                         @else
                         <div class="alert alert-danger" role="alert">
-                            {{$message}}
+                            A simple danger alert—check it out!
                         </div>
                     @endif
                         <div class="form-group row">
                             <label for="inputTel" class="col-sm-3 col-form-label">Номер вашего заказа</label>
                             <div class="col-sm-4">
-                                <input type="text" placeholder="{{$id}}" class="form-control my-bg-grey" id="inputTel" disabled>
+                                <input type="text" placeholder="{{$id}}" class="form-control my-bg-red" id="inputTel" disabled>
                             </div>
                         </div>
                         <div class="form-group row">

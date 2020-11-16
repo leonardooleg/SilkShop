@@ -12,6 +12,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use YandexCheckout\Client;
+use Illuminate\Support\Facades\Redirect;
 
 class Cart2Controller extends Controller
 {
@@ -126,13 +128,30 @@ class Cart2Controller extends Controller
                     $response->getErrorMsg()
                 );
             }
-            /////
-            return view('cart3',[
-                'success' => true,
-                'id' => $orders->id,
-                'email' => $orders->clientEmail,
-                'message' => "Заказ успешный!"
-            ]);
+            /////////
+            /// yandex
+            $client = new Client();
+            $client->setAuth('659047', 'test_A4uJFx4TxD23lWn6DGyCCuxwkKROh63OdWk9pfgG-U0');
+            $payment = $client->createPayment(
+                array(
+                    'amount' => array(
+                        'value' => $orders->total_price,
+                        'currency' => 'RUB',
+                    ),
+                    'confirmation' => array(
+                        'type' => 'redirect',
+                        'return_url' => 'http://leonardooleg.tech/return_url/'.$orders->id,
+                    ),
+                    'capture' => true,
+                    'description' => 'Заказ №'.$orders->id,
+                ),
+                uniqid('', true)
+            );
+            $orders->paymentId= $payment->id;
+            $orders->save();
+            /// yandex
+            ///
+            return Redirect::to($payment->confirmation->getConfirmationUrl());
         }else{
             return back()->with('error', 'Your article has been added error. Please wait for the admin to approve.');
         }
@@ -140,5 +159,32 @@ class Cart2Controller extends Controller
 
     }
 
+
+    public function return_money($cart_id){
+        $client = new Client();
+        $client->setAuth('659047', 'test_A4uJFx4TxD23lWn6DGyCCuxwkKROh63OdWk9pfgG-U0');
+        $order= Order::where('id', $cart_id)->first();
+        if(isset($order->paymentId)){
+            $payment = $client->getPaymentInfo($order->paymentId);
+        }
+        if(isset($payment)) {
+            if ($payment->getStatus() == "succeeded") {
+                return view('cart3', [
+                    'success' => true,
+                    'id' => $order->id,
+                    'email' => $order->clientEmail,
+                    'message' => "Заказ успешный! Оплата прошла!"
+                ]);
+            }
+        }else{
+            return view('cart3', [
+                'success' => false,
+                'id' => $order->id,
+                'email' => $order->clientEmail,
+                'message' => "Заказ добавлен но оплата НЕ прошла!"
+            ]);
+        }
+
+    }
 
 }

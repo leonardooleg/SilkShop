@@ -16,6 +16,7 @@ use Darryldecode\Cart\CartCondition;
 use Session;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use YandexCheckout\Client;
 
 class CartController extends Controller
 {
@@ -30,6 +31,7 @@ class CartController extends Controller
                 $cart->each(function ($item) use (&$items) {
                     $items[] = $item;
                 });
+
                 return response(array(
                     'success' => true,
                     'data' => $items,

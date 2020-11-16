@@ -55792,7 +55792,7 @@ var app = new Vue({
            // Воспользуемся методом `reduce`.
            // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/reduc
            //console.log(item);
-            return 5
+             return 5
            //return this.qty.reduce((price, qty) => this.price * Number(qty))
        }
    }*/
@@ -56140,8 +56140,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /www/wwwroot/leonardooleg.tech/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /www/wwwroot/leonardooleg.tech/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\OpenServer\domains\leonardooleg.tech\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\OpenServer\domains\leonardooleg.tech\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
