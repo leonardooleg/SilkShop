@@ -147,7 +147,7 @@
                             <div class="form__fields">
                                 <div class="form__field order__pay">
                                         <label><input type="radio" name="type_pay" value="cash" checked="checked" class="type_pay"> <img src="/img/pay/nal_pay.png"></label>
-                                        <label><input type="radio" name="type_pay" value="bank-card" class="type_pay"> <img src="/img/pay/bank_pay.png"></label>
+                                        <label><input type="radio" name="type_pay" value="yookassa" class="type_pay"> <img src="/img/pay/bank_pay.png"></label>
 
                                 </div>
                             </div>

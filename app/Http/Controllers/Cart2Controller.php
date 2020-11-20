@@ -11,9 +11,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use YandexCheckout\Client;
 use Illuminate\Support\Facades\Redirect;
+use RetailCrm\ApiClient;
 
 class Cart2Controller extends Controller
 {
@@ -50,7 +51,7 @@ class Cart2Controller extends Controller
             unset($_REQUEST);
 
             /////
-            $client = new \RetailCrm\ApiClient(
+            $client_retail = new ApiClient(
                 'https://silkandlace2.retailcrm.ru/',
                 'ctdh3KV0salK3A32t2I7TFTiSjem712B',
                 \RetailCrm\ApiClient::V5
@@ -81,17 +82,12 @@ class Cart2Controller extends Controller
                 );
             }
             try {
-                $response = $client->request->ordersCreate(array(
+                $response = $client_retail->request->ordersCreate(array(
                     'firstName' => $orders["clientName"],
                     //'lastName' => 'Фамилия',
                     'phone' => $orders["clientTel"],
                     'email' => $orders["clientEmail"],
                     'call' => 1,
-//                    'weight' => 50,
-//                    'length' => 150,
-//                    'width' => 150,
-//                    'height' => 10,
-                    //'managerId' => 15,
                     'customerComment' => $orders["clientComment"],
                     'items' => $items_ctr,
                     'delivery' => array(
@@ -128,30 +124,28 @@ class Cart2Controller extends Controller
                     $response->getErrorMsg()
                 );
             }
-            /////////
-            /// yandex
-            $client = new Client();
-            $client->setAuth('659047', 'test_A4uJFx4TxD23lWn6DGyCCuxwkKROh63OdWk9pfgG-U0');
-            $payment = $client->createPayment(
-                array(
-                    'amount' => array(
-                        'value' => $orders->total_price,
-                        'currency' => 'RUB',
-                    ),
-                    'confirmation' => array(
-                        'type' => 'redirect',
-                        'return_url' => 'http://leonardooleg.tech/return_url/'.$orders->id,
-                    ),
-                    'capture' => true,
-                    'description' => 'Заказ №'.$orders->id,
-                ),
-                uniqid('', true)
-            );
-            $orders->paymentId= $payment->id;
-            $orders->save();
-            /// yandex
-            ///
-            return Redirect::to($payment->confirmation->getConfirmationUrl());
+            if($orders->type_pay=='yookassa') {
+                /////////ген ссылки на оплату
+                $pay_par = array('paymentId' => $response->order['payments'][0]['id'], 'returnUrl' => env('APP_URL').'/return_url?orderId='.$orders->id);
+                try {
+                    $order_add_pay = $client_retail->request->paymentCreateInvoice($pay_par);
+                    $order_pay_link = $order_add_pay->result['link'];
+                    $orders->paymentId =  $response->order['payments'][0]['id'];
+                    $orders->save();
+                } catch (\RetailCrm\Exception\CurlException $e) {
+                    echo "Connection error: " . $e->getMessage();
+                }
+                ///
+                return Redirect::to($order_pay_link);
+
+            }else{
+                return view('cart3', [
+                    'success' => true,
+                    'id' => $orders->id,
+                    'email' => $orders->clientEmail,
+                    'message' => "Заказ успешный!"
+                ]);
+            }
         }else{
             return back()->with('error', 'Your article has been added error. Please wait for the admin to approve.');
         }
@@ -160,20 +154,34 @@ class Cart2Controller extends Controller
     }
 
 
-    public function return_money($cart_id){
-        $client = new Client();
-        $client->setAuth('659047', 'test_A4uJFx4TxD23lWn6DGyCCuxwkKROh63OdWk9pfgG-U0');
+
+    public function return_money(){
+        $client_retail = new ApiClient(
+            'https://silkandlace2.retailcrm.ru/',
+            'ctdh3KV0salK3A32t2I7TFTiSjem712B',
+            \RetailCrm\ApiClient::V5
+        );
+        $cart_id = $_GET['orderId'];
+        $user_id = Auth::user()->id;
+
         $order= Order::where('id', $cart_id)->first();
-        if(isset($order->paymentId)){
-            $payment = $client->getPaymentInfo($order->paymentId);
-        }
-        if(isset($payment)) {
-            if ($payment->getStatus() == "succeeded") {
+
+       if(isset($order->id_retailcrm)){
+           $payment  = $client_retail->request->ordersGet($order->id_retailcrm, 'id');
+
+           if ($payment->order['payments'][$order->paymentId]['status'] == "paid") {
                 return view('cart3', [
                     'success' => true,
                     'id' => $order->id,
                     'email' => $order->clientEmail,
                     'message' => "Заказ успешный! Оплата прошла!"
+                ]);
+            }else{
+                return view('cart3', [
+                    'success' => false,
+                    'id' => $order->id,
+                    'email' => $order->clientEmail,
+                    'message' => "Заказ добавлен но оплата НЕ прошла!"
                 ]);
             }
         }else{
@@ -185,6 +193,11 @@ class Cart2Controller extends Controller
             ]);
         }
 
+    }
+
+    public function yandex_checkout(){
+        return response('принято изменение оплаты', 200)
+            ->header('Content-Type', 'text/plain');
     }
 
 }

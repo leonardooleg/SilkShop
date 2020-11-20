@@ -84,7 +84,8 @@ Route::delete('/cart/{id}','CartController@delete')->name('cart.delete');
 Route::post('/cart2-details','Cart2Controller@go')->name('cart2.go')->middleware('auth');
 Route::get('/cart2','Cart2Controller@index')->name('cart2.index')->middleware('auth');
 Route::post('/cart2','Cart2Controller@add')->name('cart2.add')->middleware('auth');
-Route::get('/return_url/{cart_id}','Cart2Controller@return_money')->name('cart3.finish');
+Route::get('/return_url','Cart2Controller@return_money')->name('cart3.finish');
+Route::get('/yandex_checkout','Cart2Controller@yandex_checkout');
 /*Route::get('/cart-finish','Cart2Controller@finish')->name('cart3.finish')->middleware('auth');*/
 
 
