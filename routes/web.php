@@ -33,6 +33,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['permission:admin']], function () {
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
     Route::resource('/orders', 'OrdersController', ['as'=>'admin']);
+    Route::resource('/shop', 'ShopController', ['as'=>'admin']);
     Route::resource('/category', 'CategoryController', ['as'=>'admin']);
     Route::resource('/category-import', 'CategoryImportController', ['as'=>'admin']);
     Route::get('/category/{id?}/children ', 'CategoryController@children')->name('admin');

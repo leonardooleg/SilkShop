@@ -9,10 +9,10 @@
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"  crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
-
+    <script src="https://kit.fontawesome.com/70ccfde2bc.js" crossorigin="anonymous"></script>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
@@ -60,12 +60,19 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Основное</div>
+                    <div class="sb-sidenav-menu-heading"></div>
                     <a class="nav-link" href="/admin">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard</a>
+
+                    <div class="sb-sidenav-menu-heading">Маркетплейс</div>
                     <a class="nav-link" href="/admin/orders"><div class="sb-nav-link-icon"><i class="fas fa-cart-plus"></i></div>
                         Заказы</a>
+                    <a class="nav-link" href="/admin/shop"><div class="sb-nav-link-icon"><i class="fas fa-money-check-alt" ></i></div>
+                        Настройка продаж</a>
+
+
+                    <div class="sb-sidenav-menu-heading">Основное</div>
                     <a class="nav-link" href="/admin/category"><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Категории</a>
                     <a class="nav-link" href="/admin/category-import"><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

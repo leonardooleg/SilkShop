@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use SimpleXLSX;
+
 
 class ProductController extends Controller
 {
@@ -248,16 +248,17 @@ class ProductController extends Controller
         /*Для статуса*/
         if ($import_file) {
             $data = "storage/". $import_file->store('uploads/import', 'public'); ///потім видаляти файли потрібно
-            if ( $xlsx = SimpleXLSX::parse($data) ) {
-                $arrs= $xlsx->rows() ; //отримали дані в масиві з exel
-                $all_rows = count($arrs);
+            if ( $xsl = file($data, FILE_IGNORE_NEW_LINES) ) {
+                $all_rows = count($xsl);
                 $i=0;
-                foreach ($arrs as $arr){
+                foreach ($xsl as $xsl){
                    // continue;
                     if($i==0){
                         $i++;
                         continue;
                     }
+                    $xsl=mb_convert_encoding($xsl, "utf-8", "windows-1251");
+                    $arr= explode("\t", $xsl);
                     //sleep(5);
                     $i++;
                     $upload=false;
@@ -315,6 +316,47 @@ class ProductController extends Controller
                         DB::table('attributeables')->where('product_id', '=', $product->id)->delete();
                         $attributes = $product->attributes($product, $arr);
                     }else{
+                        // Categories
+                        $categories = Category::where('title','=', $arr[2])->first();
+                        if(!$categories){
+                            $site_category = CategoryImport::where('import_name', '=', $arr[2])->first();
+                            if(isset($site_category))$site_category=$site_category->category_id;
+                            if(!$site_category){
+                                //не потрібно бо вже всі потрібні створені
+                                //створюємо самі категорії
+                                /*  $categories_parent = Category::where('title','=', $arr[1])->first();
+                                  if(!$categories_parent){
+                                      $site_category_parent = CategoryImport::where('import_name', '=', $arr[1])->first();
+                                      if(isset($site_category_parent))$site_category_parent=$site_category_parent->category_id;
+                                      if(!$site_category_parent){
+                                          $categories_parent = new Category();
+                                          $categories_parent->title = $arr[1];
+                                          $categories_parent->slug = '';
+                                          $categories_parent->save();
+
+                                          $categories_parent_id= $categories_parent->id;
+                                          $categories = new Category();
+                                          $categories->title = $arr[2];
+                                          $categories->slug = '';
+                                          $categories->save();
+                                          $categories->parent_id = $categories_parent_id;
+                                          $categories->save();
+                                      }else{
+                                          $categories_id=$site_category_parent;
+                                      }
+                                  }*/
+                                //створюємо самі категорії
+                                // $categories_id=84; //додаємо в "без категорії"
+                                continue;
+                            }else{
+                                $categories_id=$site_category;
+                            }
+
+
+                        }
+                        if(!isset($categories_id)) $categories_id=$categories->id;
+
+
                         $product = new Product();
                         $product->name= $arr[14];
                         $product->code= $arr[0];
@@ -366,44 +408,8 @@ class ProductController extends Controller
                         /////
                         $attributes = $product->attributes($product, $arr);
                         $product->brand_id = $attributes['brand_id'];
+
                         // Categories
-                        $categories = Category::where('title','=', $arr[2])->first();
-                        if(!$categories){
-                            $site_category = CategoryImport::where('import_name', '=', $arr[2])->first();
-                            if(isset($site_category))$site_category=$site_category->category_id;
-                            if(!$site_category){
-                                //створюємо самі категорії
-                              /*  $categories_parent = Category::where('title','=', $arr[1])->first();
-                                if(!$categories_parent){
-                                    $site_category_parent = CategoryImport::where('import_name', '=', $arr[1])->first();
-                                    if(isset($site_category_parent))$site_category_parent=$site_category_parent->category_id;
-                                    if(!$site_category_parent){
-                                        $categories_parent = new Category();
-                                        $categories_parent->title = $arr[1];
-                                        $categories_parent->slug = '';
-                                        $categories_parent->save();
-
-                                        $categories_parent_id= $categories_parent->id;
-                                        $categories = new Category();
-                                        $categories->title = $arr[2];
-                                        $categories->slug = '';
-                                        $categories->save();
-                                        $categories->parent_id = $categories_parent_id;
-                                        $categories->save();
-                                    }else{
-                                        $categories_id=$site_category_parent;
-                                    }
-                                }*/
-                                //створюємо самі категорії
-                                $categories_id=84; //додаємо в "без категорії"
-                            }else{
-                                $categories_id=$site_category;
-                            }
-
-
-                        }
-                        if(!isset($categories_id)) $categories_id=$categories->id;
-
                         $product->categories()->attach($categories_id);
                         $product->save();
                         Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
@@ -412,9 +418,8 @@ class ProductController extends Controller
 
                 }
             } else {
-               // echo SimpleXLSX::parseError();
                 return response()->json([
-                    'message'   => SimpleXLSX::parseError(),
+                    'message'   => 'error parse',
                     'class_name'  => 'alert-danger'
                 ]);
             }
