@@ -1,0 +1,44 @@
+Laravel:
+composer create-project --prefer-dist laravel/laravel
+
+https://github.com/barryvdh/laravel-ide-helper
+composer require --dev barryvdh/laravel-ide-helper
+
+https://github.com/barryvdh/laravel-debugbar
+composer require barryvdh/laravel-debugbar --dev
+
+https://github.com/laravel/ui
+composer require laravel/ui
+php artisan ui bootstrap
+
+npm install
+npm run dev
+
+https://github.com/cijic/phpmorphy
+composer require cijic/phpmorphy
+
+https://github.com/darryldecode/laravelshoppingcart
+composer require "darryldecode/cart"
+Open config/app.php and add this line to your Service Providers Array.
+Darryldecode\Cart\CartServiceProvider::class
+Open config/app.php and add this line to your Aliases
+  'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+Optional configuration file (useful if you plan to have full control)
+php artisan vendor:publish --provider="Darryldecode\Cart\CartServiceProvider" --tag="config"
+
+https://github.com/diglactic/laravel-breadcrumbs
+composer require diglactic/laravel-breadcrumbs
+
+https://github.com/harimayco/wmenu-builder
+composer require harimayco/laravel-menu
+Run publish
+php artisan vendor:publish --provider="Harimayco\Menu\MenuServiceProvider"
+
+https://github.com/lazychaser/laravel-nestedset
+composer require kalnoy/nestedset
+
+https://github.com/retailcrm/api-client-php
+composer require retailcrm/api-client-php ~5.0
+
+https://github.com/spatie/laravel-permission
+composer require spatie/laravel-permission

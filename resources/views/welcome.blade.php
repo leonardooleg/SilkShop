@@ -40,7 +40,7 @@
             </h2>
             <div class="row content__cards content__gap">
             @foreach ($products as $product)
-                <div class="col-sm-3">
+                <div class="col-sm-6 col-md-3">
                     <div class="card card--hover" >
                         <div class="card-body">
                             <div class="" >

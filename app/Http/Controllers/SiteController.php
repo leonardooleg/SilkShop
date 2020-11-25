@@ -235,8 +235,12 @@ class SiteController extends Controller
                 $i++;
             }
         }
-        $filters['color']=array_reverse( $filters['color'], true);
-        if(!isset($filters)) $filters=false;
+
+        if(!isset($filters)){
+            $filters=false;
+        }else{
+            $filters['color']=array_reverse( $filters['color'], true);
+        }
 
         if(isset($filter_country[0])){
             $title_country = $filters['country'][$filter_country[0]];
@@ -291,7 +295,7 @@ class SiteController extends Controller
             }
 
 
-        //return view('category')->with([ 'all'=> Product::count(), 'b_menu'=>$root, 'filters'=>$filters,  'title'=>$title,  'name_category'=>$category_title]);
+       // return view('category')->with([ 'all'=> Product::count(), 'b_menu'=>$root, 'filters'=>$filters,  'title'=>$title,  'name_category'=>$category_title]);
         return view('category')->with([ 'b_menu'=>$root, 'filters'=>$filters,  'title'=>$title,  'name_category'=>$category_title]);
 
     }

@@ -392,6 +392,14 @@ class ProductController extends Controller
                         $product->user_id= 1;
                         $product->published= 0;
                         $product->slug = Str::slug( mb_substr($arr[14], 0, 40) ,'-');
+
+                        $brand = Brand::where('name_brand','=', $arr[3])->first();
+                        if(!$brand){
+                            $brand = new Brand();
+                            $brand->name_brand=$arr[3];
+                            $brand->save();
+                        }
+                        $product->brand_id = $brand->id;
                         $product->save();
 
                         //далі додаємо медіа
@@ -405,12 +413,12 @@ class ProductController extends Controller
                         if ($upload) {
                             $product->media = implode(';', array_diff($upload, array('')));
                         }
-                        /////
+                        $product->categories()->attach($categories_id);
                         $attributes = $product->attributes($product, $arr);
-                        $product->brand_id = $attributes['brand_id'];
+
 
                         // Categories
-                        $product->categories()->attach($categories_id);
+
                         $product->save();
                         Storage::disk('public')->put($status_api,  $all_rows.';'.$i.';'.$arr[8]);
                     }

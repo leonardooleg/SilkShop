@@ -54,9 +54,9 @@
         <infinite-loading @distance="1" @infinite="infiniteHandler" spinner="circles">
 
             <div slot="no-more">Больше товаров не найдено</div>
-            <div slot="no-results">Больше товаров не найдено</div>
+            <div slot="no-results">Больше товаров не найдено.</div>
             <div slot="error" slot-scope="{ trigger }">
-                Не найдено, click <a href="javascript:;" @click="trigger">Повторить загрузку</a>
+                Не найдено, нажмите <a href="javascript:;" @click="trigger">Повторить загрузку</a>
             </div>
         </infinite-loading>
     </div>

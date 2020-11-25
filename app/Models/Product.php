@@ -43,13 +43,7 @@ class Product extends Model
     public function attributes($product, $arr){
         $arr_spain = json_decode(file_get_contents('Spain.json'), true);
         //найти ід кольору і розміру
-        $brand = Brand::where('name_brand','=', $arr[3])->first();
-        if(!$brand){
-            $brand = new Brand();
-            $brand->name_brand=$arr[3];
-            $brand->save();
-        }
-        $brand_id = $brand->id;
+        $brand_id = $product->brand_id;
 
         $color_name=basename($arr[5]);
         $color=Color::where('img_color', 'LIKE', "%$color_name%")->first();

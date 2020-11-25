@@ -38193,7 +38193,7 @@ var render = function() {
               fn: function(ref) {
                 var trigger = ref.trigger
                 return _c("div", {}, [
-                  _vm._v("\n            Не найдено, click "),
+                  _vm._v("\n            Не найдено, нажмите "),
                   _c(
                     "a",
                     { attrs: { href: "javascript:;" }, on: { click: trigger } },
@@ -38210,7 +38210,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { attrs: { slot: "no-results" }, slot: "no-results" }, [
-            _vm._v("Больше товаров не найдено")
+            _vm._v("Больше товаров не найдено.")
           ])
         ]
       )
