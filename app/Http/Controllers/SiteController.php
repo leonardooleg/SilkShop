@@ -170,6 +170,7 @@ class SiteController extends Controller
             )
             ->groupBy('products.id','categories.path','categories.title')
             ->paginate(4);
+        $products=Product::paginate(4);
         return response()->json($products);
     }
 

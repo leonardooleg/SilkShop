@@ -1988,6 +1988,7 @@ __webpack_require__.r(__webpack_exports__);
     infiniteHandler: function infiniteHandler($state) {
       var _this = this;
 
+      console.log('start');
       var timeOut = 0;
 
       if (this.page > 1) {
@@ -1998,6 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
         var vm = _this;
         var get_link;
         if (vm.path) get_link = '/products?' + vm.link + '&path=' + vm.path + '&page=' + _this.page;else get_link = '/products?' + vm.link + '&page=' + _this.page;
+        console.log(get_link);
         console.debug(get_link);
         window.axios.get(get_link).then(function (_ref) {
           var data = _ref.data;
